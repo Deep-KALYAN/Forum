@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "d52Vq5bWvCGX8D0h8od8E1z5p9yFwVFx+oybdPle7d9Byg2txE261cQCW4pkp6vuEdWORFegK/3V4JF0ocSufw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cda5kaly\\source\\repos\\APIActivite3\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cda5kaly\\.nuget\\packages\\fluentvalidation\\11.2.2\\fluentvalidation.11.2.2.nupkg.sha512",
+    "C:\\Users\\cda5kaly\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.2\\fluentvalidation.dependencyinjectionextensions.11.2.2.nupkg.sha512",
+    "C:\\Users\\cda5kaly\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

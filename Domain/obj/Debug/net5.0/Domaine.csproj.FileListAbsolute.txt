@@ -1,0 +1,12 @@
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\bin\Debug\net5.0\Domaine.deps.json
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\bin\Debug\net5.0\Domaine.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\bin\Debug\net5.0\ref\Domaine.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\bin\Debug\net5.0\Domaine.pdb
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.csproj.AssemblyReference.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.AssemblyInfoInputs.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.AssemblyInfo.cs
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.csproj.CoreCompileInputs.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\ref\Domaine.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\Domaine\obj\Debug\net5.0\Domaine.pdb
