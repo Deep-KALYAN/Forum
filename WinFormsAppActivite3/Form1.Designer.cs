@@ -113,6 +113,7 @@ namespace WinFormsAppActivite3
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelInMainHeading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTopics)).BeginInit();
+            this.ftableLayoutPanelForumMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // bindingSourceUsers
@@ -149,7 +150,6 @@ namespace WinFormsAppActivite3
             this.tableLayoutPanelForum.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanelForum.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanelForum.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelForum.Controls.Add(this.flabelRubriques, 0, 0);
             this.tableLayoutPanelForum.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tableLayoutPanelForum.Controls.Add(this.textBox1, 0, 2);
             this.tableLayoutPanelForum.Controls.Add(this.textBox2, 1, 2);
@@ -783,6 +783,7 @@ namespace WinFormsAppActivite3
             // 
             this.ftableLayoutPanelForumMain.ColumnCount = 1;
             this.ftableLayoutPanelForumMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ftableLayoutPanelForumMain.Controls.Add(this.flabelRubriques, 0, 0);
             this.ftableLayoutPanelForumMain.Location = new System.Drawing.Point(25, 39);
             this.ftableLayoutPanelForumMain.Name = "ftableLayoutPanelForumMain";
             this.ftableLayoutPanelForumMain.RowCount = 6;
@@ -827,6 +828,8 @@ namespace WinFormsAppActivite3
             this.tableLayoutPanelInMainHeading.ResumeLayout(false);
             this.tableLayoutPanelInMainHeading.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTopics)).EndInit();
+            this.ftableLayoutPanelForumMain.ResumeLayout(false);
+            this.ftableLayoutPanelForumMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
