@@ -243,7 +243,10 @@ namespace BLL
         {
             IEnumerable<TopicDetail> topicDetails = await _dbContext.Topics.DetailByIdAsync(id);
 
-            if (topicDetails == null) throw new NotFoundException();
+            if (topicDetails == null)
+            {
+                throw new NotFoundException();
+            }
 
             foreach (TopicDetail topicDetail in topicDetails)
             {
@@ -287,9 +290,9 @@ namespace BLL
         //+GetRepliesByTopicIdAsync(topicId : int) : Domain.Entites.Reply
         public async Task<IEnumerable<Reply>> GetRepliesByTopicIdAsync(int topicId)
         {
-            var topic = await _dbContext.Topics.GetByIdAsync(topicId);
-            // if topic not found throw exception
-            if (topic == null) throw new NotFoundException();
+            //var topic = await _dbContext.Topics.GetByIdAsync(topicId);
+            //// if topic not found throw exception
+            //if (topic == null) throw new NotFoundException();
 
             //GetByIdAsync(int id)
             //

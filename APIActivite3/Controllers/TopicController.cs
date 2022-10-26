@@ -14,7 +14,7 @@ namespace APIActivite3.Controllers
 {
     [ApiController]
     [Route("api/topic")]
-    //  [Authorize(Roles = "USER")]
+    [Authorize(Roles = "USER, ADMIN")]
     public class TopicController : ControllerBase
     {
         private static IForumService _forumService;
@@ -38,6 +38,7 @@ namespace APIActivite3.Controllers
 
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetTopicById([FromRoute] int id)
         {
             var topic = await _forumService.GetTopicByIdAsync(id); //  GetTopicsByIdAsync();
@@ -143,7 +144,10 @@ namespace APIActivite3.Controllers
         public async Task<IActionResult> GetTopicDetailById([FromRoute] int id)
         {
             var topics = await _forumService.DetailTopicByIdAsync(id); //    GetTopicByIdAsync(id);
-            if (topics == null) return NotFound();
+            if (topics == null)
+            {
+                return NotFound();
+            }
 
             //need one dto 
 
@@ -154,6 +158,7 @@ namespace APIActivite3.Controllers
                 ChildReplyId = topic.Child_Reply_Id,
                 ChildReplyText = topic.Child_Reply_Text,
                 ChildReplyDate = topic.Child_Reply_Date,
+                Child_Reply_Deleted = topic.Child_Reply_Deleted,
                 CR_CreatorId = topic.Creator_Id_CR,
                 CR_CreatorNickName = topic.Creator_Nick_Name_CR,
                 ParentReplyId = topic.Parent_Reply_Id,
@@ -161,7 +166,12 @@ namespace APIActivite3.Controllers
                 ParentReplyDate = topic.Parent_Reply_Date,
                 PR_CreatorId = topic.Creator_Id_PR,
                 PR_CreatorNickName = topic.Creator_Nick_Name_PR,
-            });
+            }).ToList();
+
+            if (topicDetailsResponse == null)
+            {
+                ;
+            }
 
             return Ok(topicDetailsResponse);
         }
@@ -169,8 +179,7 @@ namespace APIActivite3.Controllers
 
 
 
-        [HttpPost()]
-        [AllowAnonymous]
+        [HttpPost()]        
         public async Task<IActionResult> CreateTopic([FromBody] CreateTopicRequestDTO newTopicDTO)
         {
             // dto => TITLE,TEXT_PUB,ID_RUBRIC
@@ -234,7 +243,7 @@ namespace APIActivite3.Controllers
 
 
         [HttpPut("{id}")]
-        //  [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UpdateTopic([FromRoute] int id, [FromBody] UpdateTopicRequestDTO updateTopicDTO)
         {
             string idMemberToken = HttpContext.User.Claims.ElementAt(2).Value;
@@ -309,7 +318,7 @@ namespace APIActivite3.Controllers
         // It'll return 1 if ok
 
         [HttpDelete("{id}")]
-      //  [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteTopic([FromRoute] int id)
         {
             var isDeleted = await _forumService.DeleteTopicAsync(id);

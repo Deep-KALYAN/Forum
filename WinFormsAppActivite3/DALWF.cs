@@ -1,7 +1,11 @@
 ﻿using Domain.DTO;
+using Domain.DTO.Requestes.Replies;
 using Domain.DTO.Requestes.Security;
+using Domain.DTO.Requestes.Topics;
 using Domain.DTO.Requestes.Users;
+using Domain.DTO.Responses.Replies;
 using Domain.DTO.Responses.Rubrics;
+using Domain.DTO.Responses.Topics;
 using Domain.DTO.Responses.Users;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,33 +30,36 @@ namespace WinFormsAppActivite3
 
         #region Token and Roles
 
-        //static DALWF _dal = null;
-
         string _token;
 
         // userName et roles extraits du JwtToken
 
-        private static List<string> roles = new();
+        private List<string> roles = new();
 
-        string userName = null;
+        string userId = null;
 
-        //private DALWF() { }
-        //public static DALWF getDAL()
-        //{
-        //    if (_dal == null)
-        //        _dal = new DALWF();
 
-        //    return _dal;
-        //}
-        //  public string UserName { get => userName; }
 
-        //public List<string> Roles { get => roles; }
-
-        public List<string> getRoles()
+        public List<string> GetRoles()
         {
             return roles;
         }
 
+        public void SetRoles()
+        {
+            roles.Clear();
+        }
+
+
+        public string GetUserId()
+        {
+            return this.userId;
+        }
+
+        public void SetUserId()
+        {
+            userId = null;
+        }
 
         public async Task<string> Login(string name, string password)
         {
@@ -66,13 +73,15 @@ namespace WinFormsAppActivite3
             string content = await res.Content.ReadAsStringAsync();
 
             if (res.IsSuccessStatusCode)
-            {                
+            {
                 _token = content;
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
                 var handler = new JwtSecurityTokenHandler();
                 var tokenDecoded = handler.ReadJwtToken(_token);
 
+                userId = null;
+                roles.Clear();
                 foreach (var item in tokenDecoded.Claims)
                 {
                     switch (item.Type)
@@ -81,7 +90,7 @@ namespace WinFormsAppActivite3
                             roles.Add(item.Value);
                             break;
                         case ClaimTypes.NameIdentifier:
-                            userName = item.Value;
+                            userId = item.Value;
                             break;
                     }
                 }
@@ -95,7 +104,7 @@ namespace WinFormsAppActivite3
                 {
                     MessageBox.Show("Data validation error!");
                 }
-                
+
                 _client.DefaultRequestHeaders.Authorization = null;
             }
 
@@ -143,9 +152,9 @@ namespace WinFormsAppActivite3
         public async Task<bool> DeleteUserAsync(int id)
         {
             var res = await _client.DeleteAsync($"{Settings1.Default.ConnectionString}/user/{id}");
-           // string content = await res.Content.ReadAsStringAsync();
+            // string content = await res.Content.ReadAsStringAsync();
 
-           return res.IsSuccessStatusCode;         
+            return res.IsSuccessStatusCode;
         }
 
         //Method Add User
@@ -233,15 +242,248 @@ namespace WinFormsAppActivite3
         #endregion
 
         #region Topic
+
+        //Get replies by topic id
+        public async Task<List<BOReply>> GetRepliesDetailByTopicIdAsync(int id)
+        {
+            var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/topic/{id}/detail");
+
+            if (res.IsSuccessStatusCode)
+            {
+                string content = await res.Content.ReadAsStringAsync();
+
+                var lstDTOReplies = JsonSerializer.Deserialize<List<GetTopicRepliesDetailResponseDTO>>(content);
+
+                return lstDTOReplies.ConvertAll(u => new BOReply
+                {
+                    TopicId = u.TopicId,
+                    TopicViews = u.TopicViews,
+                    ChildReplyId = u.ChildReplyId,
+                    ChildReplyText = u.ChildReplyText,
+                    ChildReplyDate = u.ChildReplyDate,
+                    Child_Reply_Deleted = u.Child_Reply_Deleted,
+                    CR_CreatorId = u.CR_CreatorId,
+                    CR_CreatorNickName = u.CR_CreatorNickName,
+                    ParentReplyId = u.ParentReplyId,
+                    ParentReplyText = u.ParentReplyText,
+                    ParentReplyDate = u.ParentReplyDate,
+                    PR_CreatorId = u.PR_CreatorId,
+                    PR_CreatorNickName = u.PR_CreatorNickName,
+                });
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
+        //Add Topic
+        //AddTopicAsync(rubricId, ftextBox1TopicTitle.Text, frichTextBox1TopicText.Text, GetCreatorId());
+
+        public async Task<BOTopic> AddTopicAsync(int rubricId, string topicTitle, string topicText, int creatorId)
+        {
+            CreateTopicRequestDTO createTopicRequestDTO = new()
+            {
+              TopicCreatorId = creatorId,
+              TopicRubricId = rubricId,
+              TopicText = topicText,
+              TopicTitle = topicTitle,
+            };
+            var jsonBodyParameter = new StringContent(JsonSerializer.Serialize(createTopicRequestDTO), Encoding.UTF8, "application/json");
+            var res = await _client.PostAsync($"{Settings1.Default.ConnectionString}/topic", jsonBodyParameter);
+            if (res.IsSuccessStatusCode)
+            {
+                string content = await res.Content.ReadAsStringAsync();
+
+
+
+                var DTOtopic = JsonSerializer.Deserialize<TopicResponseDTO>(content);
+
+                return new BOTopic()
+                {
+                    TopicTitle = DTOtopic.TopicTitle,
+                    TopicText = DTOtopic.TopicText,
+                    // TopicCreatorNickName = DTOtopic.,
+                    TopicPublishedDate = DTOtopic.TopicPublishedDate,
+                    TopicId = DTOtopic.TopicId,
+                    RubricId = DTOtopic.TopicIdRubric,
+                    // RubricName = DTOtopic
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+        //Update Topic
+        //UpdateTopicAsync(  ftextBox4TopicUpdateTitle.Text,frichTextBox2UpdateTopicText.Text,currentTopic.TopicId,   currentTopic.RubricId, GetCreatorId());
+
+        public async Task<BOTopic> UpdateTopicAsync(string topicTitle, string topicText, int topicId, int rubricId, int creatorId)
+        {
+            UpdateTopicRequestDTO updateTopicRequestDTO = new()
+            {
+                IdUser = creatorId,
+                TopicId = topicId,
+                TopicTitle = topicTitle,
+                TopicText = topicText,
+                TopicRubricId = rubricId,
+            };
+
+            var jsonBodyParameter = new StringContent(JsonSerializer.Serialize(updateTopicRequestDTO), Encoding.UTF8, "application/json");
+
+            var res = await _client.PutAsync($"{Settings1.Default.ConnectionString}/topic/{topicId}", jsonBodyParameter);
+
+            if (res.IsSuccessStatusCode)
+            {
+
+                string content = await res.Content.ReadAsStringAsync();
+
+                var DTOtopic = JsonSerializer.Deserialize<TopicResponseDTO>(content);
+
+                return new BOTopic()
+                {
+                   TopicTitle = DTOtopic.TopicTitle,
+                   TopicText = DTOtopic.TopicText,
+                  // TopicCreatorNickName = DTOtopic.,
+                   TopicPublishedDate = DTOtopic.TopicPublishedDate,
+                   TopicId = DTOtopic.TopicId,
+                   RubricId = DTOtopic.TopicIdRubric,
+                  // RubricName = DTOtopic
+
+
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+
+        // DeleteTopicAsync(currentTopic.TopicId)
+        public async Task<bool> DeleteTopicAsync(int id)
+        {
+            var res = await _client.DeleteAsync($"{Settings1.Default.ConnectionString}/topic/{id}");
+            return res.IsSuccessStatusCode;
+        }
         #endregion
 
         #region Reply
+
+        //Method Add Reply
+        //AddReplyAsync(frichTextBox1ReplyAddText.Text, parentId, topicId, GetCreatorId());
+        public async Task<BOReplyCU> AddReplyAsync(string replyText, int? replyParentId, int replyTopicId, int creatorId)
+        {
+            CreateReplyRequestDTO createReplyRequestDTO = new()
+            {
+                UserId = creatorId,
+                ReplyText = replyText,
+                ReplyParentId = replyParentId,
+                ReplyTopicId = replyTopicId
+            };
+            var jsonBodyParameter = new StringContent(JsonSerializer.Serialize(createReplyRequestDTO), Encoding.UTF8, "application/json");
+            var res = await _client.PostAsync($"{Settings1.Default.ConnectionString}/reply", jsonBodyParameter);
+            if (res.IsSuccessStatusCode)
+            {
+                string content = await res.Content.ReadAsStringAsync();
+
+
+
+                var DTOReplyC = JsonSerializer.Deserialize<ReplyResponseDTO>(content);
+
+                return new BOReplyCU()
+                {
+                    ChildReplyId = DTOReplyC.ReplyId,
+                    ChildReplyText = DTOReplyC.ReplyText,
+                    ChildReplyDate = DTOReplyC.ReplyDate,
+                    ParentReplyId = DTOReplyC.ParentReplyId,
+                    CR_CreatorId = DTOReplyC.CreatorId,
+                    TopicId = DTOReplyC.TopicId
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+
+
+
+
+        //Method Update Reply
+        public async Task<BOReplyCU> UpdateReplyAsync(string replyText, int replyId, int creatorId)
+        {
+            UpdateReplyRequestDTO updateReplyRequestDTO = new()
+            {
+                ReplyText = replyText,
+                ReplyId = replyId, //replyId,
+                IdUser = creatorId
+            };
+
+            var jsonBodyParameter = new StringContent(JsonSerializer.Serialize(updateReplyRequestDTO), Encoding.UTF8, "application/json");
+
+            var res = await _client.PutAsync($"{Settings1.Default.ConnectionString}/reply/{replyId}", jsonBodyParameter);
+         
+            if (res.IsSuccessStatusCode)
+            {
+
+                string content = await res.Content.ReadAsStringAsync();
+
+                var DTOReplyU = JsonSerializer.Deserialize<ReplyUpdateResponseDTO>(content);
+
+                return new BOReplyCU()
+                {
+                     ChildReplyId      = DTOReplyU.ReplyId   ,
+                     ChildReplyText    = DTOReplyU.ReplyText   ,
+                     ChildReplyDate    = DTOReplyU.ReplyDate   ,
+                     ParentReplyId     = DTOReplyU.ParentReplyId   ,
+                     CR_CreatorId      = DTOReplyU.CreatorId   ,
+                     TopicId           = DTOReplyU.TopicId   
+
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+
+
+
+
+
+        // DeleteReplyAsync(currentReply.ChildReplyId)
+        public async Task<bool> DeleteReplyAsync(int id)
+        {
+            var res = await _client.DeleteAsync($"{Settings1.Default.ConnectionString}/reply/{id}");
+            return res.IsSuccessStatusCode;
+        }
+
         #endregion
 
         #region Rubric
 
         //Get topics by rubric id
-        public async Task<List<BOTopics>> GetTopicsByRubricIdAsync(int id)
+        public async Task<List<BOTopic>> GetTopicsByRubricIdAsync(int id)
         {
             var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/rubric/{id}/topics");
 
@@ -251,7 +493,7 @@ namespace WinFormsAppActivite3
 
                 var lstDTOUsers = JsonSerializer.Deserialize<List<GetRubricsAndTopicsDetailResponseDTO>>(content);
 
-                return lstDTOUsers.ConvertAll(u => new BOTopics
+                return lstDTOUsers.ConvertAll(u => new BOTopic
                 {
                     TopicTitle = u.TopicTitle,
                     TopicText = u.TopicText,
@@ -274,4 +516,4 @@ namespace WinFormsAppActivite3
         #endregion
     }
 
-    }
+}

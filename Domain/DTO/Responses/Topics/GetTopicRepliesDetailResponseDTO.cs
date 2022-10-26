@@ -15,7 +15,7 @@ namespace Domain.DTO.Responses.Topics
 		public int			TopicViews			{ get; set; }
 		
 		public int			ChildReplyId		{ get; set; }
-		//public bool Child_Reply_Deleted { get; set; }
+		public bool Child_Reply_Deleted { get; set; }
 		public string		ChildReplyText		{ get; set; }
 		public DateTime		ChildReplyDate		{ get; set; }
 		public int			CR_CreatorId		{ get; set; }

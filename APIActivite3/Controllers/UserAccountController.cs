@@ -14,7 +14,7 @@ namespace APIActivite3.Controllers
 {
     [ApiController]
     [Route("api/user")]
-    // [Authorize] //(Roles = "USER")
+    [Authorize(Roles = "ADMIN")] //(Roles = "USER")
     public class UserAccountController : ControllerBase
     {
         private static IAccountService _accountService;
@@ -28,6 +28,7 @@ namespace APIActivite3.Controllers
         //// it's not necessary
         [HttpGet("")]
         // [Authorize(Roles = "ADMIN")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetUsers()
         {
             //  string idMemberToken = HttpContext.User.Claims.ElementAt(2).Value;
@@ -82,7 +83,7 @@ namespace APIActivite3.Controllers
 
 
         [HttpPost()]
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestDTO newUser)
         {
             // Recupérer le DTO de requête => Le transformé en un ou plusieur object métiers

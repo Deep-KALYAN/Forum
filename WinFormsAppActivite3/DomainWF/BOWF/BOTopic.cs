@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsAppActivite3.DomainWF.BOWF
 {
-    public class BOTopics
+    public class BOTopic
     {
 		public string TopicTitle { get; set; }
 		public string TopicText { get; set; }

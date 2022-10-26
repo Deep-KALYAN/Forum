@@ -143,32 +143,38 @@ namespace DAL.UOW.Repositories
                 // Here we can handel the counting of views
 
                 // Search the topic
-                Topic topicViews = await GetByIdAsync(id);
-                if (topicViews == null) throw new NotFoundException("The Topic doest not exist (or deleted)");
-                // Handel the null values
-                int? views = topicViews.Count_Views;
-                int viewsPlusOne;
+                //Topic topicViews = await GetByIdAsync(id);
+                //if (topicViews == null) throw new NotFoundException("The Topic doest not exist (or deleted)");
+                //// Handel the null values
+                //int? views = topicViews.Count_Views;
+                //int viewsPlusOne;
                 
-                // Increment + 1
-                if (views == null)
-                {
-                    viewsPlusOne = 1;
-                }
-                else
-                {
-                    viewsPlusOne = (int)views + 1;
-                }
+                //// Increment + 1
+                //if (views == null)
+                //{
+                //    viewsPlusOne = 1;
+                //}
+                //else
+                //{
+                //    viewsPlusOne = (int)views + 1;
+                //}
                 
                 // Update in DB
                 int nbLigneTF = await _db.Connection.ExecuteAsync(queryCount, new
                 {
-                    Count_Views = viewsPlusOne,
+                    Count_Views = 0,
                     Id = id,
 
                 }, transaction: _db.Transaction);
 
             IEnumerable<TopicDetail> topicDetail = await _db.Connection.QueryAsync<TopicDetail>(query, new { Id = id }, transaction: _db.Transaction);
            
+
+            //if (topicDetail == null)
+            //{
+            //    ;
+            //}
+
 
             return topicDetail;
         }

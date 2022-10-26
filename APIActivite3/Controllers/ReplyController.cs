@@ -14,6 +14,7 @@ namespace APIActivite3.Controllers
 {
     [ApiController]
     [Route("api/reply")]
+    [Authorize(Roles = "USER, ADMIN")]
     public class ReplyController : ControllerBase
     {
 
@@ -39,6 +40,7 @@ namespace APIActivite3.Controllers
 
        
         [HttpGet("{id}")]
+        [AllowAnonymous]
         //To get reply by Id
         //If deleted is true in reply the text will change in BLL
         //Not found is handeled in bll
@@ -62,7 +64,7 @@ namespace APIActivite3.Controllers
         }
 
 
-       // [Authorize(Roles ="User")]
+       // [Authorize(Roles ="User,Admin")]
         [HttpPost()]
         public async Task<IActionResult> CreateReply([FromBody] CreateReplyRequestDTO newReply)
         {
@@ -108,6 +110,7 @@ namespace APIActivite3.Controllers
 
         //No one will have right to use this Update
         [HttpPut("{id}")]
+        [Authorize(Roles = "NOBODY")]
         public async Task<IActionResult> UpdateReply([FromRoute] int id, [FromBody] UpdateReplyRequestDTO updateReply)
         {
 
@@ -122,7 +125,9 @@ namespace APIActivite3.Controllers
             Reply updateReplyRequest = new Reply()
             {
                 Id = updateReply.ReplyId,
-                Text = updateReply.ReplyText          
+                Text = updateReply.ReplyText,
+                Id_User = updateReply.IdUser
+                
             };
 
             //Logique métier
@@ -154,7 +159,7 @@ namespace APIActivite3.Controllers
 
         //actually it is update (not delete) 
         [HttpDelete("{id}")]
-        //  [Authorize(Roles = "ADMIN, USER")] 
+        [Authorize(Roles = "ADMIN")] 
         // User Only who have posted
         public async Task<IActionResult> DeleteReply([FromRoute] int id)
         {

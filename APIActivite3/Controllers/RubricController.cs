@@ -128,7 +128,7 @@ namespace APIActivite3.Controllers
                 TopicCreatorNickName = rubricTopic.T_Creator_Nick_Name
             });
 
-            return Ok(rubricDetailsResponse);
+            return Ok(rubricDetailsResponse.ToList());
         }
 
 
