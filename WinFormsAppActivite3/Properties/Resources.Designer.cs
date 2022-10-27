@@ -59,5 +59,25 @@ namespace WinFormsAppActivite3.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fond_graphique_composants_électroniques_blancs_13222615 {
+            get {
+                object obj = ResourceManager.GetObject("fond-graphique-composants-électroniques-blancs-13222615", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoamiohr {
+            get {
+                object obj = ResourceManager.GetObject("logoamiohr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

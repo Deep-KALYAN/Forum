@@ -1416,6 +1416,7 @@ namespace WinFormsAppActivite3
             // 
             // tableLayoutPanelInMainHeading
             // 
+            this.tableLayoutPanelInMainHeading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tableLayoutPanelInMainHeading.ColumnCount = 4;
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37F));

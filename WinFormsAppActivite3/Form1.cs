@@ -33,6 +33,8 @@ namespace WinFormsAppActivite3
         {
             try
             {
+                fbuttonLogout.Visible = false;
+
                 await RefreshAsync();
                 InitializeBinding();
 
@@ -181,6 +183,16 @@ namespace WinFormsAppActivite3
             {
                 textBox1.Text = jwt;
                 var roles = _dalWF.GetRoles();
+                bool userRole = false;
+
+                //Topic buttons tab
+                ftabControl1TopicCRUD.Controls.Remove(ftabPage2UpdateTopic);
+                ftabControl1TopicCRUD.Controls.Remove(ftabPage3DeleteTopic);
+
+                //Reply button tab
+                ftabControl2ReplyCRUD.Controls.Remove(ftabPage5UpdateTopic);
+                ftabControl2ReplyCRUD.Controls.Remove(ftabPage6DeleteReply);
+
                 foreach (var role in roles)
                 {
                     ftableLayoutPanel3ForumTopic.ColumnStyles[1].Width = 420;
@@ -188,12 +200,39 @@ namespace WinFormsAppActivite3
                     //user tab only Admin have right to enter
                     if (role == "ADMIN")
                     {
+                        //by clicking again and again it'll not open the Users tab multiple times
+                        if (!tabControlForumUsers.TabPages.Contains(utabPageUser))
+                        {
                         tabControlForumUsers.Controls.Add(utabPageUser);//tabControlForumUsers.Enabled = true;
-                        await RefreshAsync();
+                        }
 
+
+                        //Topic buttons tab
+                        ftabControl1TopicCRUD.Controls.Add(ftabPage2UpdateTopic);
+                        ftabControl1TopicCRUD.Controls.Add(ftabPage3DeleteTopic);
+
+                        //Reply button tab
+                        ftabControl2ReplyCRUD.Controls.Add(ftabPage6DeleteReply);
+
+                        rbutton1Dev.PerformClick();
+                       // await RefreshAsync();
                     }
+                    if (role == "USER")
+                    {
+                        userRole = true;
+                    }
+                   
+
                     textBox2.Text += role + ", ";
                 }
+                if (userRole == true)
+                {
+                    panelLogin.Visible = false;
+                    fbuttonLogout.Visible = true;
+
+                }
+
+
             }
         }
 
@@ -388,7 +427,7 @@ namespace WinFormsAppActivite3
         #endregion
 
         #region BindingSource CurrentChange  User, Topic, Reply
-        
+
         //  int[] array = new int[] { };
         private void bindingSourceUsers_CurrentChanged(object sender, EventArgs e)
         {
@@ -417,74 +456,75 @@ namespace WinFormsAppActivite3
 
         private async void bindingSourceTopics_CurrentChanged(object sender, EventArgs e)
         {
-                var currentTopic = (BOTopic)bindingSourceTopics.Current;
-                //ftextBox2RubricId.DataBindings.Add("Text", bindingSourceTopics, "RubricId", false);
+            var currentTopic = (BOTopic)bindingSourceTopics.Current;
+            //ftextBox2RubricId.DataBindings.Add("Text", bindingSourceTopics, "RubricId", false);
 
-                int id = 0;
+            int id = 0;
 
-                //  MessageBox.Show("heeee"); //(currentUser.TopicId.ToString());
-                if (currentTopic != null)
+            //  MessageBox.Show("heeee"); //(currentUser.TopicId.ToString());
+            if (currentTopic != null)
+            {
+                if (currentTopic.TopicId == null || currentTopic.TopicId == 0)
                 {
-                    if (currentTopic.TopicId == null || currentTopic.TopicId == 0)
-                    {
-                        id = 0;
-                    }
-                    else
-                    {
-                        id = (int)currentTopic.TopicId;
-                    }
-               // ftextBoxPassword.Text += "°"; //*****************************************
-
-                await RefreshRepliesAsync(id, 0);
-
-                //    ftextBoxPassword.Text += id.ToString(); //********************************
-
-                    ftextBoxTopicNameReplies.Text = currentTopic.TopicTitle + "  Replies";
-
-                    ////Add
-                    ftextBox2RubricId.Text = currentTopic.RubricId.ToString();
-
-                    ////Update
-                    ftextBox4TopicUpdateTitle.Text = currentTopic.TopicTitle;
-                    frichTextBox2UpdateTopicText.Text = currentTopic.TopicText;
-                    ftextBox3UpdateTopicId.Text = currentTopic.TopicId.ToString();
+                    id = 0;
                 }
                 else
                 {
-                    ftextBoxTopicNameReplies.Text = "";
+                    id = (int)currentTopic.TopicId;
+                }
+                //ftextBoxPassword.Text += "°"; //*****************************************
 
-                    //add
-                    ftextBox2RubricId.Text = "";
+                await RefreshRepliesAsync(id, 0);
 
-                    ////Update
-                    ftextBox4TopicUpdateTitle.Text = "";
-                    frichTextBox2UpdateTopicText.Text = "";
-                    ftextBox3UpdateTopicId.Text = "";
 
-                    if (_lstBOReplies != null) // || (!_lstBOReplies.Any())
-                    {
-                        _lstBOReplies.Clear();
-                    }
-                    bindingSourceReplies.ResetBindings(false);
-                }            
+                //  ftextBoxPassword.Text += id.ToString(); //********************************
+
+                ftextBoxTopicNameReplies.Text = currentTopic.TopicTitle + "  Replies";
+
+                ////Add
+                ftextBox2RubricId.Text = currentTopic.RubricId.ToString();
+
+                ////Update
+                ftextBox4TopicUpdateTitle.Text = currentTopic.TopicTitle;
+                frichTextBox2UpdateTopicText.Text = currentTopic.TopicText;
+                ftextBox3UpdateTopicId.Text = currentTopic.TopicId.ToString();
+            }
+            else
+            {
+                ftextBoxTopicNameReplies.Text = "";
+
+                //add
+                ftextBox2RubricId.Text = "";
+
+                ////Update
+                ftextBox4TopicUpdateTitle.Text = "";
+                frichTextBox2UpdateTopicText.Text = "";
+                ftextBox3UpdateTopicId.Text = "";
+
+                if (_lstBOReplies != null) // || (!_lstBOReplies.Any())
+                {
+                    _lstBOReplies.Clear();
+                }
+                bindingSourceReplies.ResetBindings(false);
+            }
         }
 
         private void bindingSourceReplies_CurrentChanged(object sender, EventArgs e)
         {
-                var currentReply = (BOReply)bindingSourceReplies.Current;
-                if (currentReply != null)// (currentReply.ChildReplyId != 0 )
-                {
-                    ftextBox4ReplyTopicId.Text = currentReply.TopicId.ToString();   //Topic.TopicId.ToString();   
-                    frichTextBox2ReplyUpdateText.Text = currentReply.ChildReplyText;
-                    ftextBox5ReplyId.Text = currentReply.ChildReplyId.ToString();
-                }
-                else
-                {
-                    ftextBox4ReplyTopicId.Text = "";
-                    frichTextBox2ReplyUpdateText.Text = "";
-                    ftextBox5ReplyId.Text = "";
-                }
-                //InitializeReplyBinding();            
+            var currentReply = (BOReply)bindingSourceReplies.Current;
+            if (currentReply != null)// (currentReply.ChildReplyId != 0 )
+            {
+                ftextBox4ReplyTopicId.Text = currentReply.TopicId.ToString();   //Topic.TopicId.ToString();   
+                frichTextBox2ReplyUpdateText.Text = currentReply.ChildReplyText;
+                ftextBox5ReplyId.Text = currentReply.ChildReplyId.ToString();
+            }
+            else
+            {
+                ftextBox4ReplyTopicId.Text = "";
+                frichTextBox2ReplyUpdateText.Text = "";
+                ftextBox5ReplyId.Text = "";
+            }
+            //InitializeReplyBinding();            
         }
 
 
@@ -670,7 +710,8 @@ namespace WinFormsAppActivite3
             _dalWF.SetRoles();
             _dalWF.SetUserId();
             textBox2.Text = "Public";
-
+            panelLogin.Visible = true;
+            fbuttonLogout.Visible = false;
 
             //Form1 form1 = new Form1();
             //form1.ActiveControl.Refresh();
@@ -726,11 +767,11 @@ namespace WinFormsAppActivite3
         #region dataGridViews TOPIC & REPLY, hide column and change the color(on Deleted reply)
         private void fdataGridView2Replies_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            fdataGridView2Replies.Columns[0].Width = 450;
+            //fdataGridView2Replies.Columns[0].Width = 450;
             fdataGridView2Replies.Columns[0].HeaderText = "Reply";
             fdataGridView2Replies.Columns[1].HeaderText = "Reply Creator";
             fdataGridView2Replies.Columns[2].HeaderText = "Reply Date";
-            fdataGridView2Replies.Columns[3].Width = 400;
+            //fdataGridView2Replies.Columns[3].Width = 400;
             fdataGridView2Replies.Columns[3].HeaderText = "Parent Reply";
             fdataGridView2Replies.Columns[4].HeaderText = "Parent Reply Creator";
             fdataGridView2Replies.Columns[5].HeaderText = "Parent Reply Date";
@@ -738,7 +779,10 @@ namespace WinFormsAppActivite3
 
 
 
-            fdataGridView2Replies.Columns[6].Visible = false;
+            fdataGridView2Replies.Columns[6].Visible = true;
+            fdataGridView2Replies.Columns[6].HeaderText = "Reply Id";
+            fdataGridView2Replies.Columns[6].Width = 40;
+
             fdataGridView2Replies.Columns[7].Visible = false;
             fdataGridView2Replies.Columns[8].Visible = false;
             fdataGridView2Replies.Columns[9].Visible = false;
@@ -767,10 +811,10 @@ namespace WinFormsAppActivite3
         }
         private void fdataGridView1Topics_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            fdataGridView1Topics.Columns[0].Width = 430;
+           // fdataGridView1Topics.Columns[0].Width = 430;
             fdataGridView1Topics.Columns[0].HeaderText = "Topic Title";
 
-            fdataGridView1Topics.Columns[1].Width = 430;
+           // fdataGridView1Topics.Columns[1].Width = 430;
             fdataGridView1Topics.Columns[1].HeaderText = "Topic Text";
 
             fdataGridView1Topics.Columns[2].HeaderText = "Topic Creator";
