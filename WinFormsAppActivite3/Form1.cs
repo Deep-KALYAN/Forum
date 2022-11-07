@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsAppActivite3.DomainWF.BOWF;
@@ -21,7 +22,8 @@ namespace WinFormsAppActivite3
         List<BOUser> _lstBOUsers;
         List<BOTopic> _lstBOTopics;
         List<BOReply> _lstBOReplies;
-
+        ///GetToicdetails
+        CancellationTokenSource GetToicdetailsCancelationToken = null;
         public Form1()
         {
             InitializeComponent();
@@ -329,11 +331,12 @@ namespace WinFormsAppActivite3
         }
 
         //reply
-        private async Task RefreshRepliesAsync(int id, int position = 0)
+        private async Task RefreshRepliesAsync(int id, int position = 0, CancellationToken cancellationToken = default)
         {
+                        
             //ftextBoxPassword.Text += "a"; //************************************
-
-            _lstBOReplies = await _dalWF.GetRepliesDetailByTopicIdAsync(id); // GetTopicsByRubricIdAsync(id);
+          
+            _lstBOReplies = await _dalWF.GetRepliesDetailByTopicIdAsync(id, cancellationToken);
 
             //ftextBoxPassword.Text += "b"; //*************************************
 
@@ -472,10 +475,20 @@ namespace WinFormsAppActivite3
                 {
                     id = (int)currentTopic.TopicId;
                 }
-                //ftextBoxPassword.Text += "°"; //*****************************************
+               // ftextBoxPassword.Text += "°"; //*****************************************
 
-                await RefreshRepliesAsync(id, 0);
+                if(GetToicdetailsCancelationToken is not null)
+                {
+                    GetToicdetailsCancelationToken.Cancel();
+                }
+                GetToicdetailsCancelationToken = new CancellationTokenSource();
+                Task refreshTask = RefreshRepliesAsync(id, 0, GetToicdetailsCancelationToken.Token);
 
+                try
+                {
+                    await refreshTask;
+                }catch { return; }
+                
 
                 //  ftextBoxPassword.Text += id.ToString(); //********************************
 
@@ -764,7 +777,7 @@ namespace WinFormsAppActivite3
 
         #endregion
 
-        #region dataGridViews TOPIC & REPLY, hide column and change the color(on Deleted reply)
+        #region dataGridViews TOPIC & REPLY, hide column and change the color(on Deleted reply) CellFormatting
         private void fdataGridView2Replies_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //fdataGridView2Replies.Columns[0].Width = 450;

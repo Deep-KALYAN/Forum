@@ -18,7 +18,7 @@ namespace DAL.UOW
         public DBSession(IConfiguration configuration)
         {
             //chaîne de connection dans appsettings.json
-            string chainDeConnection = configuration.GetConnectionString("ovh");
+            string chainDeConnection = configuration.GetConnectionString("local");
 
             //creat instance of connection
             Connection = new SqlConnection(chainDeConnection);

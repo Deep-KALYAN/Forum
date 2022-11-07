@@ -17,6 +17,7 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsAppActivite3.DomainWF.BOWF;
@@ -244,9 +245,9 @@ namespace WinFormsAppActivite3
         #region Topic
 
         //Get replies by topic id
-        public async Task<List<BOReply>> GetRepliesDetailByTopicIdAsync(int id)
+        public async Task<List<BOReply>> GetRepliesDetailByTopicIdAsync(int id, CancellationToken cancellationToken)
         {
-            var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/topic/{id}/detail");
+            var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/topic/{id}/detail", cancellationToken: cancellationToken);
 
             if (res.IsSuccessStatusCode)
             {
@@ -483,9 +484,9 @@ namespace WinFormsAppActivite3
         #region Rubric
 
         //Get topics by rubric id
-        public async Task<List<BOTopic>> GetTopicsByRubricIdAsync(int id)
+        public async Task<List<BOTopic>> GetTopicsByRubricIdAsync(int id, CancellationToken cancellationToken = new CancellationToken())
         {
-            var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/rubric/{id}/topics");
+            var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/rubric/{id}/topics", cancellationToken);
 
             if (res.IsSuccessStatusCode)
             {
