@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using Xunit;
 
@@ -145,9 +146,22 @@ namespace UnitTest
             IActionResult result = await replyController.CreateReply(newReply);
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
-            OkObjectResult oKresult = result as OkObjectResult; //null ou OKObjectResult
-            Assert.NotNull(oKresult);
-            Assert.Equal(oKresult.Value as ReplyResponseDTO, new ReplyResponseDTO()
+             //     OkObjectResult oKresult = result as OkObjectResult; //null ou OKObjectResult
+            //     Assert.NotNull(oKresult);
+            Assert.True(result is CreatedAtActionResult);
+            CreatedAtActionResult result1 = result as CreatedAtActionResult;
+            /* Assert.Equal(oKresult.Value as ReplyResponseDTO, new ReplyResponseDTO()
+              {
+                  ReplyId = 2,
+                  ReplyText = "Hello Text",
+                  ReplyDate = date,
+                  ParentReplyId = 1,
+                  CreatorId = 1,
+                  TopicId = 1
+              }); */
+        }
+
+        /* ReplyResponseDTO, new ReplyResponseDTO()
             {
                 ReplyId = 2,
                 ReplyText = "Hello Text",
@@ -155,9 +169,7 @@ namespace UnitTest
                 ParentReplyId = 1,
                 CreatorId = 1,
                 TopicId = 1
-            });
-        }
-
+            }*/
 
 
         [Fact]

@@ -8,7 +8,6 @@ C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\app
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\APIActivite3.exe
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\testhost.exe
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
-C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\appsettings.Integration.json
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
@@ -428,3 +427,4 @@ C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSw
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Generation.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Generation.AspNetCore.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\YamlDotNet.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\appsettings.Integrations.json

@@ -103,7 +103,7 @@ namespace WinFormsAppActivite3
                 var val = JsonSerializer.Deserialize<ValidationProblemDetails>(content);
                 if (val != null)
                 {
-                    MessageBox.Show("Data validation error!");
+                    MessageBox.Show("Password validation error!");
                 }
 
                 _client.DefaultRequestHeaders.Authorization = null;
@@ -149,6 +149,34 @@ namespace WinFormsAppActivite3
                 return null;
             }
         }
+
+        public async Task<BOUser> GetUsersByIdAsync(int id)
+        {
+            var res = await _client.GetAsync($"{Settings1.Default.ConnectionString}/user/{id}");
+            if (res.IsSuccessStatusCode)
+            {
+                string content = await res.Content.ReadAsStringAsync();
+
+                var DTOUser = JsonSerializer.Deserialize<GetUsersResponseDTO>(content);
+
+                return new BOUser()
+                {
+                    Id = DTOUser.Id,
+                    Name = DTOUser.Name,
+                    First_Name = DTOUser.FirstName,
+                    Login_Name = DTOUser.LoginName,
+                    Ph_No = DTOUser.PhNo,
+                    E_Mail = DTOUser.EMail,
+                    Moderator_Y_N = DTOUser.ModeratorYN,
+                    Password = DTOUser.Password
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         public async Task<bool> DeleteUserAsync(int id)
         {

@@ -133,6 +133,23 @@ namespace WinFormsAppActivite3
             this.utabPageUserRefresh = new System.Windows.Forms.TabPage();
             this.ubuttonRefresh = new System.Windows.Forms.Button();
             this.udataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.tabPageAccount = new System.Windows.Forms.TabPage();
+            this.AccountButtonRefresh = new System.Windows.Forms.Button();
+            this.AccountTextBoxId = new System.Windows.Forms.TextBox();
+            this.AccountLableId = new System.Windows.Forms.Label();
+            this.AccountTextBoxPassword = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxEmail = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxPhoneNo = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxLoginName = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxFirstName = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxName = new System.Windows.Forms.TextBox();
+            this.AccountLablePassword = new System.Windows.Forms.Label();
+            this.AccountLableEmail = new System.Windows.Forms.Label();
+            this.AccountLablePhoneNo = new System.Windows.Forms.Label();
+            this.AccountLableLoginName = new System.Windows.Forms.Label();
+            this.AccountLableFirstName = new System.Windows.Forms.Label();
+            this.AccountLableName = new System.Windows.Forms.Label();
+            this.AccountButtonUpdate = new System.Windows.Forms.Button();
             this.fbuttonLogout = new System.Windows.Forms.Button();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.ftextBoxPassword = new System.Windows.Forms.TextBox();
@@ -179,6 +196,7 @@ namespace WinFormsAppActivite3
             this.utabPageUserDelete.SuspendLayout();
             this.utabPageUserRefresh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udataGridViewUsers)).BeginInit();
+            this.tabPageAccount.SuspendLayout();
             this.panelLogin.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelInMainHeading.SuspendLayout();
@@ -195,6 +213,7 @@ namespace WinFormsAppActivite3
             // 
             this.tabControlForumUsers.Controls.Add(this.ftabPageForum);
             this.tabControlForumUsers.Controls.Add(this.utabPageUser);
+            this.tabControlForumUsers.Controls.Add(this.tabPageAccount);
             this.tabControlForumUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlForumUsers.Location = new System.Drawing.Point(3, 63);
             this.tabControlForumUsers.Name = "tabControlForumUsers";
@@ -1319,6 +1338,168 @@ namespace WinFormsAppActivite3
             this.udataGridViewUsers.Size = new System.Drawing.Size(870, 588);
             this.udataGridViewUsers.TabIndex = 0;
             // 
+            // tabPageAccount
+            // 
+            this.tabPageAccount.Controls.Add(this.AccountButtonRefresh);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxId);
+            this.tabPageAccount.Controls.Add(this.AccountLableId);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxPassword);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxEmail);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxPhoneNo);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxLoginName);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxFirstName);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxName);
+            this.tabPageAccount.Controls.Add(this.AccountLablePassword);
+            this.tabPageAccount.Controls.Add(this.AccountLableEmail);
+            this.tabPageAccount.Controls.Add(this.AccountLablePhoneNo);
+            this.tabPageAccount.Controls.Add(this.AccountLableLoginName);
+            this.tabPageAccount.Controls.Add(this.AccountLableFirstName);
+            this.tabPageAccount.Controls.Add(this.AccountLableName);
+            this.tabPageAccount.Controls.Add(this.AccountButtonUpdate);
+            this.tabPageAccount.Location = new System.Drawing.Point(4, 29);
+            this.tabPageAccount.Name = "tabPageAccount";
+            this.tabPageAccount.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAccount.Size = new System.Drawing.Size(1382, 600);
+            this.tabPageAccount.TabIndex = 2;
+            this.tabPageAccount.Text = "Account";
+            this.tabPageAccount.UseVisualStyleBackColor = true;
+            // 
+            // AccountButtonRefresh
+            // 
+            this.AccountButtonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountButtonRefresh.Location = new System.Drawing.Point(1238, 30);
+            this.AccountButtonRefresh.Name = "AccountButtonRefresh";
+            this.AccountButtonRefresh.Size = new System.Drawing.Size(94, 29);
+            this.AccountButtonRefresh.TabIndex = 43;
+            this.AccountButtonRefresh.Text = "Refresh";
+            this.AccountButtonRefresh.UseVisualStyleBackColor = true;
+            this.AccountButtonRefresh.Click += new System.EventHandler(this.AccountButtonRefresh_Click);
+            // 
+            // AccountTextBoxId
+            // 
+            this.AccountTextBoxId.Location = new System.Drawing.Point(621, 134);
+            this.AccountTextBoxId.Name = "AccountTextBoxId";
+            this.AccountTextBoxId.ReadOnly = true;
+            this.AccountTextBoxId.Size = new System.Drawing.Size(70, 27);
+            this.AccountTextBoxId.TabIndex = 42;
+            // 
+            // AccountLableId
+            // 
+            this.AccountLableId.AutoSize = true;
+            this.AccountLableId.Location = new System.Drawing.Point(523, 137);
+            this.AccountLableId.Name = "AccountLableId";
+            this.AccountLableId.Size = new System.Drawing.Size(22, 20);
+            this.AccountLableId.TabIndex = 41;
+            this.AccountLableId.Text = "Id";
+            // 
+            // AccountTextBoxPassword
+            // 
+            this.AccountTextBoxPassword.Location = new System.Drawing.Point(621, 439);
+            this.AccountTextBoxPassword.Name = "AccountTextBoxPassword";
+            this.AccountTextBoxPassword.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxPassword.TabIndex = 40;
+            this.AccountTextBoxPassword.Text = "password";
+            // 
+            // AccountTextBoxEmail
+            // 
+            this.AccountTextBoxEmail.Location = new System.Drawing.Point(621, 393);
+            this.AccountTextBoxEmail.Name = "AccountTextBoxEmail";
+            this.AccountTextBoxEmail.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxEmail.TabIndex = 39;
+            // 
+            // AccountTextBoxPhoneNo
+            // 
+            this.AccountTextBoxPhoneNo.Location = new System.Drawing.Point(621, 343);
+            this.AccountTextBoxPhoneNo.Name = "AccountTextBoxPhoneNo";
+            this.AccountTextBoxPhoneNo.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxPhoneNo.TabIndex = 38;
+            // 
+            // AccountTextBoxLoginName
+            // 
+            this.AccountTextBoxLoginName.Location = new System.Drawing.Point(621, 293);
+            this.AccountTextBoxLoginName.Name = "AccountTextBoxLoginName";
+            this.AccountTextBoxLoginName.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxLoginName.TabIndex = 37;
+            // 
+            // AccountTextBoxFirstName
+            // 
+            this.AccountTextBoxFirstName.Location = new System.Drawing.Point(621, 245);
+            this.AccountTextBoxFirstName.Name = "AccountTextBoxFirstName";
+            this.AccountTextBoxFirstName.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxFirstName.TabIndex = 36;
+            // 
+            // AccountTextBoxName
+            // 
+            this.AccountTextBoxName.Location = new System.Drawing.Point(621, 193);
+            this.AccountTextBoxName.Name = "AccountTextBoxName";
+            this.AccountTextBoxName.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxName.TabIndex = 35;
+            // 
+            // AccountLablePassword
+            // 
+            this.AccountLablePassword.AutoSize = true;
+            this.AccountLablePassword.Location = new System.Drawing.Point(523, 442);
+            this.AccountLablePassword.Name = "AccountLablePassword";
+            this.AccountLablePassword.Size = new System.Drawing.Size(70, 20);
+            this.AccountLablePassword.TabIndex = 34;
+            this.AccountLablePassword.Text = "Password";
+            // 
+            // AccountLableEmail
+            // 
+            this.AccountLableEmail.AutoSize = true;
+            this.AccountLableEmail.Location = new System.Drawing.Point(523, 396);
+            this.AccountLableEmail.Name = "AccountLableEmail";
+            this.AccountLableEmail.Size = new System.Drawing.Size(46, 20);
+            this.AccountLableEmail.TabIndex = 33;
+            this.AccountLableEmail.Text = "Email";
+            // 
+            // AccountLablePhoneNo
+            // 
+            this.AccountLablePhoneNo.AutoSize = true;
+            this.AccountLablePhoneNo.Location = new System.Drawing.Point(523, 346);
+            this.AccountLablePhoneNo.Name = "AccountLablePhoneNo";
+            this.AccountLablePhoneNo.Size = new System.Drawing.Size(71, 20);
+            this.AccountLablePhoneNo.TabIndex = 32;
+            this.AccountLablePhoneNo.Text = "Phone no";
+            // 
+            // AccountLableLoginName
+            // 
+            this.AccountLableLoginName.AutoSize = true;
+            this.AccountLableLoginName.Location = new System.Drawing.Point(523, 293);
+            this.AccountLableLoginName.Name = "AccountLableLoginName";
+            this.AccountLableLoginName.Size = new System.Drawing.Size(87, 20);
+            this.AccountLableLoginName.TabIndex = 31;
+            this.AccountLableLoginName.Text = "Login name";
+            // 
+            // AccountLableFirstName
+            // 
+            this.AccountLableFirstName.AutoSize = true;
+            this.AccountLableFirstName.Location = new System.Drawing.Point(523, 245);
+            this.AccountLableFirstName.Name = "AccountLableFirstName";
+            this.AccountLableFirstName.Size = new System.Drawing.Size(77, 20);
+            this.AccountLableFirstName.TabIndex = 30;
+            this.AccountLableFirstName.Text = "First name";
+            // 
+            // AccountLableName
+            // 
+            this.AccountLableName.AutoSize = true;
+            this.AccountLableName.Location = new System.Drawing.Point(523, 196);
+            this.AccountLableName.Name = "AccountLableName";
+            this.AccountLableName.Size = new System.Drawing.Size(49, 20);
+            this.AccountLableName.TabIndex = 29;
+            this.AccountLableName.Text = "Name";
+            // 
+            // AccountButtonUpdate
+            // 
+            this.AccountButtonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountButtonUpdate.Location = new System.Drawing.Point(765, 134);
+            this.AccountButtonUpdate.Name = "AccountButtonUpdate";
+            this.AccountButtonUpdate.Size = new System.Drawing.Size(94, 29);
+            this.AccountButtonUpdate.TabIndex = 28;
+            this.AccountButtonUpdate.Text = "Update";
+            this.AccountButtonUpdate.UseVisualStyleBackColor = true;
+            this.AccountButtonUpdate.Click += new System.EventHandler(this.AccountButtonUpdate_Click);
+            // 
             // fbuttonLogout
             // 
             this.fbuttonLogout.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1422,10 +1603,10 @@ namespace WinFormsAppActivite3
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37F));
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanelInMainHeading.Controls.Add(this.labelHeadingAMIO, 1, 0);
             this.tableLayoutPanelInMainHeading.Controls.Add(this.panelLogin, 2, 0);
             this.tableLayoutPanelInMainHeading.Controls.Add(this.fbuttonLogout, 3, 0);
             this.tableLayoutPanelInMainHeading.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanelInMainHeading.Controls.Add(this.labelHeadingAMIO, 1, 0);
             this.tableLayoutPanelInMainHeading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelInMainHeading.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelInMainHeading.Name = "tableLayoutPanelInMainHeading";
@@ -1505,6 +1686,8 @@ namespace WinFormsAppActivite3
             this.utabPageUserDelete.ResumeLayout(false);
             this.utabPageUserRefresh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.udataGridViewUsers)).EndInit();
+            this.tabPageAccount.ResumeLayout(false);
+            this.tabPageAccount.PerformLayout();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             this.tableLayoutPanelMain.ResumeLayout(false);
@@ -1632,6 +1815,23 @@ namespace WinFormsAppActivite3
         private System.Windows.Forms.RichTextBox frichTextBox2UpdateTopicText;
         private System.Windows.Forms.TabPage ftabPage3DeleteTopic;
         private System.Windows.Forms.Button fbutton3TopicDelete;
+        private System.Windows.Forms.TabPage tabPageAccount;
+        private System.Windows.Forms.TextBox AccountTextBoxId;
+        private System.Windows.Forms.Label AccountLableId;
+        private System.Windows.Forms.TextBox AccountTextBoxPassword;
+        private System.Windows.Forms.TextBox AccountTextBoxEmail;
+        private System.Windows.Forms.TextBox AccountTextBoxPhoneNo;
+        private System.Windows.Forms.TextBox AccountTextBoxLoginName;
+        private System.Windows.Forms.TextBox AccountTextBoxFirstName;
+        private System.Windows.Forms.TextBox AccountTextBoxName;
+        private System.Windows.Forms.Label AccountLablePassword;
+        private System.Windows.Forms.Label AccountLableEmail;
+        private System.Windows.Forms.Label AccountLablePhoneNo;
+        private System.Windows.Forms.Label AccountLableLoginName;
+        private System.Windows.Forms.Label AccountLableFirstName;
+        private System.Windows.Forms.Label AccountLableName;
+        private System.Windows.Forms.Button AccountButtonUpdate;
+        private System.Windows.Forms.Button AccountButtonRefresh;
     }
 }
 

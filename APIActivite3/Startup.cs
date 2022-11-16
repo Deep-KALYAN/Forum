@@ -36,6 +36,7 @@ namespace APIActivite3
             {
                 options.JsonSerializerOptions.IgnoreNullValues = true; // On ne sérialise pas les propriétés à null
                 options.JsonSerializerOptions.PropertyNamingPolicy = null; // Pas de CamelCase sur les noms des propriétés
+                
             });
 
 
