@@ -1,0 +1,10 @@
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\BLL\Debug\net5.0\BLL.deps.json
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\BLL\Debug\net5.0\BLL.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\BLL\Debug\net5.0\ref\BLL.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\BLL.csproj.AssemblyReference.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\BLL.AssemblyInfoInputs.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\BLL.AssemblyInfo.cs
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\BLL.csproj.CopyComplete
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\BLL.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\BLL\Debug\net5.0\ref\BLL.dll

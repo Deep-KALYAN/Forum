@@ -48,13 +48,13 @@ namespace APIActivite3.Controllers
 
             TopicResponseDTO topicResponseDTO = new TopicResponseDTO()
             {
-                TopicId = topic.Id,
-                TopicTitle = topic.Title,
-                TopicText = topic.Text_Pub,
+                TopicId           = topic.Id,
+                TopicTitle          = topic.Title,
+                TopicText           = topic.Text_Pub,
                 TopicPublishedDate = topic.Pub_Date,
-                TopicCreatorId = topic.Id_User,
-                TopicIdRubric = topic.Id_Rubric,
-                TopicCountViews = topic.Count_Views,
+                TopicCreatorId      = topic.Id_User,
+                TopicIdRubric       = topic.Id_Rubric,
+                TopicCountViews      = topic.Count_Views,
 
 
             };
@@ -188,9 +188,15 @@ namespace APIActivite3.Controllers
                                                                                         // we add here PUB_DATE,DELETED,ID_USER
                                                                                         //Validation des données envoyer par le client
 
+<<<<<<< HEAD
             // string idMemberToken =  HttpContext.User.Claims.ElementAt(2).Value; //"2";
             if (idMemberToken == 0) throw new UnknownException();
             int userId = idMemberToken;
+=======
+            string idMemberToken =  HttpContext.User.Claims.ElementAt(2).Value; //"2";
+            if (idMemberToken == null) throw new UnknownException();
+            int userId = int.Parse(idMemberToken);
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             Topic topic = new Topic()
             {
@@ -248,7 +254,11 @@ namespace APIActivite3.Controllers
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UpdateTopic([FromRoute] int id, [FromBody] UpdateTopicRequestDTO updateTopicDTO, [FromServices] ICurrentUserUtils currentUserUtils)
         {
+<<<<<<< HEAD
             int idMemberToken = currentUserUtils.GetCurrentUserId().GetValueOrDefault();//HttpContext.User.Claims.ElementAt(2).Value;
+=======
+            string idMemberToken =  HttpContext.User.Claims.ElementAt(2).Value;
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             if (idMemberToken != updateTopicDTO.IdUser) throw new UnknownException();
 
@@ -296,13 +306,13 @@ namespace APIActivite3.Controllers
                 //******************codesmissing********** dto
                 TopicResponseDTO topicResponseDTO = new TopicResponseDTO()
                 {
-                    TopicId = updatedTopic.Id,
-                    TopicTitle = updatedTopic.Title,
-                    TopicText = updatedTopic.Text_Pub,
-                    TopicPublishedDate = updatedTopic.Pub_Date,
-                    TopicCreatorId = updatedTopic.Id_User,
-                    TopicIdRubric = updatedTopic.Id_Rubric,
-                    TopicCountViews = updatedTopic.Count_Views,
+                    TopicId            = updatedTopic.Id,
+                    TopicTitle         = updatedTopic.Title,
+                    TopicText           = updatedTopic.Text_Pub,
+                    TopicPublishedDate  = updatedTopic.Pub_Date,
+                    TopicCreatorId      = updatedTopic.Id_User,
+                    TopicIdRubric       = updatedTopic.Id_Rubric,
+                    TopicCountViews     = updatedTopic.Count_Views,
                 };
 
                 //return CreatedAtAction(nameof(GetTopicById), new { id = updatedTopic.Id }, topicResponseDTO);

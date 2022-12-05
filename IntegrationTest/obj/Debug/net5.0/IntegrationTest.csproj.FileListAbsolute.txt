@@ -8,7 +8,10 @@ C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\app
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\APIActivite3.exe
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\testhost.exe
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+<<<<<<< HEAD
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\appsettings.Integrations.json
+=======
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
@@ -434,3 +437,17 @@ C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\obj\Debug\net5.0\Int
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\obj\Debug\net5.0\ref\IntegrationTest.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\obj\Debug\net5.0\IntegrationTest.pdb
 C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\obj\Debug\net5.0\IntegrationTest.genruntimeconfig.cache
+<<<<<<< HEAD
+=======
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\Namotion.Reflection.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NJsonSchema.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NJsonSchema.Yaml.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Annotations.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.AspNetCore.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Core.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Core.Yaml.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Generation.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\NSwag.Generation.AspNetCore.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\YamlDotNet.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\IntegrationTest\bin\Debug\net5.0\appsettings.Integrations.json
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9

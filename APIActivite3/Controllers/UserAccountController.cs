@@ -15,7 +15,11 @@ namespace APIActivite3.Controllers
     [ApiController]
     [Route("api/user")]
     [Authorize(Roles = "USER, ADMIN")] //(Roles = "USER")
+<<<<<<< HEAD
     public class UserAccountController : ControllerBase, IUserAccountController
+=======
+    public class UserAccountController : ControllerBase
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
     {
         private static IAccountService _accountService;
 
@@ -59,7 +63,11 @@ namespace APIActivite3.Controllers
 
         [HttpGet("{id}")]
         //[Authorize(Roles = "USER")]
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
         public async Task<IActionResult> GetUserById([FromRoute] int id)
         {
             var user = await _accountService.GetUserByIdAsync(id);

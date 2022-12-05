@@ -1,5 +1,8 @@
 ﻿using APIActivite3.Controllers;
+<<<<<<< HEAD
 using APIActivite3.Utils;
+=======
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 using BLL;
 using Domain.DTO.Requestes.Topics;
 using Domain.DTO.Responses.Topics;
@@ -99,6 +102,7 @@ namespace UnitTest
         {
 
             //Arrange = Organiser les données
+<<<<<<< HEAD
           //  ISecurityService securityService = Mock.Of<ISecurityService>();
 
         IForumService forumService = Mock.Of<IForumService>();
@@ -117,6 +121,24 @@ namespace UnitTest
             // string idMemberToken =
             //Setup(t => t.User).Returns(principal); //   User.Claims.ElementAt(2).Value; 
             // int userId = int.Parse(idMemberToken);  
+=======
+            ISecurityService securityService = Mock.Of<ISecurityService>();
+        IForumService forumService = Mock.Of<IForumService>();
+    /*        string[] roles = { "USER", "ADMIN" };
+
+            Mock.Get(securityService)
+              .Setup(sService => sService
+              .SigningAsync("Leo2", "password"))
+              .ReturnsAsync("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMZW8yIiwianRpIjoiZWNkMDNmOWUtMzY3Ny00NmY1LTkxMDYtMjM4ODI5NDg3NTE0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIkFETUlOIiwiVVNFUiJdLCJleHAiOjE2NjkxNTk5MjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCJ9.X9ThiWl5kcXQeNVo6r2jaDF2m25uuyapHBvfKZMntw4");
+
+            var fakeHttpContext = new Mock<ControllerBase>();
+            var fakeIdentity = new GenericIdentity("Leo2");
+            var principal = new GenericPrincipal(fakeIdentity, roles);
+           */
+            // string idMemberToken =
+            //Setup(t => t.User).Returns(principal); //   User.Claims.ElementAt(2).Value; 
+                                        // int userId = int.Parse(idMemberToken);  
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
 
             CreateTopicRequestDTO newTopic = new CreateTopicRequestDTO()
@@ -159,15 +181,22 @@ namespace UnitTest
                 .Setup(fService => fService.CreateTopicAsync(createTopic))
                 .ReturnsAsync(createTopicReturn);
 
+<<<<<<< HEAD
             Mock.Get(currentUserUtils)
                .Setup(cUserUtils => cUserUtils.GetCurrentUserId())
                .Returns(2);
 
+=======
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             TopicController topicController = new TopicController(forumService);
 
 
             //Act = Action
+<<<<<<< HEAD
             IActionResult result = await topicController.CreateTopic(newTopic, currentUserUtils);
+=======
+            IActionResult result = await topicController.CreateTopic(newTopic);
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
             //OkObjectResult oKresult = result as OkObjectResult; //null ou OKObjectResult
@@ -209,7 +238,10 @@ namespace UnitTest
             /*********************************************************************************/
             //Arrange = Organiser les données
             IForumService forumService = Mock.Of<IForumService>();
+<<<<<<< HEAD
             ICurrentUserUtils currentUserUtils = Mock.Of<ICurrentUserUtils>();
+=======
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             CreateTopicRequestDTO newTopic = new CreateTopicRequestDTO()
             {
@@ -234,14 +266,22 @@ namespace UnitTest
             Mock.Get(forumService)
                 .Setup(fService => fService.CreateTopicAsync(createTopic))
                 .ReturnsAsync(null as Topic);
+<<<<<<< HEAD
             Mock.Get(currentUserUtils)
               .Setup(cUserUtils => cUserUtils.GetCurrentUserId())
               .Returns(2);
+=======
+
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             TopicController topicController = new TopicController(forumService);
 
 
             //Act = Action
+<<<<<<< HEAD
             IActionResult result = await topicController.CreateTopic(newTopic, currentUserUtils);
+=======
+            IActionResult result = await topicController.CreateTopic(newTopic);
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)           
             Assert.NotNull(result as BadRequestResult);
@@ -282,7 +322,11 @@ namespace UnitTest
 
             //Arrange = Organiser les données
             IForumService forumService = Mock.Of<IForumService>();
+<<<<<<< HEAD
             ICurrentUserUtils currentUserUtils = Mock.Of<ICurrentUserUtils>();
+=======
+
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             UpdateTopicRequestDTO updateTopic = new UpdateTopicRequestDTO()
             {
                 IdUser =2,
@@ -319,9 +363,13 @@ namespace UnitTest
             Mock.Get(forumService)
                 .Setup(fService => fService.ModifyTopicAsync(9,updateTopicRequest))
                 .ReturnsAsync(updateTopicRequestReturn);
+<<<<<<< HEAD
             Mock.Get(currentUserUtils)
                .Setup(cUserUtils => cUserUtils.GetCurrentUserId())
                .Returns(2);
+=======
+
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             TopicController topicController = new TopicController(forumService);
 
 
@@ -352,7 +400,11 @@ namespace UnitTest
 
 
             //Act = Action
+<<<<<<< HEAD
             IActionResult result = await topicController.UpdateTopic(9, updateTopic, currentUserUtils);
+=======
+            IActionResult result = await topicController.UpdateTopic(9, updateTopic);
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
             OkObjectResult oKresult = result as OkObjectResult;
@@ -398,7 +450,11 @@ namespace UnitTest
 */
             //Arrange = Organiser les données
             IForumService forumService = Mock.Of<IForumService>();
+<<<<<<< HEAD
             ICurrentUserUtils currentUserUtils = Mock.Of<ICurrentUserUtils>();
+=======
+
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             UpdateTopicRequestDTO updateTopic = new UpdateTopicRequestDTO()
             {
                 IdUser = 2,
@@ -436,9 +492,13 @@ namespace UnitTest
                 .Setup(fService => fService
                 .ModifyTopicAsync(9, updateTopicRequest))
                 .ReturnsAsync(updateTopicRequestReturn);
+<<<<<<< HEAD
             Mock.Get(currentUserUtils)
                .Setup(cUserUtils => cUserUtils.GetCurrentUserId())
                .Returns(2);
+=======
+
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             TopicController topicController = new TopicController(forumService);
 
 
@@ -448,7 +508,11 @@ namespace UnitTest
           
 
             //Act = Action
+<<<<<<< HEAD
             IActionResult result = await topicController.UpdateTopic(0, updateTopic, currentUserUtils);
+=======
+            IActionResult result = await topicController.UpdateTopic(9, updateTopic);
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
             if (result is null)

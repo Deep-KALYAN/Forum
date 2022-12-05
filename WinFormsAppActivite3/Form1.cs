@@ -141,7 +141,11 @@ namespace WinFormsAppActivite3
 
         private async void ubuttonUpdate_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             DialogResult dialogResult = MessageBox.Show("Do you really want to Update?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+=======
+            DialogResult dialogResult = MessageBox.Show("Do you really want to Delete?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             if (dialogResult == DialogResult.Yes)
             {
 
@@ -183,8 +187,12 @@ namespace WinFormsAppActivite3
 
         private async void fbuttonLogin_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
            // textBox2.Text = "";
             label1ForumRoles.Text = "";
+=======
+            textBox2.Text = "";
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             bool rollAdmin = false;
             var jwt = await _dalWF.Login(ftextBoxLoginName.Text, ftextBoxPassword.Text);
             if (jwt == null)
@@ -251,11 +259,17 @@ namespace WinFormsAppActivite3
                         }
                     }
 
+<<<<<<< HEAD
                     // To display in French
                     if (role == "USER")
                     {
                         userRole = true;
                         label1ForumRoles.Text += "Utilisateur" + "  ";
+=======
+                    if (role == "USER")
+                    {
+                        userRole = true;         
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
                     }
 
                     if (role == "ADMIN")
@@ -425,6 +439,7 @@ namespace WinFormsAppActivite3
             var account = await _dalWF.GetUsersByIdAsync(userId);
             if (account != null)
             {
+<<<<<<< HEAD
 
             AccountTextBoxId.Text = _dalWF.GetUserId();//account.Id.ToString();
             AccountTextBoxFirstName.Text = account.First_Name;
@@ -438,9 +453,27 @@ namespace WinFormsAppActivite3
         }
 
             #endregion
+=======
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
-        #region EmptyForum
+            AccountTextBoxId.Text = _dalWF.GetUserId();//account.Id.ToString();
+            AccountTextBoxFirstName.Text = account.First_Name;
+            AccountTextBoxName.Text = account.Name;
+            AccountTextBoxLoginName.Text = account.Login_Name;
+            AccountTextBoxPhoneNo.Text = account.Ph_No;
+            AccountTextBoxEmail.Text = account.E_Mail;
+            AccountTextBoxPassword.Text = "password";
+            }
 
+<<<<<<< HEAD
+=======
+        }
+
+            #endregion
+
+            #region EmptyForum
+
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
             private void EmptyForum()
         {
             fdataGridView1Topics.DataSource = null;
@@ -863,7 +896,11 @@ namespace WinFormsAppActivite3
 
         #endregion
 
+<<<<<<< HEAD
         #region dataGridViews TOPIC & REPLY, hide column and change the color(on Deleted reply) CellFormatting
+=======
+         #region dataGridViews TOPIC & REPLY, hide column and change the color(on Deleted reply) CellFormatting
+>>>>>>> 699d6e11aaec17672f14b0642fa8bcf974453ab9
 
         private void fdataGridView2Replies_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -978,5 +1015,38 @@ namespace WinFormsAppActivite3
 
         #endregion
 
+        #region Account Buttons
+        private async void AccountButtonUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Do you really want to update?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
+            {
+                var updateUser = await _dalWF.UpdateUserAsync(
+                     Int32.Parse(AccountTextBoxId.Text),
+            AccountTextBoxName.Text,
+            AccountTextBoxFirstName.Text,
+            AccountTextBoxLoginName.Text,
+            AccountTextBoxPhoneNo.Text,
+            AccountTextBoxEmail.Text,
+            AccountTextBoxPassword.Text
+                    );
+                if (updateUser != null)
+                {
+                    MessageBox.Show("Successfully Updated");
+                    await RefreshAccountAsync();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur");
+
+                }
+            }
+        }
+
+        private async void AccountButtonRefresh_Click(object sender, EventArgs e)
+        {
+           await RefreshAccountAsync();
+        }
+        #endregion
     }
 }

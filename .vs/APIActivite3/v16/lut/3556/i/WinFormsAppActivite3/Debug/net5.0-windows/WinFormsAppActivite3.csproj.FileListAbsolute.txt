@@ -1,0 +1,17 @@
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.exe
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.deps.json
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.runtimeconfig.json
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.runtimeconfig.dev.json
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\b\WinFormsAppActivite3\Debug\net5.0-windows\ref\WinFormsAppActivite3.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.csproj.AssemblyReference.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.Form1.resources
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.Properties.Resources.resources
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.csproj.GenerateResource.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.AssemblyInfoInputs.cache
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.AssemblyInfo.cs
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.csproj.CopyComplete
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\ref\WinFormsAppActivite3.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\.vs\APIActivite3\v16\lut\0\i\WinFormsAppActivite3\Debug\net5.0-windows\WinFormsAppActivite3.genruntimeconfig.cache
