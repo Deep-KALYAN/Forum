@@ -7,139 +7,160 @@ namespace BLL
     public interface IForumService
     {
         /// <summary>
-        /// To create reply (logged user and admin have right)
+        /// To Create Reply 
         /// </summary>
         /// <param name="reply"></param>
-        /// <returns></returns>
+        /// <returns> BO Reply or Null</returns>
         Task<Reply> CreateReplyAsync(Reply reply);
 
         /// <summary>
-        /// To create rubric (no one have right)
+        /// To Create Rubric 
         /// </summary>
         /// <param name="rubric"></param>
-        /// <returns>ForbiddenAccessException</returns>
+        /// <returns>BO Rubric or Null</returns>
         Task<Rubric> CreateRubricAsync(Rubric rubric);
 
         /// <summary>
-        /// To create topic (logged user and admin have right)
+        /// To Create Topic 
         /// </summary>
         /// <param name="topic"></param>
-        /// <returns></returns>
+        /// <returns>BO Topic or Null</returns>
         Task<Topic> CreateTopicAsync(Topic topic);
 
 
         /// <summary>
-        /// To delete reply (only logged admin have right)
-        /// If deleted, need to display "message have been deleted by admin" instead of reply
+        /// To Delete Reply by Reply Id
+        /// If Deleted, Text Change as "message have been deleted by admin"
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id</param>
+        /// <returns>boolean</returns>
         Task<bool> DeleteReplyAsync(int id);
 
         /// <summary>
-        /// To delete rubric (no one have right)
+        /// To Delete Rubric by Id
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>ForbiddenAccessException</returns>
+        /// <param name="id">id</param>
+        /// <returns>boolean</returns>
+        /// 
         Task<bool> DeleteRubricAsync(int id);
 
         /// <summary>
-        /// To delete topic (only logged admin have right)
-        /// Firstly need to delete all concerning replies
+        /// To Delete Topic  by Id,
+        /// All Concerning Replies will Delete also
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>boolean</returns>
         Task<bool> DeleteTopicAsync(int id);
 
         /// <summary>
-        /// to get all replies ( ----- public )
+        /// To Get All Replies 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>BO Reply IEnumerable</returns>
         Task<IEnumerable<Reply>> GetRepliesAsync();
 
         /// <summary>
-        /// to get replies of concerning topic by topic id ( ----- public )
+        /// To Get Replies of Concerning Topic by Topic Id 
         /// </summary>
-        /// <param name="topicId"></param>
-        /// <returns></returns>
+        /// <param name="topicId">id</param>
+        /// <returns>BO Reply IEnumerable</returns>
         Task<IEnumerable<Reply>> GetRepliesByTopicIdAsync(int topicId);
 
-        
+
 
         /// <summary>
-        /// to get reply by id  ( ----- public )
+        /// To Get Reply by Id  
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id</param>
+        /// <returns>BO Reply</returns>
         Task<Reply> GetReplyByIdAsync(int id);
 
         /// <summary>
-        /// to get rubric by id ( ----- public )
+        /// To Get Rubric by Id
         /// </summary>
-        /// <returns></returns>
+        /// <returns>BO Rubric</returns>
         Task<Rubric> GetRubricByIdAsync(int id);
 
         /// <summary>
-        /// to get all rubrics  ( ----- public )
+        /// To Get All Rubrics  
         /// </summary>
-        /// <returns></returns>
+        /// <returns>BO Rubric IEnumerable</returns>
         Task<IEnumerable<Rubric>> GetRubricsAsync();
 
         /// <summary>
-        /// to get topic by id ( ----- public )
+        /// To Get Topic by Id 
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">id</param>
+        /// <returns>BO Topic</returns>
         Task<Topic> GetTopicByIdAsync(int id);
 
         /// <summary>
-        /// to get all topics( ----- public )
+        /// To Get All Topics
         /// </summary>
-        /// <returns></returns>
+        /// <returns>BO Topic IEnumerable</returns>
         Task<IEnumerable<Topic>> GetTopicsAsync();
 
         /// <summary>
-        /// to get topics of concerning rubric by rubric id ( ----- public )
+        /// To Get Topics of Concerning Rubric by Rubric Id
         /// </summary>
-        /// <param name="rubricId"></param>
-        /// <returns></returns>
+        /// <param name="rubricId">id</param>
+        /// <returns>BO Topic IEnumerable</returns>
         Task<IEnumerable<Topic>> GetTopicsByRubricIdAsync(int rubricId);
 
         /// <summary>
-        /// to modify reply (no one have right)
+        /// To Modify Reply
         /// </summary>      
-        /// <param name="reply"></param>
-        /// <returns>ForbiddenAccessException</returns>
+        /// <param name="reply">BO Reply</param>
+        /// <returns>BO Reply or Null</returns>
         Task<Reply> ModifyReplyAsync( Reply reply);
 
         /// <summary>
-        /// to modify rubric (no one have right)
+        /// To Modify Rubric 
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="rubric"></param>
-        /// <returns>ForbiddenAccessException</returns>
+        /// <param name="id">id</param>
+        /// <param name="rubric">BO Rubric</param>
+        /// <returns>BO Rubric or Null</returns>
         Task<Rubric> ModifyRubricAsync(int id, Rubric rubric);
 
         /// <summary>
-        /// to modify topic (only logged admin have right)
+        /// To Modify Topic 
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="topic"></param>
-        /// <returns></returns>
+        /// <param name="id">id</param>
+        /// <param name="topic">BO Topic</param>
+        /// <returns>BO Topic or Null</returns>
         Task<Topic> ModifyTopicAsync(int id, Topic topic);
 
 
 
 
         // //To work with view TOPIC_DETAIL 
+
+        /// <summary>
+        /// To Get All Replies with Detail (by View TOPIC_DETAIL )
+        /// </summary>
+        /// <returns>BO TopicDetail IEnumerable</returns>
         Task<IEnumerable<TopicDetail>> DetailTopicsAsync();
 
+        /// <summary>
+        /// To Get Replies with Detail by Topic Id (by View TOPIC_DETAIL )
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <returns>BO TopicDetail IEnumerable</returns>
         Task<IEnumerable<TopicDetail>> DetailTopicByIdAsync(int id);
 
 
         // //To work with view RUBRICS_DETAIL 
+
+        /// <summary>
+        /// To Get All Topics with Detail (by View RUBRICS_DETAIL )
+        /// </summary>
+        /// <returns>BO RubricDetail IEnumerable</returns>
         Task<IEnumerable<RubricDetail>> DetailRubricsAsync();
 
+        /// <summary>
+        /// To Get Topics with Detail by Rubric Id (by View RUBRICS_DETAIL )
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <returns>BO RubricDetail IEnumerable</returns>
         Task<IEnumerable<RubricDetail>> DetailRubricByIdAsync(int id);
 
 

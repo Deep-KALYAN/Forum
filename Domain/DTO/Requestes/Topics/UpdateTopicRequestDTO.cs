@@ -15,6 +15,16 @@ namespace Domain.DTO.Requestes.Topics
         public string TopicText { get; set; }
         public int TopicRubricId { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is UpdateTopicRequestDTO dTO &&
+                   IdUser == dTO.IdUser &&
+                   TopicId == dTO.TopicId &&
+                   TopicTitle == dTO.TopicTitle &&
+                   TopicText == dTO.TopicText &&
+                   TopicRubricId == dTO.TopicRubricId;
+        }
+
         //public DateTime TopicPulishedDate { get; set; }
         //public byte TopicDeleted { get; set; }
         //public int TopicCreatorId { get; set; }

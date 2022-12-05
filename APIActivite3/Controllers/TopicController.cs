@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using APIActivite3.Utils;
+using BLL;
 using Domain.DTO.Requestes.Topics;
 using Domain.DTO.Responses.Topics;
 using Domain.Entites;
@@ -15,7 +16,7 @@ namespace APIActivite3.Controllers
     [ApiController]
     [Route("api/topic")]
     [Authorize(Roles = "USER, ADMIN")]
-    public class TopicController : ControllerBase
+    public class TopicController : ControllerBase, ITopicController
     {
         private static IForumService _forumService;
 
@@ -179,24 +180,25 @@ namespace APIActivite3.Controllers
 
 
 
-        [HttpPost()]        
-        public async Task<IActionResult> CreateTopic([FromBody] CreateTopicRequestDTO newTopicDTO)
+        [HttpPost()]
+        public async Task<IActionResult> CreateTopic([FromBody] CreateTopicRequestDTO newTopicDTO, [FromServices] ICurrentUserUtils currentUserUtils)
         {
-            // dto => TITLE,TEXT_PUB,ID_RUBRIC
-            // we add here PUB_DATE,DELETED,ID_USER
-            //Validation des données envoyer par le client
+            int idMemberToken = currentUserUtils.GetCurrentUserId().GetValueOrDefault();//HttpContext.User.Claims.ElementAt(2).Value;
+                                                                                        // dto => TITLE,TEXT_PUB,ID_RUBRIC
+                                                                                        // we add here PUB_DATE,DELETED,ID_USER
+                                                                                        //Validation des données envoyer par le client
 
-            string idMemberToken = HttpContext.User.Claims.ElementAt(2).Value;
-            if (idMemberToken == null) throw new UnknownException();
-            int userId = int.Parse(idMemberToken);
+            // string idMemberToken =  HttpContext.User.Claims.ElementAt(2).Value; //"2";
+            if (idMemberToken == 0) throw new UnknownException();
+            int userId = idMemberToken;
 
             Topic topic = new Topic()
             {
                 //  public int Id { get; set; }
                 Title = newTopicDTO.TopicTitle,
                 Text_Pub = newTopicDTO.TopicText,
-              //  Pub_Date = DateTime.Now,
-              //  Deleted = 0,
+                //  Pub_Date = DateTime.Now,
+                //  Deleted = 0,
                 Id_User = userId, /***************************************must get dynamically******************************/
                 Id_Rubric = newTopicDTO.TopicRubricId
 
@@ -244,11 +246,11 @@ namespace APIActivite3.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> UpdateTopic([FromRoute] int id, [FromBody] UpdateTopicRequestDTO updateTopicDTO)
+        public async Task<IActionResult> UpdateTopic([FromRoute] int id, [FromBody] UpdateTopicRequestDTO updateTopicDTO, [FromServices] ICurrentUserUtils currentUserUtils)
         {
-            string idMemberToken = HttpContext.User.Claims.ElementAt(2).Value;
+            int idMemberToken = currentUserUtils.GetCurrentUserId().GetValueOrDefault();//HttpContext.User.Claims.ElementAt(2).Value;
 
-            if (idMemberToken is null || int.Parse(idMemberToken) != updateTopicDTO.IdUser) throw new UnknownException();
+            if (idMemberToken != updateTopicDTO.IdUser) throw new UnknownException();
 
 
             if (id != updateTopicDTO.TopicId) return BadRequest();
@@ -264,10 +266,10 @@ namespace APIActivite3.Controllers
                 Id = updateTopicDTO.TopicId,
                 Title = updateTopicDTO.TopicTitle,
                 Text_Pub = updateTopicDTO.TopicText,
-               // Pub_Date = DateTime.Now,
-              //  Deleted = 0,
-              //  Id_User = updateTopicDTO.IdUser, /***************************************must get dynamically******************************/
-              //  Id_Rubric = updateTopicDTO.TopicRubricId
+                // Pub_Date = DateTime.Now,
+                //  Deleted = 0,
+                //  Id_User = updateTopicDTO.IdUser, /***************************************must get dynamically******************************/
+                //  Id_Rubric = updateTopicDTO.TopicRubricId
 
 
             };
@@ -307,7 +309,7 @@ namespace APIActivite3.Controllers
 
 
 
-                   return Ok(updatedTopic);
+                return Ok(topicResponseDTO);
             }
             return BadRequest();
         }

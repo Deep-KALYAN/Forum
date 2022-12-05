@@ -68,9 +68,9 @@ namespace BLL
             var claims = new List<Claim>(){
                new Claim(JwtRegisteredClaimNames.Sub, login_name),
                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+               new Claim(ClaimTypes.NameIdentifier, id)
              //  new Claim("NewClaim", "toto"),
 
-               new Claim(ClaimTypes.NameIdentifier, id)
            };
 
             //Add Roles

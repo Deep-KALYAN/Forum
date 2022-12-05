@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{8B1F5A6A-5AE2-4169-9CF1-EDCF5D0CF0E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppActivite3", "WinFormsAppActivite3\WinFormsAppActivite3.csproj", "{5A2DABEF-2F77-491C-9E2C-D78119099F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppActivite3", "WinFormsAppActivite3\WinFormsAppActivite3.csproj", "{5A2DABEF-2F77-491C-9E2C-D78119099F56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

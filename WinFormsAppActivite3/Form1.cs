@@ -57,7 +57,7 @@ namespace WinFormsAppActivite3
 
 
                 tabControlForumUsers.Controls.Remove(utabPageUser);
-                // tabControlForumUsers.Controls.Add(utabPageUser);
+                tabControlForumUsers.Controls.Remove(tabPageAccount);
 
             }
             catch (Exception ex)
@@ -113,15 +113,19 @@ namespace WinFormsAppActivite3
 
         private async void ubuttonDelete_Click(object sender, EventArgs e)
         {
-            var currentUser = (BOUser)bindingSourceUsers.Current;
-            if (currentUser != null)
+            DialogResult dialogResult = MessageBox.Show("Do you really want to Delete?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                bool res = await _dalWF.DeleteUserAsync(currentUser.Id);
-                if (!res)
+                var currentUser = (BOUser)bindingSourceUsers.Current;
+                if (currentUser != null)
                 {
-                    MessageBox.Show("Error Delete");
+                    bool res = await _dalWF.DeleteUserAsync(currentUser.Id);
+                    if (!res)
+                    {
+                        MessageBox.Show("Error Delete");
+                    }
+                    await RefreshAsync();
                 }
-                await RefreshAsync();
             }
         }
 
@@ -137,29 +141,33 @@ namespace WinFormsAppActivite3
 
         private async void ubuttonUpdate_Click(object sender, EventArgs e)
         {
-
-            var currentUser = (BOUser)bindingSourceUsers.Current;
-            if (currentUser != null)
+            DialogResult dialogResult = MessageBox.Show("Do you really want to Update?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                var updateUser = await _dalWF.UpdateUserAsync(
-                     currentUser.Id,
-                     utextBox6updateName.Text,
-                     utextBox5updateFirstName.Text,
-                     utextBox4updateLoginName.Text,
-                     utextBox3updatePhoneNo.Text,
-                     utextBox2updateEmail.Text,
-                     utextBox1updatePassword.Text
-                    );
 
-                if (updateUser == null)
-                    MessageBox.Show("Error Add");
-            }
-            else
-            {
-                MessageBox.Show("Current user is null");
-            }
+                var currentUser = (BOUser)bindingSourceUsers.Current;
+                if (currentUser != null)
+                {
+                    var updateUser = await _dalWF.UpdateUserAsync(
+                         currentUser.Id,
+                         utextBox6updateName.Text,
+                         utextBox5updateFirstName.Text,
+                         utextBox4updateLoginName.Text,
+                         utextBox3updatePhoneNo.Text,
+                         utextBox2updateEmail.Text,
+                         utextBox1updatePassword.Text
+                        );
 
-            await RefreshAsync(currentUser.Id);
+                    if (updateUser == null)
+                        MessageBox.Show("Error Add");
+                }
+                else
+                {
+                    MessageBox.Show("Current user is null");
+                }
+
+                await RefreshAsync(currentUser.Id);
+            }
         }
 
         private async void ubuttonRefresh_Click(object sender, EventArgs e)
@@ -175,7 +183,9 @@ namespace WinFormsAppActivite3
 
         private async void fbuttonLogin_Click(object sender, EventArgs e)
         {
-            textBox2.Text = "";
+           // textBox2.Text = "";
+            label1ForumRoles.Text = "";
+            bool rollAdmin = false;
             var jwt = await _dalWF.Login(ftextBoxLoginName.Text, ftextBoxPassword.Text);
             if (jwt == null)
             {
@@ -183,7 +193,7 @@ namespace WinFormsAppActivite3
             }
             else
             {
-                textBox1.Text = jwt;
+               // textBox1.Text = jwt;
                 var roles = _dalWF.GetRoles();
                 bool userRole = false;
 
@@ -209,6 +219,12 @@ namespace WinFormsAppActivite3
                         }
 
 
+                        if (tabControlForumUsers.TabPages.Contains(tabPageAccount))
+                        {
+                            tabControlForumUsers.Controls.Remove(tabPageAccount);//tabControlForumUsers.Enabled = true;
+                        }
+
+
                         //Topic buttons tab
                         ftabControl1TopicCRUD.Controls.Add(ftabPage2UpdateTopic);
                         ftabControl1TopicCRUD.Controls.Add(ftabPage3DeleteTopic);
@@ -217,15 +233,43 @@ namespace WinFormsAppActivite3
                         ftabControl2ReplyCRUD.Controls.Add(ftabPage6DeleteReply);
 
                         rbutton1Dev.PerformClick();
-                       // await RefreshAsync();
+                        // await RefreshAsync();
+
+                        //Use as Flag
+                        rollAdmin = true;
                     }
+
+                    if (rollAdmin == false)
+                    {
+                        if (!tabControlForumUsers.TabPages.Contains(tabPageAccount))
+                        {
+                            tabControlForumUsers.Controls.Add(tabPageAccount);
+                            //To fill the Account text boxes 
+                            
+                            await RefreshAccountAsync();
+
+                        }
+                    }
+
+                    // To display in French
                     if (role == "USER")
                     {
                         userRole = true;
+                        label1ForumRoles.Text += "Utilisateur" + "  ";
                     }
-                   
 
-                    textBox2.Text += role + ", ";
+                    if (role == "ADMIN")
+                    {
+                        label1ForumRoles.Text += "Modérateur" + "  ";
+                    }
+
+                    //if (role == "USER")
+                    //{
+                    //    userRole = true;         
+                    //}
+
+                    //label1ForumRoles.Text += role + "  ";
+                  
                 }
                 if (userRole == true)
                 {
@@ -281,7 +325,7 @@ namespace WinFormsAppActivite3
         }
         #endregion
 
-        #region Refresh ResetBindings User, Topic, Reply
+        #region Refresh ResetBindings User, Topic, Reply, Account
 
         //user
         private async Task RefreshAsync(int position = 0)
@@ -374,11 +418,30 @@ namespace WinFormsAppActivite3
             //}
         }
 
-        #endregion
+        //Account
+        private async Task RefreshAccountAsync()
+        {
+            int userId = Int32.Parse(_dalWF.GetUserId());
+            var account = await _dalWF.GetUsersByIdAsync(userId);
+            if (account != null)
+            {
+
+            AccountTextBoxId.Text = _dalWF.GetUserId();//account.Id.ToString();
+            AccountTextBoxFirstName.Text = account.First_Name;
+            AccountTextBoxName.Text = account.Name;
+            AccountTextBoxLoginName.Text = account.Login_Name;
+            AccountTextBoxPhoneNo.Text = account.Ph_No;
+            AccountTextBoxEmail.Text = account.E_Mail;
+            AccountTextBoxPassword.Text = "password";
+            }
+
+        }
+
+            #endregion
 
         #region EmptyForum
 
-        private void EmptyForum()
+            private void EmptyForum()
         {
             fdataGridView1Topics.DataSource = null;
             fdataGridView2Replies.DataSource = null;
@@ -492,7 +555,7 @@ namespace WinFormsAppActivite3
 
                 //  ftextBoxPassword.Text += id.ToString(); //********************************
 
-                ftextBoxTopicNameReplies.Text = currentTopic.TopicTitle + "  Replies";
+                ftextBoxTopicNameReplies.Text = currentTopic.TopicTitle + "  Réponses";
 
                 ////Add
                 ftextBox2RubricId.Text = currentTopic.RubricId.ToString();
@@ -568,7 +631,7 @@ namespace WinFormsAppActivite3
             }
             else
             {
-
+               // MessageBox.Show("Successfully Added");
                 await RefreshTopicsAsync(rubricId, (int)newTopic.TopicId);
             }
             // }
@@ -576,24 +639,28 @@ namespace WinFormsAppActivite3
 
         private async void fbutton2TopicUpdate_Click(object sender, EventArgs e)
         {
-            //(int)currentTopic.TopicId,
-            var currentTopic = (BOTopic)bindingSourceTopics.Current;
-            if (currentTopic != null)
+            DialogResult dialogResult = MessageBox.Show("Do you really want to update?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                var res = await _dalWF.UpdateTopicAsync(
-                    ftextBox4TopicUpdateTitle.Text,
-                    frichTextBox2UpdateTopicText.Text,
-                    (int)currentTopic.TopicId,
-                    currentTopic.RubricId,
-                    GetCreatorId());
-                if (res == null)
+                //(int)currentTopic.TopicId,
+                var currentTopic = (BOTopic)bindingSourceTopics.Current;
+                if (currentTopic != null)
                 {
-                    MessageBox.Show("Error Update");
-                }
-                else
-                {
+                    var res = await _dalWF.UpdateTopicAsync(
+                        ftextBox4TopicUpdateTitle.Text,
+                        frichTextBox2UpdateTopicText.Text,
+                        (int)currentTopic.TopicId,
+                        currentTopic.RubricId,
+                        GetCreatorId());
+                    if (res == null)
+                    {
+                        MessageBox.Show("Error Update");
+                    }
+                    else
+                    {
 
-                    await RefreshTopicsAsync(currentTopic.RubricId, (int)currentTopic.TopicId);
+                        await RefreshTopicsAsync(currentTopic.RubricId, (int)currentTopic.TopicId);
+                    }
                 }
             }
         }
@@ -607,19 +674,22 @@ namespace WinFormsAppActivite3
             //    Idreply = currentReply
             //}
 
-
-            var currentTopic = (BOTopic)bindingSourceTopics.Current;
-            if (currentTopic != null)
+            DialogResult dialogResult = MessageBox.Show("Do you really want to Delete?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                bool res = await _dalWF.DeleteTopicAsync((int)currentTopic.TopicId);
-                if (!res)
+                var currentTopic = (BOTopic)bindingSourceTopics.Current;
+                if (currentTopic != null)
                 {
-                    MessageBox.Show("Error Delete");
-                }
-                else
-                {
+                    bool res = await _dalWF.DeleteTopicAsync((int)currentTopic.TopicId);
+                    if (!res)
+                    {
+                        MessageBox.Show("Error Delete");
+                    }
+                    else
+                    {
 
-                    await RefreshTopicsAsync(currentTopic.RubricId);
+                        await RefreshTopicsAsync(currentTopic.RubricId);
+                    }
                 }
             }
         }
@@ -666,43 +736,50 @@ namespace WinFormsAppActivite3
 
         private async void fbutton2ReplyUpdate_Click(object sender, EventArgs e)
         {
-            var currentReply = (BOReply)bindingSourceReplies.Current;
-            if (currentReply != null)
+            DialogResult dialogResult = MessageBox.Show("Do you really want to Update?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                var res = await _dalWF.UpdateReplyAsync(
-                    frichTextBox2ReplyUpdateText.Text,
-                    currentReply.ChildReplyId,
-                    GetCreatorId());
-                if (res == null)
+                var currentReply = (BOReply)bindingSourceReplies.Current;
+                if (currentReply != null)
                 {
-                    MessageBox.Show("Error Update");
+                    var res = await _dalWF.UpdateReplyAsync(
+                        frichTextBox2ReplyUpdateText.Text,
+                        currentReply.ChildReplyId,
+                        GetCreatorId());
+                    if (res == null)
+                    {
+                        MessageBox.Show("Error Update");
+                    }
+                    else
+                    {
+                        await RefreshRepliesAsync(currentReply.TopicId, (int)res.ChildReplyId);
+                    }
                 }
                 else
                 {
-                    await RefreshRepliesAsync(currentReply.TopicId, (int)res.ChildReplyId);
+                    MessageBox.Show("Error Update");
                 }
             }
-            else
-            {
-                MessageBox.Show("Error Update");
-            }
-
         }
 
         private async void fbutton3ReplyDelete_Click(object sender, EventArgs e)
         {
-            var currentReply = (BOReply)bindingSourceReplies.Current;
-            if (currentReply != null)
+            DialogResult dialogResult = MessageBox.Show("Do you really want to Delete?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
             {
-                bool res = await _dalWF.DeleteReplyAsync(currentReply.ChildReplyId);
-                if (!res)
+                var currentReply = (BOReply)bindingSourceReplies.Current;
+                if (currentReply != null)
                 {
-                    MessageBox.Show("Error Delete");
-                }
-                else
-                {
+                    bool res = await _dalWF.DeleteReplyAsync(currentReply.ChildReplyId);
+                    if (!res)
+                    {
+                        MessageBox.Show("Error Delete");
+                    }
+                    else
+                    {
 
-                    await RefreshRepliesAsync(currentReply.TopicId);
+                        await RefreshRepliesAsync(currentReply.TopicId);
+                    }
                 }
             }
         }
@@ -718,11 +795,20 @@ namespace WinFormsAppActivite3
             {
                 tabControlForumUsers.Controls.Remove(utabPageUser);//tabControlForumUsers.Enabled = true;
                 await RefreshAsync();
-
+               
             }
+
+            if (roles.Contains("USER"))
+            {               
+                tabControlForumUsers.Controls.Remove(tabPageAccount);
+                await RefreshAsync();
+            }
+
+
             _dalWF.SetRoles();
             _dalWF.SetUserId();
-            textBox2.Text = "Public";
+         //   textBox2.Text = "Public";
+            label1ForumRoles.Text = "Public";
             panelLogin.Visible = true;
             fbuttonLogout.Visible = false;
 
@@ -778,22 +864,23 @@ namespace WinFormsAppActivite3
         #endregion
 
         #region dataGridViews TOPIC & REPLY, hide column and change the color(on Deleted reply) CellFormatting
+
         private void fdataGridView2Replies_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //fdataGridView2Replies.Columns[0].Width = 450;
-            fdataGridView2Replies.Columns[0].HeaderText = "Reply";
-            fdataGridView2Replies.Columns[1].HeaderText = "Reply Creator";
-            fdataGridView2Replies.Columns[2].HeaderText = "Reply Date";
+            fdataGridView2Replies.Columns[0].HeaderText = "Réponse"; // "Reply";
+            fdataGridView2Replies.Columns[1].HeaderText = "Créateur"; // "Reply Creator";
+            fdataGridView2Replies.Columns[2].HeaderText = "Publié"; // "Date de réponse"; // "Reply Date";
             //fdataGridView2Replies.Columns[3].Width = 400;
-            fdataGridView2Replies.Columns[3].HeaderText = "Parent Reply";
-            fdataGridView2Replies.Columns[4].HeaderText = "Parent Reply Creator";
-            fdataGridView2Replies.Columns[5].HeaderText = "Parent Reply Date";
+            fdataGridView2Replies.Columns[3].HeaderText = "Réponse Parent"; // "Parent Reply";
+            fdataGridView2Replies.Columns[4].HeaderText = "Créateur Parent"; //"Parent Reply Creator";
+            fdataGridView2Replies.Columns[5].HeaderText = "Publié Parent"; //"Parent Reply Date";
 
 
 
 
             fdataGridView2Replies.Columns[6].Visible = true;
-            fdataGridView2Replies.Columns[6].HeaderText = "Reply Id";
+            fdataGridView2Replies.Columns[6].HeaderText = "Réponse Id"; // "Reply Id";
             fdataGridView2Replies.Columns[6].Width = 40;
 
             fdataGridView2Replies.Columns[7].Visible = false;
@@ -825,13 +912,13 @@ namespace WinFormsAppActivite3
         private void fdataGridView1Topics_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
            // fdataGridView1Topics.Columns[0].Width = 430;
-            fdataGridView1Topics.Columns[0].HeaderText = "Topic Title";
+            fdataGridView1Topics.Columns[0].HeaderText = "Titre du sujet";  //"Topic Title";
 
            // fdataGridView1Topics.Columns[1].Width = 430;
-            fdataGridView1Topics.Columns[1].HeaderText = "Topic Text";
+            fdataGridView1Topics.Columns[1].HeaderText = "Texte";  //"Topic Text";
 
-            fdataGridView1Topics.Columns[2].HeaderText = "Topic Creator";
-            fdataGridView1Topics.Columns[3].HeaderText = "Published Date ";
+            fdataGridView1Topics.Columns[2].HeaderText = "Créateur";  //"Topic Creator";
+            fdataGridView1Topics.Columns[3].HeaderText = "Publié";  //"Published Date";
 
             fdataGridView1Topics.Columns[4].Visible = false;
             fdataGridView1Topics.Columns[5].Visible = false;
@@ -841,6 +928,53 @@ namespace WinFormsAppActivite3
 
 
         }
+        private void udataGridViewUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            udataGridViewUsers.Columns[0].HeaderText = "Id";//"Id";
+            udataGridViewUsers.Columns[1].HeaderText = "Nom";//"Name";
+            udataGridViewUsers.Columns[2].HeaderText = "Prénom";//"First_Name";
+            udataGridViewUsers.Columns[3].HeaderText = "Nom de connection";//"Login_Name";
+            udataGridViewUsers.Columns[4].HeaderText = "Télephone";//"Ph_No";
+            udataGridViewUsers.Columns[5].HeaderText = "EMail";//"E_Mail";
+            udataGridViewUsers.Columns[6].HeaderText = "Moderator_Y_N";//"Moderator_Y_N";
+            udataGridViewUsers.Columns[7].HeaderText = "Password";//"Password";
+        }
+
+        #endregion
+
+        #region Account Buttons
+        private async void AccountButtonUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Do you really want to update?", "Please Confirm Your Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
+            {
+                var updateUser = await _dalWF.UpdateUserAsync(
+                     Int32.Parse(AccountTextBoxId.Text),
+            AccountTextBoxName.Text,
+            AccountTextBoxFirstName.Text,
+            AccountTextBoxLoginName.Text,
+            AccountTextBoxPhoneNo.Text,
+            AccountTextBoxEmail.Text,
+            AccountTextBoxPassword.Text
+                    );
+                if (updateUser != null)
+                {
+                    MessageBox.Show("Successfully Updated");
+                    await RefreshAccountAsync();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur");
+
+                }
+            }
+        }
+
+        private async void AccountButtonRefresh_Click(object sender, EventArgs e)
+        {
+           await RefreshAccountAsync();
+        }
+
 
         #endregion
 

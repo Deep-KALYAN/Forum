@@ -12,11 +12,11 @@ namespace APIActivite3.Controllers
 {
     [ApiController]
     [Route("api/account")]
-  
-    public class SecurityController : ControllerBase
-    { 
+
+    public class SecurityController : ControllerBase, ISecurityController
+    {
         private readonly ISecurityService _securityService;
-       
+
         public SecurityController(ISecurityService securityService)
         {
             _securityService = securityService;
@@ -34,11 +34,11 @@ namespace APIActivite3.Controllers
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] AuthentificationRequestDTO authentificationRequestDTO)
-        {            
+        {
             string token = await _securityService.SigningAsync(authentificationRequestDTO.Login_name, authentificationRequestDTO.Password);
 
             return Ok(token);
         }
     }
-    
+
 }

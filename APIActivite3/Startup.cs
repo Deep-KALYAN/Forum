@@ -1,4 +1,5 @@
 using APIActivite3.Filters;
+using APIActivite3.Utils;
 using BLL;
 using Domaine;
 using FluentValidation.AspNetCore;
@@ -31,11 +32,12 @@ namespace APIActivite3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddTransient<ICurrentUserUtils, CurrentUserUtils>(); 
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.IgnoreNullValues = true; // On ne sérialise pas les propriétés à null
                 options.JsonSerializerOptions.PropertyNamingPolicy = null; // Pas de CamelCase sur les noms des propriétés
+                
             });
 
 

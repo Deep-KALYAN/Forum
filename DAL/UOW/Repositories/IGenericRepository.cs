@@ -9,6 +9,7 @@ namespace DAL.UOW.Repositories
 {
     public interface IGenericRepository<T> where T : Entity
     {
+        
         Task<T> CreateAsync(T entity);
         Task<bool> DeleteAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();

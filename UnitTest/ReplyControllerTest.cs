@@ -1,4 +1,5 @@
 using APIActivite3.Controllers;
+using APIActivite3.Utils;
 using BLL;
 using Domain.DTO.Requestes.Replies;
 using Domain.DTO.Responses.Replies;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using Xunit;
 
@@ -145,9 +147,22 @@ namespace UnitTest
             IActionResult result = await replyController.CreateReply(newReply);
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
-            OkObjectResult oKresult = result as OkObjectResult; //null ou OKObjectResult
-            Assert.NotNull(oKresult);
-            Assert.Equal(oKresult.Value as ReplyResponseDTO, new ReplyResponseDTO()
+             //     OkObjectResult oKresult = result as OkObjectResult; //null ou OKObjectResult
+            //     Assert.NotNull(oKresult);
+            Assert.True(result is CreatedAtActionResult);
+            CreatedAtActionResult result1 = result as CreatedAtActionResult;
+            /* Assert.Equal(oKresult.Value as ReplyResponseDTO, new ReplyResponseDTO()
+              {
+                  ReplyId = 2,
+                  ReplyText = "Hello Text",
+                  ReplyDate = date,
+                  ParentReplyId = 1,
+                  CreatorId = 1,
+                  TopicId = 1
+              }); */
+        }
+
+        /* ReplyResponseDTO, new ReplyResponseDTO()
             {
                 ReplyId = 2,
                 ReplyText = "Hello Text",
@@ -155,9 +170,7 @@ namespace UnitTest
                 ParentReplyId = 1,
                 CreatorId = 1,
                 TopicId = 1
-            });
-        }
-
+            }*/
 
 
         [Fact]
@@ -223,31 +236,12 @@ namespace UnitTest
         /*****  [HttpPut()]   UpdateReply([FromRoute] int id, [FromBody] UpdateReplyRequestDTO updateReply)*****  ShouldBeOk   *****/
         public async void UpdateReplyShouldBeOk()
         {
-            //var httpContext = Mock.Of<HttpContext>();  //ControllerBase
-
-            //var user = Mock.Of<httpContext.User>();
-
-
-            //string idMemberToken = httpContext.User.Claims.ElementAt(2).Value;
-            var claims = new List<ClaimsIdentity>(){
-               new ClaimsIdentity ("sub", "1","user"),
-               new ClaimsIdentity("jti", "1","user"),
-             //  new Claim("NewClaim", "toto"),
-
-               new ClaimsIdentity("NameIdentifier", "1","user")
-           };
-
-
-
-            var contextMock = new Mock<HttpContext>();
-            contextMock.Setup(x => x.User).Returns(new ClaimsPrincipal(new ClaimsIdentity()));
-
-
-
+         
             var date = DateTime.Now;
 
             //Arrange = Organiser les données
             IForumService forumService = Mock.Of<IForumService>();
+            ICurrentUserUtils currentUserUtils = Mock.Of<ICurrentUserUtils>();
 
             UpdateReplyRequestDTO updateReply = new UpdateReplyRequestDTO()
             {
@@ -276,38 +270,15 @@ namespace UnitTest
             Mock.Get(forumService)
                 .Setup(fService => fService.ModifyReplyAsync(updateReplyRequest))
                 .ReturnsAsync(updateReplyRequestReturn);
+            Mock.Get(currentUserUtils)
+                .Setup(cUserUtils => cUserUtils.GetCurrentUserId())
+                .Returns(1);
 
             ReplyController replyController = new ReplyController(forumService);
 
 
-            //var identity = new Mock<IIdentity>();
-            //identity.SetupGet(i => i.IsAuthenticated).Returns(true);
-            //identity.SetupGet(i => i.Name).Returns("FakeUserName");
-
-            //var mockPrincipal = new Mock<ClaimsPrincipal>();
-            //mockPrincipal.Setup(x => x.Identity).Returns(identity.Object);
-           // var claims = new List<ClaimsIdentity>(){
-           //    new ClaimsIdentity ("sub", "1","user"),
-           //    new ClaimsIdentity("jti", "1","user"),
-           //  //  new Claim("NewClaim", "toto"),
-
-           //    new ClaimsIdentity("NameIdentifier", "1","user")
-           //};
-
-
-
-           // var contextMock = new Mock<HttpContext>();
-           // contextMock.Setup(x => x.User).Returns(new ClaimsPrincipal( claims));
-
-            replyController.ControllerContext.HttpContext = contextMock.Object;
-
-            //replyController.ControllerContext.HttpContext.User.Claims.Append(new Claim("NameIdentifier", "1"));
-            //replyController.ControllerContext.HttpContext.User.Claims.Append(new Claim("NameIdentifier", "1"));
-            //replyController.ControllerContext.HttpContext.User.Claims.Append(new Claim("NameIdentifier", "1"));
-           
-
             //Act = Action
-            IActionResult result = await replyController.UpdateReply(1, updateReply);
+            IActionResult result = await replyController.UpdateReply(1, updateReply, currentUserUtils);
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
             OkObjectResult oKresult = result as OkObjectResult;
@@ -329,22 +300,26 @@ namespace UnitTest
         /*****  [HttpPut()]   UpdateReply([FromRoute] int id, [FromBody] UpdateReplyRequestDTO updateReply)*****  ShouldBeNotFound   *****/
         public async void UpdateReplyShouldBeNotFound()
         {
-           
+
             var date = DateTime.Now;
 
             //Arrange = Organiser les données
             IForumService forumService = Mock.Of<IForumService>();
+            ICurrentUserUtils currentUserUtils = Mock.Of<ICurrentUserUtils>();
 
             UpdateReplyRequestDTO updateReply = new UpdateReplyRequestDTO()
             {
                 ReplyText = "",
-                ReplyId = 1,
                 IdUser = 1
             };
 
             Mock.Get(forumService)
                 .Setup(fService => fService.ModifyReplyAsync(It.IsAny<Reply>()))
                 .ReturnsAsync(null as Reply);
+         
+            Mock.Get(currentUserUtils)
+                .Setup(cUserUtils => cUserUtils.GetCurrentUserId())
+                .Returns(1);
 
             ReplyController replyController = new ReplyController(forumService);
 
@@ -352,12 +327,12 @@ namespace UnitTest
 
 
             //Act = Action
-            IActionResult result = await replyController.UpdateReply(1, updateReply);
+            IActionResult result = await replyController.UpdateReply(0, updateReply, currentUserUtils);
 
             //Assert =  Comparer les valeurs (attendues et réelles) (Expected, Actual)
-           
+
             Assert.NotNull(result as NotFoundResult);
-          
+
         }
 
 

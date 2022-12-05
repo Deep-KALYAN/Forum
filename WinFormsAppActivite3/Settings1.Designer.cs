@@ -25,7 +25,7 @@ namespace WinFormsAppActivite3 {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:5000/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://user36.2isa.org/api")] //("http://localhost:5000/api")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));

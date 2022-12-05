@@ -39,15 +39,14 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1ForumMain = new System.Windows.Forms.TableLayoutPanel();
             this.ftextBoxTopicNameReplies = new System.Windows.Forms.TextBox();
             this.ftextBox1RubNameTopics = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.ftableLayoutPanel2ForumRubric = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.rbutton5Galerie = new System.Windows.Forms.Button();
             this.rbutton2Adre = new System.Windows.Forms.Button();
             this.rbutton4EspaceD = new System.Windows.Forms.Button();
             this.rbutton1Dev = new System.Windows.Forms.Button();
             this.flabelRubriques = new System.Windows.Forms.Label();
             this.rbutton3Ques = new System.Windows.Forms.Button();
+            this.label1ForumRoles = new System.Windows.Forms.Label();
             this.ftableLayoutPanel3ForumTopic = new System.Windows.Forms.TableLayoutPanel();
             this.fdataGridView1Topics = new System.Windows.Forms.DataGridView();
             this.ftabControl1TopicCRUD = new System.Windows.Forms.TabControl();
@@ -133,6 +132,23 @@ namespace WinFormsAppActivite3
             this.utabPageUserRefresh = new System.Windows.Forms.TabPage();
             this.ubuttonRefresh = new System.Windows.Forms.Button();
             this.udataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.tabPageAccount = new System.Windows.Forms.TabPage();
+            this.AccountButtonRefresh = new System.Windows.Forms.Button();
+            this.AccountTextBoxId = new System.Windows.Forms.TextBox();
+            this.AccountLableId = new System.Windows.Forms.Label();
+            this.AccountTextBoxPassword = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxEmail = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxPhoneNo = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxLoginName = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxFirstName = new System.Windows.Forms.TextBox();
+            this.AccountTextBoxName = new System.Windows.Forms.TextBox();
+            this.AccountLablePassword = new System.Windows.Forms.Label();
+            this.AccountLableEmail = new System.Windows.Forms.Label();
+            this.AccountLablePhoneNo = new System.Windows.Forms.Label();
+            this.AccountLableLoginName = new System.Windows.Forms.Label();
+            this.AccountLableFirstName = new System.Windows.Forms.Label();
+            this.AccountLableName = new System.Windows.Forms.Label();
+            this.AccountButtonUpdate = new System.Windows.Forms.Button();
             this.fbuttonLogout = new System.Windows.Forms.Button();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.ftextBoxPassword = new System.Windows.Forms.TextBox();
@@ -179,6 +195,7 @@ namespace WinFormsAppActivite3
             this.utabPageUserDelete.SuspendLayout();
             this.utabPageUserRefresh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udataGridViewUsers)).BeginInit();
+            this.tabPageAccount.SuspendLayout();
             this.panelLogin.SuspendLayout();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelInMainHeading.SuspendLayout();
@@ -195,6 +212,7 @@ namespace WinFormsAppActivite3
             // 
             this.tabControlForumUsers.Controls.Add(this.ftabPageForum);
             this.tabControlForumUsers.Controls.Add(this.utabPageUser);
+            this.tabControlForumUsers.Controls.Add(this.tabPageAccount);
             this.tabControlForumUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlForumUsers.Location = new System.Drawing.Point(3, 63);
             this.tabControlForumUsers.Name = "tabControlForumUsers";
@@ -220,7 +238,6 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1ForumMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ftableLayoutPanel1ForumMain.Controls.Add(this.ftextBoxTopicNameReplies, 0, 3);
             this.ftableLayoutPanel1ForumMain.Controls.Add(this.ftextBox1RubNameTopics, 0, 1);
-            this.ftableLayoutPanel1ForumMain.Controls.Add(this.textBox1, 0, 5);
             this.ftableLayoutPanel1ForumMain.Controls.Add(this.ftableLayoutPanel2ForumRubric, 0, 0);
             this.ftableLayoutPanel1ForumMain.Controls.Add(this.ftableLayoutPanel3ForumTopic, 0, 2);
             this.ftableLayoutPanel1ForumMain.Controls.Add(this.ftableLayoutPanel4ForumReply, 0, 4);
@@ -233,14 +250,14 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1ForumMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.ftableLayoutPanel1ForumMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.ftableLayoutPanel1ForumMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.ftableLayoutPanel1ForumMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ftableLayoutPanel1ForumMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.ftableLayoutPanel1ForumMain.Size = new System.Drawing.Size(1376, 594);
             this.ftableLayoutPanel1ForumMain.TabIndex = 14;
             // 
             // ftextBoxTopicNameReplies
             // 
             this.ftextBoxTopicNameReplies.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ftextBoxTopicNameReplies.Location = new System.Drawing.Point(297, 291);
+            this.ftextBoxTopicNameReplies.Location = new System.Drawing.Point(297, 298);
             this.ftextBoxTopicNameReplies.Name = "ftextBoxTopicNameReplies";
             this.ftextBoxTopicNameReplies.ReadOnly = true;
             this.ftextBoxTopicNameReplies.Size = new System.Drawing.Size(782, 27);
@@ -255,14 +272,6 @@ namespace WinFormsAppActivite3
             this.ftextBox1RubNameTopics.Size = new System.Drawing.Size(596, 27);
             this.ftextBox1RubNameTopics.TabIndex = 13;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 576);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(115, 27);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "token";
-            // 
             // ftableLayoutPanel2ForumRubric
             // 
             this.ftableLayoutPanel2ForumRubric.ColumnCount = 8;
@@ -274,13 +283,13 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel2ForumRubric.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.ftableLayoutPanel2ForumRubric.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.ftableLayoutPanel2ForumRubric.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95F));
-            this.ftableLayoutPanel2ForumRubric.Controls.Add(this.textBox2, 7, 0);
             this.ftableLayoutPanel2ForumRubric.Controls.Add(this.rbutton5Galerie, 6, 0);
             this.ftableLayoutPanel2ForumRubric.Controls.Add(this.rbutton2Adre, 3, 0);
             this.ftableLayoutPanel2ForumRubric.Controls.Add(this.rbutton4EspaceD, 5, 0);
             this.ftableLayoutPanel2ForumRubric.Controls.Add(this.rbutton1Dev, 2, 0);
             this.ftableLayoutPanel2ForumRubric.Controls.Add(this.flabelRubriques, 0, 0);
             this.ftableLayoutPanel2ForumRubric.Controls.Add(this.rbutton3Ques, 4, 0);
+            this.ftableLayoutPanel2ForumRubric.Controls.Add(this.label1ForumRoles, 7, 0);
             this.ftableLayoutPanel2ForumRubric.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ftableLayoutPanel2ForumRubric.Location = new System.Drawing.Point(3, 3);
             this.ftableLayoutPanel2ForumRubric.Name = "ftableLayoutPanel2ForumRubric";
@@ -288,14 +297,6 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel2ForumRubric.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ftableLayoutPanel2ForumRubric.Size = new System.Drawing.Size(1370, 44);
             this.ftableLayoutPanel2ForumRubric.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(926, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(416, 27);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "roles public";
             // 
             // rbutton5Galerie
             // 
@@ -339,11 +340,12 @@ namespace WinFormsAppActivite3
             // 
             // flabelRubriques
             // 
+            this.flabelRubriques.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flabelRubriques.AutoSize = true;
-            this.flabelRubriques.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.flabelRubriques.Location = new System.Drawing.Point(3, 0);
+            this.flabelRubriques.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.flabelRubriques.Location = new System.Drawing.Point(25, 0);
             this.flabelRubriques.Name = "flabelRubriques";
-            this.flabelRubriques.Size = new System.Drawing.Size(118, 31);
+            this.flabelRubriques.Size = new System.Drawing.Size(100, 44);
             this.flabelRubriques.TabIndex = 2;
             this.flabelRubriques.Text = "Rubriques";
             // 
@@ -357,6 +359,16 @@ namespace WinFormsAppActivite3
             this.rbutton3Ques.UseVisualStyleBackColor = true;
             this.rbutton3Ques.Click += new System.EventHandler(this.rbutton3Ques_Click);
             // 
+            // label1ForumRoles
+            // 
+            this.label1ForumRoles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1ForumRoles.AutoSize = true;
+            this.label1ForumRoles.Location = new System.Drawing.Point(1318, 0);
+            this.label1ForumRoles.Name = "label1ForumRoles";
+            this.label1ForumRoles.Size = new System.Drawing.Size(49, 20);
+            this.label1ForumRoles.TabIndex = 12;
+            this.label1ForumRoles.Text = "Public";
+            // 
             // ftableLayoutPanel3ForumTopic
             // 
             this.ftableLayoutPanel3ForumTopic.ColumnCount = 2;
@@ -369,7 +381,7 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel3ForumTopic.Name = "ftableLayoutPanel3ForumTopic";
             this.ftableLayoutPanel3ForumTopic.RowCount = 1;
             this.ftableLayoutPanel3ForumTopic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ftableLayoutPanel3ForumTopic.Size = new System.Drawing.Size(1370, 202);
+            this.ftableLayoutPanel3ForumTopic.Size = new System.Drawing.Size(1370, 209);
             this.ftableLayoutPanel3ForumTopic.TabIndex = 1;
             // 
             // fdataGridView1Topics
@@ -377,6 +389,7 @@ namespace WinFormsAppActivite3
             this.fdataGridView1Topics.AllowUserToAddRows = false;
             this.fdataGridView1Topics.AllowUserToDeleteRows = false;
             this.fdataGridView1Topics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.fdataGridView1Topics.BackgroundColor = System.Drawing.SystemColors.Window;
             this.fdataGridView1Topics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info;
@@ -399,10 +412,11 @@ namespace WinFormsAppActivite3
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.fdataGridView1Topics.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.fdataGridView1Topics.RowHeadersVisible = false;
             this.fdataGridView1Topics.RowHeadersWidth = 51;
             this.fdataGridView1Topics.RowTemplate.Height = 29;
             this.fdataGridView1Topics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.fdataGridView1Topics.Size = new System.Drawing.Size(944, 196);
+            this.fdataGridView1Topics.Size = new System.Drawing.Size(944, 203);
             this.fdataGridView1Topics.TabIndex = 15;
             this.fdataGridView1Topics.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.fdataGridView1Topics_CellFormatting);
             // 
@@ -415,7 +429,7 @@ namespace WinFormsAppActivite3
             this.ftabControl1TopicCRUD.Location = new System.Drawing.Point(953, 3);
             this.ftabControl1TopicCRUD.Name = "ftabControl1TopicCRUD";
             this.ftabControl1TopicCRUD.SelectedIndex = 0;
-            this.ftabControl1TopicCRUD.Size = new System.Drawing.Size(414, 196);
+            this.ftabControl1TopicCRUD.Size = new System.Drawing.Size(414, 203);
             this.ftabControl1TopicCRUD.TabIndex = 17;
             // 
             // ftabPage1AddTopic
@@ -424,9 +438,9 @@ namespace WinFormsAppActivite3
             this.ftabPage1AddTopic.Location = new System.Drawing.Point(4, 29);
             this.ftabPage1AddTopic.Name = "ftabPage1AddTopic";
             this.ftabPage1AddTopic.Padding = new System.Windows.Forms.Padding(3);
-            this.ftabPage1AddTopic.Size = new System.Drawing.Size(406, 163);
+            this.ftabPage1AddTopic.Size = new System.Drawing.Size(406, 170);
             this.ftabPage1AddTopic.TabIndex = 0;
-            this.ftabPage1AddTopic.Text = "Add";
+            this.ftabPage1AddTopic.Text = "Ajouter";
             this.ftabPage1AddTopic.UseVisualStyleBackColor = true;
             // 
             // ftableLayoutPanel1TopicAdd
@@ -447,29 +461,30 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1TopicAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.ftableLayoutPanel1TopicAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ftableLayoutPanel1TopicAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ftableLayoutPanel1TopicAdd.Size = new System.Drawing.Size(400, 157);
+            this.ftableLayoutPanel1TopicAdd.Size = new System.Drawing.Size(400, 164);
             this.ftableLayoutPanel1TopicAdd.TabIndex = 0;
             // 
             // flabel2RubricId
             // 
             this.flabel2RubricId.AutoSize = true;
             this.flabel2RubricId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel2RubricId.Location = new System.Drawing.Point(3, 117);
+            this.flabel2RubricId.Location = new System.Drawing.Point(3, 123);
             this.flabel2RubricId.Name = "flabel2RubricId";
-            this.flabel2RubricId.Size = new System.Drawing.Size(94, 40);
+            this.flabel2RubricId.Size = new System.Drawing.Size(94, 41);
             this.flabel2RubricId.TabIndex = 4;
             this.flabel2RubricId.Text = "Rubric id";
             this.flabel2RubricId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.flabel2RubricId.Visible = false;
             // 
             // flabel2TopicText
             // 
             this.flabel2TopicText.AutoSize = true;
             this.flabel2TopicText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel2TopicText.Location = new System.Drawing.Point(3, 39);
+            this.flabel2TopicText.Location = new System.Drawing.Point(3, 41);
             this.flabel2TopicText.Name = "flabel2TopicText";
-            this.flabel2TopicText.Size = new System.Drawing.Size(94, 78);
+            this.flabel2TopicText.Size = new System.Drawing.Size(94, 82);
             this.flabel2TopicText.TabIndex = 3;
-            this.flabel2TopicText.Text = "Topic text";
+            this.flabel2TopicText.Text = "Texte";
             // 
             // ftextBox1TopicTitle
             // 
@@ -482,9 +497,9 @@ namespace WinFormsAppActivite3
             // frichTextBox1TopicText
             // 
             this.frichTextBox1TopicText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frichTextBox1TopicText.Location = new System.Drawing.Point(103, 42);
+            this.frichTextBox1TopicText.Location = new System.Drawing.Point(103, 44);
             this.frichTextBox1TopicText.Name = "frichTextBox1TopicText";
-            this.frichTextBox1TopicText.Size = new System.Drawing.Size(294, 72);
+            this.frichTextBox1TopicText.Size = new System.Drawing.Size(294, 76);
             this.frichTextBox1TopicText.TabIndex = 1;
             this.frichTextBox1TopicText.Text = "";
             // 
@@ -494,9 +509,9 @@ namespace WinFormsAppActivite3
             this.flabel1TopicTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flabel1TopicTitle.Location = new System.Drawing.Point(3, 0);
             this.flabel1TopicTitle.Name = "flabel1TopicTitle";
-            this.flabel1TopicTitle.Size = new System.Drawing.Size(94, 39);
+            this.flabel1TopicTitle.Size = new System.Drawing.Size(94, 41);
             this.flabel1TopicTitle.TabIndex = 2;
-            this.flabel1TopicTitle.Text = "Topic title";
+            this.flabel1TopicTitle.Text = "Titre";
             // 
             // ftableLayoutPanel1InAddTopic
             // 
@@ -507,11 +522,11 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1InAddTopic.Controls.Add(this.ftextBox2RubricId, 0, 0);
             this.ftableLayoutPanel1InAddTopic.Controls.Add(this.fbutton1TopicAdd, 2, 0);
             this.ftableLayoutPanel1InAddTopic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ftableLayoutPanel1InAddTopic.Location = new System.Drawing.Point(103, 120);
+            this.ftableLayoutPanel1InAddTopic.Location = new System.Drawing.Point(103, 126);
             this.ftableLayoutPanel1InAddTopic.Name = "ftableLayoutPanel1InAddTopic";
             this.ftableLayoutPanel1InAddTopic.RowCount = 1;
             this.ftableLayoutPanel1InAddTopic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ftableLayoutPanel1InAddTopic.Size = new System.Drawing.Size(294, 34);
+            this.ftableLayoutPanel1InAddTopic.Size = new System.Drawing.Size(294, 35);
             this.ftableLayoutPanel1InAddTopic.TabIndex = 4;
             // 
             // ftextBox2RubricId
@@ -522,6 +537,7 @@ namespace WinFormsAppActivite3
             this.ftextBox2RubricId.ReadOnly = true;
             this.ftextBox2RubricId.Size = new System.Drawing.Size(126, 27);
             this.ftextBox2RubricId.TabIndex = 0;
+            this.ftextBox2RubricId.Visible = false;
             // 
             // fbutton1TopicAdd
             // 
@@ -529,7 +545,7 @@ namespace WinFormsAppActivite3
             this.fbutton1TopicAdd.Name = "fbutton1TopicAdd";
             this.fbutton1TopicAdd.Size = new System.Drawing.Size(142, 28);
             this.fbutton1TopicAdd.TabIndex = 1;
-            this.fbutton1TopicAdd.Text = "Add";
+            this.fbutton1TopicAdd.Text = "Ajouter";
             this.fbutton1TopicAdd.UseVisualStyleBackColor = true;
             this.fbutton1TopicAdd.Click += new System.EventHandler(this.fbutton1TopicAdd_Click);
             // 
@@ -539,9 +555,9 @@ namespace WinFormsAppActivite3
             this.ftabPage2UpdateTopic.Location = new System.Drawing.Point(4, 29);
             this.ftabPage2UpdateTopic.Name = "ftabPage2UpdateTopic";
             this.ftabPage2UpdateTopic.Padding = new System.Windows.Forms.Padding(3);
-            this.ftabPage2UpdateTopic.Size = new System.Drawing.Size(406, 163);
+            this.ftabPage2UpdateTopic.Size = new System.Drawing.Size(406, 170);
             this.ftabPage2UpdateTopic.TabIndex = 1;
-            this.ftabPage2UpdateTopic.Text = "Update";
+            this.ftabPage2UpdateTopic.Text = "Modifier";
             this.ftabPage2UpdateTopic.UseVisualStyleBackColor = true;
             // 
             // ftableLayoutPanel1TopicUpdate
@@ -562,7 +578,7 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1TopicUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.ftableLayoutPanel1TopicUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ftableLayoutPanel1TopicUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.ftableLayoutPanel1TopicUpdate.Size = new System.Drawing.Size(400, 157);
+            this.ftableLayoutPanel1TopicUpdate.Size = new System.Drawing.Size(400, 164);
             this.ftableLayoutPanel1TopicUpdate.TabIndex = 1;
             // 
             // ftableLayoutPanel1InTopicUpdate
@@ -574,11 +590,11 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1InTopicUpdate.Controls.Add(this.fbutton2TopicUpdate, 2, 0);
             this.ftableLayoutPanel1InTopicUpdate.Controls.Add(this.ftextBox3UpdateTopicId, 0, 0);
             this.ftableLayoutPanel1InTopicUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ftableLayoutPanel1InTopicUpdate.Location = new System.Drawing.Point(103, 120);
+            this.ftableLayoutPanel1InTopicUpdate.Location = new System.Drawing.Point(103, 126);
             this.ftableLayoutPanel1InTopicUpdate.Name = "ftableLayoutPanel1InTopicUpdate";
             this.ftableLayoutPanel1InTopicUpdate.RowCount = 1;
             this.ftableLayoutPanel1InTopicUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ftableLayoutPanel1InTopicUpdate.Size = new System.Drawing.Size(294, 34);
+            this.ftableLayoutPanel1InTopicUpdate.Size = new System.Drawing.Size(294, 35);
             this.ftableLayoutPanel1InTopicUpdate.TabIndex = 8;
             // 
             // fbutton2TopicUpdate
@@ -587,7 +603,7 @@ namespace WinFormsAppActivite3
             this.fbutton2TopicUpdate.Name = "fbutton2TopicUpdate";
             this.fbutton2TopicUpdate.Size = new System.Drawing.Size(142, 28);
             this.fbutton2TopicUpdate.TabIndex = 0;
-            this.fbutton2TopicUpdate.Text = "Update";
+            this.fbutton2TopicUpdate.Text = "Modifier";
             this.fbutton2TopicUpdate.UseVisualStyleBackColor = true;
             this.fbutton2TopicUpdate.Click += new System.EventHandler(this.fbutton2TopicUpdate_Click);
             // 
@@ -599,16 +615,18 @@ namespace WinFormsAppActivite3
             this.ftextBox3UpdateTopicId.ReadOnly = true;
             this.ftextBox3UpdateTopicId.Size = new System.Drawing.Size(126, 27);
             this.ftextBox3UpdateTopicId.TabIndex = 0;
+            this.ftextBox3UpdateTopicId.Visible = false;
             // 
             // flabel6UpdateTopicId
             // 
             this.flabel6UpdateTopicId.AutoSize = true;
             this.flabel6UpdateTopicId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel6UpdateTopicId.Location = new System.Drawing.Point(3, 117);
+            this.flabel6UpdateTopicId.Location = new System.Drawing.Point(3, 123);
             this.flabel6UpdateTopicId.Name = "flabel6UpdateTopicId";
-            this.flabel6UpdateTopicId.Size = new System.Drawing.Size(94, 40);
+            this.flabel6UpdateTopicId.Size = new System.Drawing.Size(94, 41);
             this.flabel6UpdateTopicId.TabIndex = 5;
             this.flabel6UpdateTopicId.Text = "Topic id";
+            this.flabel6UpdateTopicId.Visible = false;
             // 
             // flabel4TopicUpdateTitle
             // 
@@ -616,19 +634,19 @@ namespace WinFormsAppActivite3
             this.flabel4TopicUpdateTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flabel4TopicUpdateTitle.Location = new System.Drawing.Point(3, 0);
             this.flabel4TopicUpdateTitle.Name = "flabel4TopicUpdateTitle";
-            this.flabel4TopicUpdateTitle.Size = new System.Drawing.Size(94, 39);
+            this.flabel4TopicUpdateTitle.Size = new System.Drawing.Size(94, 41);
             this.flabel4TopicUpdateTitle.TabIndex = 3;
-            this.flabel4TopicUpdateTitle.Text = "Title";
+            this.flabel4TopicUpdateTitle.Text = "Titre";
             // 
             // flabel5UpdateTopicText
             // 
             this.flabel5UpdateTopicText.AutoSize = true;
             this.flabel5UpdateTopicText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel5UpdateTopicText.Location = new System.Drawing.Point(3, 39);
+            this.flabel5UpdateTopicText.Location = new System.Drawing.Point(3, 41);
             this.flabel5UpdateTopicText.Name = "flabel5UpdateTopicText";
-            this.flabel5UpdateTopicText.Size = new System.Drawing.Size(94, 78);
+            this.flabel5UpdateTopicText.Size = new System.Drawing.Size(94, 82);
             this.flabel5UpdateTopicText.TabIndex = 4;
-            this.flabel5UpdateTopicText.Text = "text";
+            this.flabel5UpdateTopicText.Text = "Texte";
             // 
             // ftextBox4TopicUpdateTitle
             // 
@@ -641,9 +659,9 @@ namespace WinFormsAppActivite3
             // frichTextBox2UpdateTopicText
             // 
             this.frichTextBox2UpdateTopicText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frichTextBox2UpdateTopicText.Location = new System.Drawing.Point(103, 42);
+            this.frichTextBox2UpdateTopicText.Location = new System.Drawing.Point(103, 44);
             this.frichTextBox2UpdateTopicText.Name = "frichTextBox2UpdateTopicText";
-            this.frichTextBox2UpdateTopicText.Size = new System.Drawing.Size(294, 72);
+            this.frichTextBox2UpdateTopicText.Size = new System.Drawing.Size(294, 76);
             this.frichTextBox2UpdateTopicText.TabIndex = 7;
             this.frichTextBox2UpdateTopicText.Text = "";
             // 
@@ -653,20 +671,20 @@ namespace WinFormsAppActivite3
             this.ftabPage3DeleteTopic.Location = new System.Drawing.Point(4, 29);
             this.ftabPage3DeleteTopic.Name = "ftabPage3DeleteTopic";
             this.ftabPage3DeleteTopic.Padding = new System.Windows.Forms.Padding(3);
-            this.ftabPage3DeleteTopic.Size = new System.Drawing.Size(406, 163);
+            this.ftabPage3DeleteTopic.Size = new System.Drawing.Size(406, 170);
             this.ftabPage3DeleteTopic.TabIndex = 2;
-            this.ftabPage3DeleteTopic.Text = "Delete";
+            this.ftabPage3DeleteTopic.Text = "Supprimer";
             this.ftabPage3DeleteTopic.UseVisualStyleBackColor = true;
             // 
             // fbutton3TopicDelete
             // 
             this.fbutton3TopicDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.fbutton3TopicDelete.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.fbutton3TopicDelete.Location = new System.Drawing.Point(145, 70);
+            this.fbutton3TopicDelete.Location = new System.Drawing.Point(145, 74);
             this.fbutton3TopicDelete.Name = "fbutton3TopicDelete";
             this.fbutton3TopicDelete.Size = new System.Drawing.Size(94, 29);
             this.fbutton3TopicDelete.TabIndex = 0;
-            this.fbutton3TopicDelete.Text = "Delete";
+            this.fbutton3TopicDelete.Text = "Supprimer";
             this.fbutton3TopicDelete.UseVisualStyleBackColor = true;
             this.fbutton3TopicDelete.Click += new System.EventHandler(this.fbutton3TopicDelete_Click);
             // 
@@ -678,11 +696,11 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel4ForumReply.Controls.Add(this.ftabControl2ReplyCRUD, 1, 0);
             this.ftableLayoutPanel4ForumReply.Controls.Add(this.fdataGridView2Replies, 0, 0);
             this.ftableLayoutPanel4ForumReply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ftableLayoutPanel4ForumReply.Location = new System.Drawing.Point(3, 321);
+            this.ftableLayoutPanel4ForumReply.Location = new System.Drawing.Point(3, 328);
             this.ftableLayoutPanel4ForumReply.Name = "ftableLayoutPanel4ForumReply";
             this.ftableLayoutPanel4ForumReply.RowCount = 1;
             this.ftableLayoutPanel4ForumReply.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ftableLayoutPanel4ForumReply.Size = new System.Drawing.Size(1370, 249);
+            this.ftableLayoutPanel4ForumReply.Size = new System.Drawing.Size(1370, 257);
             this.ftableLayoutPanel4ForumReply.TabIndex = 2;
             // 
             // ftabControl2ReplyCRUD
@@ -694,7 +712,7 @@ namespace WinFormsAppActivite3
             this.ftabControl2ReplyCRUD.Location = new System.Drawing.Point(953, 3);
             this.ftabControl2ReplyCRUD.Name = "ftabControl2ReplyCRUD";
             this.ftabControl2ReplyCRUD.SelectedIndex = 0;
-            this.ftabControl2ReplyCRUD.Size = new System.Drawing.Size(414, 243);
+            this.ftabControl2ReplyCRUD.Size = new System.Drawing.Size(414, 251);
             this.ftabControl2ReplyCRUD.TabIndex = 18;
             // 
             // ftabPage4AddReply
@@ -703,9 +721,9 @@ namespace WinFormsAppActivite3
             this.ftabPage4AddReply.Location = new System.Drawing.Point(4, 29);
             this.ftabPage4AddReply.Name = "ftabPage4AddReply";
             this.ftabPage4AddReply.Padding = new System.Windows.Forms.Padding(3);
-            this.ftabPage4AddReply.Size = new System.Drawing.Size(406, 210);
+            this.ftabPage4AddReply.Size = new System.Drawing.Size(406, 218);
             this.ftabPage4AddReply.TabIndex = 0;
-            this.ftabPage4AddReply.Text = "Add";
+            this.ftabPage4AddReply.Text = "Ajouter";
             this.ftabPage4AddReply.UseVisualStyleBackColor = true;
             // 
             // ftableLayoutPanel1ReplyAdd
@@ -726,7 +744,7 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1ReplyAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.ftableLayoutPanel1ReplyAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.ftableLayoutPanel1ReplyAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.ftableLayoutPanel1ReplyAdd.Size = new System.Drawing.Size(400, 204);
+            this.ftableLayoutPanel1ReplyAdd.Size = new System.Drawing.Size(400, 212);
             this.ftableLayoutPanel1ReplyAdd.TabIndex = 2;
             // 
             // ftableLayoutPanel1InReplyAdd
@@ -738,31 +756,32 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1InReplyAdd.Controls.Add(this.ftextBox4ReplyTopicId, 0, 0);
             this.ftableLayoutPanel1InReplyAdd.Controls.Add(this.fbutton1ReplyAdd, 2, 0);
             this.ftableLayoutPanel1InReplyAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ftableLayoutPanel1InReplyAdd.Location = new System.Drawing.Point(103, 145);
+            this.ftableLayoutPanel1InReplyAdd.Location = new System.Drawing.Point(103, 150);
             this.ftableLayoutPanel1InReplyAdd.Name = "ftableLayoutPanel1InReplyAdd";
             this.ftableLayoutPanel1InReplyAdd.RowCount = 1;
             this.ftableLayoutPanel1InReplyAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ftableLayoutPanel1InReplyAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.ftableLayoutPanel1InReplyAdd.Size = new System.Drawing.Size(294, 56);
+            this.ftableLayoutPanel1InReplyAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.ftableLayoutPanel1InReplyAdd.Size = new System.Drawing.Size(294, 59);
             this.ftableLayoutPanel1InReplyAdd.TabIndex = 0;
             // 
             // ftextBox4ReplyTopicId
             // 
             this.ftextBox4ReplyTopicId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ftextBox4ReplyTopicId.Location = new System.Drawing.Point(3, 14);
+            this.ftextBox4ReplyTopicId.Location = new System.Drawing.Point(3, 16);
             this.ftextBox4ReplyTopicId.Name = "ftextBox4ReplyTopicId";
             this.ftextBox4ReplyTopicId.ReadOnly = true;
             this.ftextBox4ReplyTopicId.Size = new System.Drawing.Size(123, 27);
             this.ftextBox4ReplyTopicId.TabIndex = 0;
+            this.ftextBox4ReplyTopicId.Visible = false;
             // 
             // fbutton1ReplyAdd
             // 
             this.fbutton1ReplyAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.fbutton1ReplyAdd.Location = new System.Drawing.Point(149, 13);
+            this.fbutton1ReplyAdd.Location = new System.Drawing.Point(149, 15);
             this.fbutton1ReplyAdd.Name = "fbutton1ReplyAdd";
             this.fbutton1ReplyAdd.Size = new System.Drawing.Size(142, 29);
             this.fbutton1ReplyAdd.TabIndex = 1;
-            this.fbutton1ReplyAdd.Text = "Add";
+            this.fbutton1ReplyAdd.Text = "Ajouter";
             this.fbutton1ReplyAdd.UseVisualStyleBackColor = true;
             this.fbutton1ReplyAdd.Click += new System.EventHandler(this.fbutton1ReplyAdd_Click);
             // 
@@ -772,28 +791,29 @@ namespace WinFormsAppActivite3
             this.flabel1ReplyText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flabel1ReplyText.Location = new System.Drawing.Point(3, 0);
             this.flabel1ReplyText.Name = "flabel1ReplyText";
-            this.flabel1ReplyText.Size = new System.Drawing.Size(94, 81);
+            this.flabel1ReplyText.Size = new System.Drawing.Size(94, 84);
             this.flabel1ReplyText.TabIndex = 1;
-            this.flabel1ReplyText.Text = "Text";
+            this.flabel1ReplyText.Text = "Texte";
             // 
             // flabel3ReplyTopicId
             // 
             this.flabel3ReplyTopicId.AutoSize = true;
             this.flabel3ReplyTopicId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel3ReplyTopicId.Location = new System.Drawing.Point(3, 142);
+            this.flabel3ReplyTopicId.Location = new System.Drawing.Point(3, 147);
             this.flabel3ReplyTopicId.Name = "flabel3ReplyTopicId";
-            this.flabel3ReplyTopicId.Size = new System.Drawing.Size(94, 62);
+            this.flabel3ReplyTopicId.Size = new System.Drawing.Size(94, 65);
             this.flabel3ReplyTopicId.TabIndex = 3;
             this.flabel3ReplyTopicId.Text = "Topic id";
             this.flabel3ReplyTopicId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.flabel3ReplyTopicId.Visible = false;
             // 
             // flabel2ReplyParentId
             // 
             this.flabel2ReplyParentId.AutoSize = true;
             this.flabel2ReplyParentId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel2ReplyParentId.Location = new System.Drawing.Point(3, 81);
+            this.flabel2ReplyParentId.Location = new System.Drawing.Point(3, 84);
             this.flabel2ReplyParentId.Name = "flabel2ReplyParentId";
-            this.flabel2ReplyParentId.Size = new System.Drawing.Size(94, 61);
+            this.flabel2ReplyParentId.Size = new System.Drawing.Size(94, 63);
             this.flabel2ReplyParentId.TabIndex = 2;
             this.flabel2ReplyParentId.Text = "Parent id";
             // 
@@ -802,14 +822,14 @@ namespace WinFormsAppActivite3
             this.frichTextBox1ReplyAddText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frichTextBox1ReplyAddText.Location = new System.Drawing.Point(103, 3);
             this.frichTextBox1ReplyAddText.Name = "frichTextBox1ReplyAddText";
-            this.frichTextBox1ReplyAddText.Size = new System.Drawing.Size(294, 75);
+            this.frichTextBox1ReplyAddText.Size = new System.Drawing.Size(294, 78);
             this.frichTextBox1ReplyAddText.TabIndex = 4;
             this.frichTextBox1ReplyAddText.Text = "";
             // 
             // ftextBox3ReplyParentId
             // 
             this.ftextBox3ReplyParentId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ftextBox3ReplyParentId.Location = new System.Drawing.Point(103, 84);
+            this.ftextBox3ReplyParentId.Location = new System.Drawing.Point(103, 87);
             this.ftextBox3ReplyParentId.Name = "ftextBox3ReplyParentId";
             this.ftextBox3ReplyParentId.Size = new System.Drawing.Size(294, 27);
             this.ftextBox3ReplyParentId.TabIndex = 5;
@@ -821,9 +841,9 @@ namespace WinFormsAppActivite3
             this.ftabPage5UpdateTopic.Location = new System.Drawing.Point(4, 29);
             this.ftabPage5UpdateTopic.Name = "ftabPage5UpdateTopic";
             this.ftabPage5UpdateTopic.Padding = new System.Windows.Forms.Padding(3);
-            this.ftabPage5UpdateTopic.Size = new System.Drawing.Size(406, 210);
+            this.ftabPage5UpdateTopic.Size = new System.Drawing.Size(406, 218);
             this.ftabPage5UpdateTopic.TabIndex = 1;
-            this.ftabPage5UpdateTopic.Text = "Update";
+            this.ftabPage5UpdateTopic.Text = "Modifier";
             this.ftabPage5UpdateTopic.UseVisualStyleBackColor = true;
             // 
             // ftableLayoutPanel1ReplyUpdate
@@ -843,7 +863,7 @@ namespace WinFormsAppActivite3
             this.ftableLayoutPanel1ReplyUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.ftableLayoutPanel1ReplyUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.ftableLayoutPanel1ReplyUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.ftableLayoutPanel1ReplyUpdate.Size = new System.Drawing.Size(400, 204);
+            this.ftableLayoutPanel1ReplyUpdate.Size = new System.Drawing.Size(400, 212);
             this.ftableLayoutPanel1ReplyUpdate.TabIndex = 2;
             // 
             // flabel4ReplyText
@@ -852,45 +872,47 @@ namespace WinFormsAppActivite3
             this.flabel4ReplyText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flabel4ReplyText.Location = new System.Drawing.Point(3, 0);
             this.flabel4ReplyText.Name = "flabel4ReplyText";
-            this.flabel4ReplyText.Size = new System.Drawing.Size(114, 81);
+            this.flabel4ReplyText.Size = new System.Drawing.Size(114, 84);
             this.flabel4ReplyText.TabIndex = 2;
-            this.flabel4ReplyText.Text = "Text";
+            this.flabel4ReplyText.Text = "Texte";
             // 
             // flabel5ReplyId
             // 
             this.flabel5ReplyId.AutoSize = true;
             this.flabel5ReplyId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flabel5ReplyId.Location = new System.Drawing.Point(3, 81);
+            this.flabel5ReplyId.Location = new System.Drawing.Point(3, 84);
             this.flabel5ReplyId.Name = "flabel5ReplyId";
-            this.flabel5ReplyId.Size = new System.Drawing.Size(114, 61);
+            this.flabel5ReplyId.Size = new System.Drawing.Size(114, 63);
             this.flabel5ReplyId.TabIndex = 3;
             this.flabel5ReplyId.Text = "Reply id";
+            this.flabel5ReplyId.Visible = false;
             // 
             // frichTextBox2ReplyUpdateText
             // 
             this.frichTextBox2ReplyUpdateText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frichTextBox2ReplyUpdateText.Location = new System.Drawing.Point(123, 3);
             this.frichTextBox2ReplyUpdateText.Name = "frichTextBox2ReplyUpdateText";
-            this.frichTextBox2ReplyUpdateText.Size = new System.Drawing.Size(274, 75);
+            this.frichTextBox2ReplyUpdateText.Size = new System.Drawing.Size(274, 78);
             this.frichTextBox2ReplyUpdateText.TabIndex = 4;
             this.frichTextBox2ReplyUpdateText.Text = "";
             // 
             // ftextBox5ReplyId
             // 
             this.ftextBox5ReplyId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ftextBox5ReplyId.Location = new System.Drawing.Point(123, 84);
+            this.ftextBox5ReplyId.Location = new System.Drawing.Point(123, 87);
             this.ftextBox5ReplyId.Name = "ftextBox5ReplyId";
             this.ftextBox5ReplyId.ReadOnly = true;
             this.ftextBox5ReplyId.Size = new System.Drawing.Size(274, 27);
             this.ftextBox5ReplyId.TabIndex = 5;
+            this.ftextBox5ReplyId.Visible = false;
             // 
             // fbutton2ReplyUpdate
             // 
-            this.fbutton2ReplyUpdate.Location = new System.Drawing.Point(123, 145);
+            this.fbutton2ReplyUpdate.Location = new System.Drawing.Point(123, 150);
             this.fbutton2ReplyUpdate.Name = "fbutton2ReplyUpdate";
             this.fbutton2ReplyUpdate.Size = new System.Drawing.Size(137, 29);
             this.fbutton2ReplyUpdate.TabIndex = 6;
-            this.fbutton2ReplyUpdate.Text = "Update";
+            this.fbutton2ReplyUpdate.Text = "Modifier";
             this.fbutton2ReplyUpdate.UseVisualStyleBackColor = true;
             this.fbutton2ReplyUpdate.Click += new System.EventHandler(this.fbutton2ReplyUpdate_Click);
             // 
@@ -900,18 +922,18 @@ namespace WinFormsAppActivite3
             this.ftabPage6DeleteReply.Location = new System.Drawing.Point(4, 29);
             this.ftabPage6DeleteReply.Name = "ftabPage6DeleteReply";
             this.ftabPage6DeleteReply.Padding = new System.Windows.Forms.Padding(3);
-            this.ftabPage6DeleteReply.Size = new System.Drawing.Size(406, 210);
+            this.ftabPage6DeleteReply.Size = new System.Drawing.Size(406, 218);
             this.ftabPage6DeleteReply.TabIndex = 2;
-            this.ftabPage6DeleteReply.Text = "Delete";
+            this.ftabPage6DeleteReply.Text = "Supprimer";
             this.ftabPage6DeleteReply.UseVisualStyleBackColor = true;
             // 
             // fbutton3ReplyDelete
             // 
-            this.fbutton3ReplyDelete.Location = new System.Drawing.Point(156, 91);
+            this.fbutton3ReplyDelete.Location = new System.Drawing.Point(145, 91);
             this.fbutton3ReplyDelete.Name = "fbutton3ReplyDelete";
             this.fbutton3ReplyDelete.Size = new System.Drawing.Size(94, 29);
             this.fbutton3ReplyDelete.TabIndex = 2;
-            this.fbutton3ReplyDelete.Text = "Delete";
+            this.fbutton3ReplyDelete.Text = "Supprimer";
             this.fbutton3ReplyDelete.UseVisualStyleBackColor = true;
             this.fbutton3ReplyDelete.Click += new System.EventHandler(this.fbutton3ReplyDelete_Click);
             // 
@@ -920,16 +942,18 @@ namespace WinFormsAppActivite3
             this.fdataGridView2Replies.AllowUserToAddRows = false;
             this.fdataGridView2Replies.AllowUserToDeleteRows = false;
             this.fdataGridView2Replies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.fdataGridView2Replies.BackgroundColor = System.Drawing.SystemColors.Window;
             this.fdataGridView2Replies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fdataGridView2Replies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fdataGridView2Replies.Location = new System.Drawing.Point(3, 3);
             this.fdataGridView2Replies.MultiSelect = false;
             this.fdataGridView2Replies.Name = "fdataGridView2Replies";
             this.fdataGridView2Replies.ReadOnly = true;
+            this.fdataGridView2Replies.RowHeadersVisible = false;
             this.fdataGridView2Replies.RowHeadersWidth = 51;
             this.fdataGridView2Replies.RowTemplate.Height = 29;
             this.fdataGridView2Replies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.fdataGridView2Replies.Size = new System.Drawing.Size(944, 243);
+            this.fdataGridView2Replies.Size = new System.Drawing.Size(944, 251);
             this.fdataGridView2Replies.TabIndex = 16;
             this.fdataGridView2Replies.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.fdataGridView2Replies_CellFormatting);
             // 
@@ -941,7 +965,7 @@ namespace WinFormsAppActivite3
             this.utabPageUser.Padding = new System.Windows.Forms.Padding(3);
             this.utabPageUser.Size = new System.Drawing.Size(1382, 600);
             this.utabPageUser.TabIndex = 1;
-            this.utabPageUser.Text = "Users";
+            this.utabPageUser.Text = "Utilisateurs";
             this.utabPageUser.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelUser
@@ -970,7 +994,7 @@ namespace WinFormsAppActivite3
             this.tabControlUserAddDelUpdate.Location = new System.Drawing.Point(3, 129);
             this.tabControlUserAddDelUpdate.Name = "tabControlUserAddDelUpdate";
             this.tabControlUserAddDelUpdate.SelectedIndex = 0;
-            this.tabControlUserAddDelUpdate.Size = new System.Drawing.Size(451, 462);
+            this.tabControlUserAddDelUpdate.Size = new System.Drawing.Size(476, 462);
             this.tabControlUserAddDelUpdate.TabIndex = 1;
             // 
             // utabPageUserAdd
@@ -991,14 +1015,14 @@ namespace WinFormsAppActivite3
             this.utabPageUserAdd.Location = new System.Drawing.Point(4, 29);
             this.utabPageUserAdd.Name = "utabPageUserAdd";
             this.utabPageUserAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.utabPageUserAdd.Size = new System.Drawing.Size(443, 429);
+            this.utabPageUserAdd.Size = new System.Drawing.Size(468, 429);
             this.utabPageUserAdd.TabIndex = 0;
-            this.utabPageUserAdd.Text = "Add";
+            this.utabPageUserAdd.Text = "Ajouter";
             this.utabPageUserAdd.UseVisualStyleBackColor = true;
             // 
             // utextBox6Password
             // 
-            this.utextBox6Password.Location = new System.Drawing.Point(145, 286);
+            this.utextBox6Password.Location = new System.Drawing.Point(199, 286);
             this.utextBox6Password.Name = "utextBox6Password";
             this.utextBox6Password.Size = new System.Drawing.Size(238, 27);
             this.utextBox6Password.TabIndex = 12;
@@ -1006,35 +1030,35 @@ namespace WinFormsAppActivite3
             // 
             // utextBox5EMail
             // 
-            this.utextBox5EMail.Location = new System.Drawing.Point(145, 240);
+            this.utextBox5EMail.Location = new System.Drawing.Point(199, 240);
             this.utextBox5EMail.Name = "utextBox5EMail";
             this.utextBox5EMail.Size = new System.Drawing.Size(238, 27);
             this.utextBox5EMail.TabIndex = 11;
             // 
             // utextBox4PhNo
             // 
-            this.utextBox4PhNo.Location = new System.Drawing.Point(145, 190);
+            this.utextBox4PhNo.Location = new System.Drawing.Point(199, 190);
             this.utextBox4PhNo.Name = "utextBox4PhNo";
             this.utextBox4PhNo.Size = new System.Drawing.Size(238, 27);
             this.utextBox4PhNo.TabIndex = 10;
             // 
             // utextBox3LoginName
             // 
-            this.utextBox3LoginName.Location = new System.Drawing.Point(145, 140);
+            this.utextBox3LoginName.Location = new System.Drawing.Point(199, 140);
             this.utextBox3LoginName.Name = "utextBox3LoginName";
             this.utextBox3LoginName.Size = new System.Drawing.Size(238, 27);
             this.utextBox3LoginName.TabIndex = 9;
             // 
             // utextBox2FirstName
             // 
-            this.utextBox2FirstName.Location = new System.Drawing.Point(145, 92);
+            this.utextBox2FirstName.Location = new System.Drawing.Point(199, 92);
             this.utextBox2FirstName.Name = "utextBox2FirstName";
             this.utextBox2FirstName.Size = new System.Drawing.Size(238, 27);
             this.utextBox2FirstName.TabIndex = 8;
             // 
             // utextBox1Name
             // 
-            this.utextBox1Name.Location = new System.Drawing.Point(145, 40);
+            this.utextBox1Name.Location = new System.Drawing.Point(199, 40);
             this.utextBox1Name.Name = "utextBox1Name";
             this.utextBox1Name.Size = new System.Drawing.Size(238, 27);
             this.utextBox1Name.TabIndex = 7;
@@ -1044,9 +1068,9 @@ namespace WinFormsAppActivite3
             this.ulabel6Password.AutoSize = true;
             this.ulabel6Password.Location = new System.Drawing.Point(47, 289);
             this.ulabel6Password.Name = "ulabel6Password";
-            this.ulabel6Password.Size = new System.Drawing.Size(70, 20);
+            this.ulabel6Password.Size = new System.Drawing.Size(98, 20);
             this.ulabel6Password.TabIndex = 6;
-            this.ulabel6Password.Text = "Password";
+            this.ulabel6Password.Text = "Mot de passe";
             // 
             // ulabel5EMail
             // 
@@ -1062,45 +1086,45 @@ namespace WinFormsAppActivite3
             this.ulabel4PhNo.AutoSize = true;
             this.ulabel4PhNo.Location = new System.Drawing.Point(47, 193);
             this.ulabel4PhNo.Name = "ulabel4PhNo";
-            this.ulabel4PhNo.Size = new System.Drawing.Size(71, 20);
+            this.ulabel4PhNo.Size = new System.Drawing.Size(78, 20);
             this.ulabel4PhNo.TabIndex = 4;
-            this.ulabel4PhNo.Text = "Phone no";
+            this.ulabel4PhNo.Text = "Téléphone";
             // 
             // ulabel3LoginName
             // 
             this.ulabel3LoginName.AutoSize = true;
             this.ulabel3LoginName.Location = new System.Drawing.Point(47, 140);
             this.ulabel3LoginName.Name = "ulabel3LoginName";
-            this.ulabel3LoginName.Size = new System.Drawing.Size(87, 20);
+            this.ulabel3LoginName.Size = new System.Drawing.Size(135, 20);
             this.ulabel3LoginName.TabIndex = 3;
-            this.ulabel3LoginName.Text = "Login name";
+            this.ulabel3LoginName.Text = "Nom de connexion";
             // 
             // ulabel2FirstName
             // 
             this.ulabel2FirstName.AutoSize = true;
             this.ulabel2FirstName.Location = new System.Drawing.Point(47, 92);
             this.ulabel2FirstName.Name = "ulabel2FirstName";
-            this.ulabel2FirstName.Size = new System.Drawing.Size(77, 20);
+            this.ulabel2FirstName.Size = new System.Drawing.Size(60, 20);
             this.ulabel2FirstName.TabIndex = 2;
-            this.ulabel2FirstName.Text = "First name";
+            this.ulabel2FirstName.Text = "Prénom";
             // 
             // ulabel1Name
             // 
             this.ulabel1Name.AutoSize = true;
             this.ulabel1Name.Location = new System.Drawing.Point(47, 43);
             this.ulabel1Name.Name = "ulabel1Name";
-            this.ulabel1Name.Size = new System.Drawing.Size(49, 20);
+            this.ulabel1Name.Size = new System.Drawing.Size(42, 20);
             this.ulabel1Name.TabIndex = 1;
-            this.ulabel1Name.Text = "Name";
+            this.ulabel1Name.Text = "Nom";
             // 
             // ubuttonAdd
             // 
             this.ubuttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubuttonAdd.Location = new System.Drawing.Point(289, 363);
+            this.ubuttonAdd.Location = new System.Drawing.Point(314, 363);
             this.ubuttonAdd.Name = "ubuttonAdd";
             this.ubuttonAdd.Size = new System.Drawing.Size(94, 29);
             this.ubuttonAdd.TabIndex = 0;
-            this.ubuttonAdd.Text = "Add";
+            this.ubuttonAdd.Text = "Ajouter";
             this.ubuttonAdd.UseVisualStyleBackColor = true;
             this.ubuttonAdd.Click += new System.EventHandler(this.ubuttonAdd_Click);
             // 
@@ -1124,18 +1148,19 @@ namespace WinFormsAppActivite3
             this.utabPageUserUpdate.Location = new System.Drawing.Point(4, 29);
             this.utabPageUserUpdate.Name = "utabPageUserUpdate";
             this.utabPageUserUpdate.Padding = new System.Windows.Forms.Padding(3);
-            this.utabPageUserUpdate.Size = new System.Drawing.Size(443, 429);
+            this.utabPageUserUpdate.Size = new System.Drawing.Size(468, 429);
             this.utabPageUserUpdate.TabIndex = 1;
-            this.utabPageUserUpdate.Text = "Update";
+            this.utabPageUserUpdate.Text = "Modifier";
             this.utabPageUserUpdate.UseVisualStyleBackColor = true;
             // 
             // utextBox7updateId
             // 
-            this.utextBox7updateId.Location = new System.Drawing.Point(149, 58);
+            this.utextBox7updateId.Location = new System.Drawing.Point(189, 57);
             this.utextBox7updateId.Name = "utextBox7updateId";
             this.utextBox7updateId.ReadOnly = true;
             this.utextBox7updateId.Size = new System.Drawing.Size(70, 27);
             this.utextBox7updateId.TabIndex = 27;
+            this.utextBox7updateId.Visible = false;
             // 
             // ulabel7updateId
             // 
@@ -1145,10 +1170,11 @@ namespace WinFormsAppActivite3
             this.ulabel7updateId.Size = new System.Drawing.Size(22, 20);
             this.ulabel7updateId.TabIndex = 26;
             this.ulabel7updateId.Text = "Id";
+            this.ulabel7updateId.Visible = false;
             // 
             // utextBox1updatePassword
             // 
-            this.utextBox1updatePassword.Location = new System.Drawing.Point(149, 363);
+            this.utextBox1updatePassword.Location = new System.Drawing.Point(189, 362);
             this.utextBox1updatePassword.Name = "utextBox1updatePassword";
             this.utextBox1updatePassword.Size = new System.Drawing.Size(238, 27);
             this.utextBox1updatePassword.TabIndex = 25;
@@ -1156,35 +1182,35 @@ namespace WinFormsAppActivite3
             // 
             // utextBox2updateEmail
             // 
-            this.utextBox2updateEmail.Location = new System.Drawing.Point(149, 317);
+            this.utextBox2updateEmail.Location = new System.Drawing.Point(189, 316);
             this.utextBox2updateEmail.Name = "utextBox2updateEmail";
             this.utextBox2updateEmail.Size = new System.Drawing.Size(238, 27);
             this.utextBox2updateEmail.TabIndex = 24;
             // 
             // utextBox3updatePhoneNo
             // 
-            this.utextBox3updatePhoneNo.Location = new System.Drawing.Point(149, 267);
+            this.utextBox3updatePhoneNo.Location = new System.Drawing.Point(189, 266);
             this.utextBox3updatePhoneNo.Name = "utextBox3updatePhoneNo";
             this.utextBox3updatePhoneNo.Size = new System.Drawing.Size(238, 27);
             this.utextBox3updatePhoneNo.TabIndex = 23;
             // 
             // utextBox4updateLoginName
             // 
-            this.utextBox4updateLoginName.Location = new System.Drawing.Point(149, 217);
+            this.utextBox4updateLoginName.Location = new System.Drawing.Point(189, 216);
             this.utextBox4updateLoginName.Name = "utextBox4updateLoginName";
             this.utextBox4updateLoginName.Size = new System.Drawing.Size(238, 27);
             this.utextBox4updateLoginName.TabIndex = 22;
             // 
             // utextBox5updateFirstName
             // 
-            this.utextBox5updateFirstName.Location = new System.Drawing.Point(149, 169);
+            this.utextBox5updateFirstName.Location = new System.Drawing.Point(189, 168);
             this.utextBox5updateFirstName.Name = "utextBox5updateFirstName";
             this.utextBox5updateFirstName.Size = new System.Drawing.Size(238, 27);
             this.utextBox5updateFirstName.TabIndex = 21;
             // 
             // utextBox6updateName
             // 
-            this.utextBox6updateName.Location = new System.Drawing.Point(149, 117);
+            this.utextBox6updateName.Location = new System.Drawing.Point(189, 116);
             this.utextBox6updateName.Name = "utextBox6updateName";
             this.utextBox6updateName.Size = new System.Drawing.Size(238, 27);
             this.utextBox6updateName.TabIndex = 20;
@@ -1194,9 +1220,9 @@ namespace WinFormsAppActivite3
             this.ulabel1updatePassword.AutoSize = true;
             this.ulabel1updatePassword.Location = new System.Drawing.Point(51, 366);
             this.ulabel1updatePassword.Name = "ulabel1updatePassword";
-            this.ulabel1updatePassword.Size = new System.Drawing.Size(70, 20);
+            this.ulabel1updatePassword.Size = new System.Drawing.Size(98, 20);
             this.ulabel1updatePassword.TabIndex = 19;
-            this.ulabel1updatePassword.Text = "Password";
+            this.ulabel1updatePassword.Text = "Mot de passe";
             // 
             // ulabel2updateEmail
             // 
@@ -1212,45 +1238,45 @@ namespace WinFormsAppActivite3
             this.ulabel3updatePhoneNo.AutoSize = true;
             this.ulabel3updatePhoneNo.Location = new System.Drawing.Point(51, 270);
             this.ulabel3updatePhoneNo.Name = "ulabel3updatePhoneNo";
-            this.ulabel3updatePhoneNo.Size = new System.Drawing.Size(71, 20);
+            this.ulabel3updatePhoneNo.Size = new System.Drawing.Size(78, 20);
             this.ulabel3updatePhoneNo.TabIndex = 17;
-            this.ulabel3updatePhoneNo.Text = "Phone no";
+            this.ulabel3updatePhoneNo.Text = "Téléphone";
             // 
             // ulabel4updateLoginName
             // 
             this.ulabel4updateLoginName.AutoSize = true;
-            this.ulabel4updateLoginName.Location = new System.Drawing.Point(51, 217);
+            this.ulabel4updateLoginName.Location = new System.Drawing.Point(51, 219);
             this.ulabel4updateLoginName.Name = "ulabel4updateLoginName";
-            this.ulabel4updateLoginName.Size = new System.Drawing.Size(87, 20);
+            this.ulabel4updateLoginName.Size = new System.Drawing.Size(135, 20);
             this.ulabel4updateLoginName.TabIndex = 16;
-            this.ulabel4updateLoginName.Text = "Login name";
+            this.ulabel4updateLoginName.Text = "Nom de connexion";
             // 
             // ulabel5updateFirstName
             // 
             this.ulabel5updateFirstName.AutoSize = true;
             this.ulabel5updateFirstName.Location = new System.Drawing.Point(51, 169);
             this.ulabel5updateFirstName.Name = "ulabel5updateFirstName";
-            this.ulabel5updateFirstName.Size = new System.Drawing.Size(77, 20);
+            this.ulabel5updateFirstName.Size = new System.Drawing.Size(60, 20);
             this.ulabel5updateFirstName.TabIndex = 15;
-            this.ulabel5updateFirstName.Text = "First name";
+            this.ulabel5updateFirstName.Text = "Prénom";
             // 
             // ulabel6updateName
             // 
             this.ulabel6updateName.AutoSize = true;
             this.ulabel6updateName.Location = new System.Drawing.Point(51, 120);
             this.ulabel6updateName.Name = "ulabel6updateName";
-            this.ulabel6updateName.Size = new System.Drawing.Size(49, 20);
+            this.ulabel6updateName.Size = new System.Drawing.Size(42, 20);
             this.ulabel6updateName.TabIndex = 14;
-            this.ulabel6updateName.Text = "Name";
+            this.ulabel6updateName.Text = "Nom";
             // 
             // ubuttonUpdate
             // 
             this.ubuttonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ubuttonUpdate.Location = new System.Drawing.Point(293, 58);
+            this.ubuttonUpdate.Location = new System.Drawing.Point(358, 57);
             this.ubuttonUpdate.Name = "ubuttonUpdate";
             this.ubuttonUpdate.Size = new System.Drawing.Size(94, 29);
             this.ubuttonUpdate.TabIndex = 13;
-            this.ubuttonUpdate.Text = "Update";
+            this.ubuttonUpdate.Text = "Modifier";
             this.ubuttonUpdate.UseVisualStyleBackColor = true;
             this.ubuttonUpdate.Click += new System.EventHandler(this.ubuttonUpdate_Click);
             // 
@@ -1260,9 +1286,9 @@ namespace WinFormsAppActivite3
             this.utabPageUserDelete.Location = new System.Drawing.Point(4, 29);
             this.utabPageUserDelete.Name = "utabPageUserDelete";
             this.utabPageUserDelete.Padding = new System.Windows.Forms.Padding(3);
-            this.utabPageUserDelete.Size = new System.Drawing.Size(443, 429);
+            this.utabPageUserDelete.Size = new System.Drawing.Size(468, 429);
             this.utabPageUserDelete.TabIndex = 2;
-            this.utabPageUserDelete.Text = "Delete";
+            this.utabPageUserDelete.Text = "Supprimer";
             this.utabPageUserDelete.UseVisualStyleBackColor = true;
             // 
             // ubuttonDelete
@@ -1272,9 +1298,9 @@ namespace WinFormsAppActivite3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ubuttonDelete.Location = new System.Drawing.Point(173, 198);
             this.ubuttonDelete.Name = "ubuttonDelete";
-            this.ubuttonDelete.Size = new System.Drawing.Size(94, 29);
+            this.ubuttonDelete.Size = new System.Drawing.Size(119, 29);
             this.ubuttonDelete.TabIndex = 0;
-            this.ubuttonDelete.Text = "Delete";
+            this.ubuttonDelete.Text = "Supprimer";
             this.ubuttonDelete.UseVisualStyleBackColor = true;
             this.ubuttonDelete.Click += new System.EventHandler(this.ubuttonDelete_Click);
             // 
@@ -1284,9 +1310,9 @@ namespace WinFormsAppActivite3
             this.utabPageUserRefresh.Location = new System.Drawing.Point(4, 29);
             this.utabPageUserRefresh.Name = "utabPageUserRefresh";
             this.utabPageUserRefresh.Padding = new System.Windows.Forms.Padding(3);
-            this.utabPageUserRefresh.Size = new System.Drawing.Size(443, 429);
+            this.utabPageUserRefresh.Size = new System.Drawing.Size(468, 429);
             this.utabPageUserRefresh.TabIndex = 3;
-            this.utabPageUserRefresh.Text = "Refresh";
+            this.utabPageUserRefresh.Text = "Actualiser";
             this.utabPageUserRefresh.UseVisualStyleBackColor = true;
             // 
             // ubuttonRefresh
@@ -1296,9 +1322,9 @@ namespace WinFormsAppActivite3
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ubuttonRefresh.Location = new System.Drawing.Point(145, 168);
             this.ubuttonRefresh.Name = "ubuttonRefresh";
-            this.ubuttonRefresh.Size = new System.Drawing.Size(130, 43);
+            this.ubuttonRefresh.Size = new System.Drawing.Size(155, 43);
             this.ubuttonRefresh.TabIndex = 0;
-            this.ubuttonRefresh.Text = "Refresh";
+            this.ubuttonRefresh.Text = "Actualiser";
             this.ubuttonRefresh.UseVisualStyleBackColor = true;
             this.ubuttonRefresh.Click += new System.EventHandler(this.ubuttonRefresh_Click);
             // 
@@ -1307,26 +1333,193 @@ namespace WinFormsAppActivite3
             this.udataGridViewUsers.AllowUserToAddRows = false;
             this.udataGridViewUsers.AllowUserToDeleteRows = false;
             this.udataGridViewUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.udataGridViewUsers.BackgroundColor = System.Drawing.SystemColors.Window;
             this.udataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.udataGridViewUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.udataGridViewUsers.Location = new System.Drawing.Point(503, 3);
             this.udataGridViewUsers.MultiSelect = false;
             this.udataGridViewUsers.Name = "udataGridViewUsers";
             this.udataGridViewUsers.ReadOnly = true;
+            this.udataGridViewUsers.RowHeadersVisible = false;
             this.udataGridViewUsers.RowHeadersWidth = 51;
             this.udataGridViewUsers.RowTemplate.Height = 29;
             this.udataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.udataGridViewUsers.Size = new System.Drawing.Size(870, 588);
             this.udataGridViewUsers.TabIndex = 0;
+            this.udataGridViewUsers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.udataGridViewUsers_CellFormatting);
+            // 
+            // tabPageAccount
+            // 
+            this.tabPageAccount.Controls.Add(this.AccountButtonRefresh);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxId);
+            this.tabPageAccount.Controls.Add(this.AccountLableId);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxPassword);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxEmail);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxPhoneNo);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxLoginName);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxFirstName);
+            this.tabPageAccount.Controls.Add(this.AccountTextBoxName);
+            this.tabPageAccount.Controls.Add(this.AccountLablePassword);
+            this.tabPageAccount.Controls.Add(this.AccountLableEmail);
+            this.tabPageAccount.Controls.Add(this.AccountLablePhoneNo);
+            this.tabPageAccount.Controls.Add(this.AccountLableLoginName);
+            this.tabPageAccount.Controls.Add(this.AccountLableFirstName);
+            this.tabPageAccount.Controls.Add(this.AccountLableName);
+            this.tabPageAccount.Controls.Add(this.AccountButtonUpdate);
+            this.tabPageAccount.Location = new System.Drawing.Point(4, 29);
+            this.tabPageAccount.Name = "tabPageAccount";
+            this.tabPageAccount.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAccount.Size = new System.Drawing.Size(1382, 600);
+            this.tabPageAccount.TabIndex = 2;
+            this.tabPageAccount.Text = "Compte";
+            this.tabPageAccount.UseVisualStyleBackColor = true;
+            // 
+            // AccountButtonRefresh
+            // 
+            this.AccountButtonRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountButtonRefresh.Location = new System.Drawing.Point(1238, 30);
+            this.AccountButtonRefresh.Name = "AccountButtonRefresh";
+            this.AccountButtonRefresh.Size = new System.Drawing.Size(94, 29);
+            this.AccountButtonRefresh.TabIndex = 43;
+            this.AccountButtonRefresh.Text = "Actualiser";
+            this.AccountButtonRefresh.UseVisualStyleBackColor = true;
+            this.AccountButtonRefresh.Click += new System.EventHandler(this.AccountButtonRefresh_Click);
+            // 
+            // AccountTextBoxId
+            // 
+            this.AccountTextBoxId.Location = new System.Drawing.Point(711, 133);
+            this.AccountTextBoxId.Name = "AccountTextBoxId";
+            this.AccountTextBoxId.ReadOnly = true;
+            this.AccountTextBoxId.Size = new System.Drawing.Size(70, 27);
+            this.AccountTextBoxId.TabIndex = 42;
+            this.AccountTextBoxId.Visible = false;
+            // 
+            // AccountLableId
+            // 
+            this.AccountLableId.AutoSize = true;
+            this.AccountLableId.Location = new System.Drawing.Point(523, 137);
+            this.AccountLableId.Name = "AccountLableId";
+            this.AccountLableId.Size = new System.Drawing.Size(22, 20);
+            this.AccountLableId.TabIndex = 41;
+            this.AccountLableId.Text = "Id";
+            this.AccountLableId.Visible = false;
+            // 
+            // AccountTextBoxPassword
+            // 
+            this.AccountTextBoxPassword.Location = new System.Drawing.Point(711, 438);
+            this.AccountTextBoxPassword.Name = "AccountTextBoxPassword";
+            this.AccountTextBoxPassword.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxPassword.TabIndex = 40;
+            this.AccountTextBoxPassword.Text = "password";
+            // 
+            // AccountTextBoxEmail
+            // 
+            this.AccountTextBoxEmail.Location = new System.Drawing.Point(711, 392);
+            this.AccountTextBoxEmail.Name = "AccountTextBoxEmail";
+            this.AccountTextBoxEmail.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxEmail.TabIndex = 39;
+            // 
+            // AccountTextBoxPhoneNo
+            // 
+            this.AccountTextBoxPhoneNo.Location = new System.Drawing.Point(711, 342);
+            this.AccountTextBoxPhoneNo.Name = "AccountTextBoxPhoneNo";
+            this.AccountTextBoxPhoneNo.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxPhoneNo.TabIndex = 38;
+            // 
+            // AccountTextBoxLoginName
+            // 
+            this.AccountTextBoxLoginName.Location = new System.Drawing.Point(711, 292);
+            this.AccountTextBoxLoginName.Name = "AccountTextBoxLoginName";
+            this.AccountTextBoxLoginName.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxLoginName.TabIndex = 37;
+            // 
+            // AccountTextBoxFirstName
+            // 
+            this.AccountTextBoxFirstName.Location = new System.Drawing.Point(711, 244);
+            this.AccountTextBoxFirstName.Name = "AccountTextBoxFirstName";
+            this.AccountTextBoxFirstName.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxFirstName.TabIndex = 36;
+            // 
+            // AccountTextBoxName
+            // 
+            this.AccountTextBoxName.Location = new System.Drawing.Point(711, 192);
+            this.AccountTextBoxName.Name = "AccountTextBoxName";
+            this.AccountTextBoxName.Size = new System.Drawing.Size(238, 27);
+            this.AccountTextBoxName.TabIndex = 35;
+            // 
+            // AccountLablePassword
+            // 
+            this.AccountLablePassword.AutoSize = true;
+            this.AccountLablePassword.Location = new System.Drawing.Point(523, 442);
+            this.AccountLablePassword.Name = "AccountLablePassword";
+            this.AccountLablePassword.Size = new System.Drawing.Size(98, 20);
+            this.AccountLablePassword.TabIndex = 34;
+            this.AccountLablePassword.Text = "Mot de passe";
+            // 
+            // AccountLableEmail
+            // 
+            this.AccountLableEmail.AutoSize = true;
+            this.AccountLableEmail.Location = new System.Drawing.Point(523, 396);
+            this.AccountLableEmail.Name = "AccountLableEmail";
+            this.AccountLableEmail.Size = new System.Drawing.Size(46, 20);
+            this.AccountLableEmail.TabIndex = 33;
+            this.AccountLableEmail.Text = "Email";
+            // 
+            // AccountLablePhoneNo
+            // 
+            this.AccountLablePhoneNo.AutoSize = true;
+            this.AccountLablePhoneNo.Location = new System.Drawing.Point(523, 346);
+            this.AccountLablePhoneNo.Name = "AccountLablePhoneNo";
+            this.AccountLablePhoneNo.Size = new System.Drawing.Size(78, 20);
+            this.AccountLablePhoneNo.TabIndex = 32;
+            this.AccountLablePhoneNo.Text = "Téléphone";
+            // 
+            // AccountLableLoginName
+            // 
+            this.AccountLableLoginName.AutoSize = true;
+            this.AccountLableLoginName.Location = new System.Drawing.Point(523, 293);
+            this.AccountLableLoginName.Name = "AccountLableLoginName";
+            this.AccountLableLoginName.Size = new System.Drawing.Size(135, 20);
+            this.AccountLableLoginName.TabIndex = 31;
+            this.AccountLableLoginName.Text = "Nom de connexion";
+            // 
+            // AccountLableFirstName
+            // 
+            this.AccountLableFirstName.AutoSize = true;
+            this.AccountLableFirstName.Location = new System.Drawing.Point(523, 245);
+            this.AccountLableFirstName.Name = "AccountLableFirstName";
+            this.AccountLableFirstName.Size = new System.Drawing.Size(60, 20);
+            this.AccountLableFirstName.TabIndex = 30;
+            this.AccountLableFirstName.Text = "Prénom";
+            // 
+            // AccountLableName
+            // 
+            this.AccountLableName.AutoSize = true;
+            this.AccountLableName.Location = new System.Drawing.Point(523, 196);
+            this.AccountLableName.Name = "AccountLableName";
+            this.AccountLableName.Size = new System.Drawing.Size(42, 20);
+            this.AccountLableName.TabIndex = 29;
+            this.AccountLableName.Text = "Nom";
+            // 
+            // AccountButtonUpdate
+            // 
+            this.AccountButtonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountButtonUpdate.Location = new System.Drawing.Point(855, 133);
+            this.AccountButtonUpdate.Name = "AccountButtonUpdate";
+            this.AccountButtonUpdate.Size = new System.Drawing.Size(94, 29);
+            this.AccountButtonUpdate.TabIndex = 28;
+            this.AccountButtonUpdate.Text = "Modifier";
+            this.AccountButtonUpdate.UseVisualStyleBackColor = true;
+            this.AccountButtonUpdate.Click += new System.EventHandler(this.AccountButtonUpdate_Click);
             // 
             // fbuttonLogout
             // 
             this.fbuttonLogout.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.fbuttonLogout.Location = new System.Drawing.Point(1292, 10);
+            this.fbuttonLogout.Location = new System.Drawing.Point(1281, 10);
             this.fbuttonLogout.Name = "fbuttonLogout";
-            this.fbuttonLogout.Size = new System.Drawing.Size(95, 33);
+            this.fbuttonLogout.Size = new System.Drawing.Size(106, 33);
             this.fbuttonLogout.TabIndex = 1;
-            this.fbuttonLogout.Text = "Logout";
+            this.fbuttonLogout.Text = "Déconnexion";
             this.fbuttonLogout.UseVisualStyleBackColor = true;
             this.fbuttonLogout.Click += new System.EventHandler(this.fbuttonLogout_Click);
             // 
@@ -1345,26 +1538,26 @@ namespace WinFormsAppActivite3
             // 
             // ftextBoxPassword
             // 
-            this.ftextBoxPassword.Location = new System.Drawing.Point(357, 8);
+            this.ftextBoxPassword.Location = new System.Drawing.Point(401, 8);
             this.ftextBoxPassword.Name = "ftextBoxPassword";
-            this.ftextBoxPassword.Size = new System.Drawing.Size(187, 27);
+            this.ftextBoxPassword.Size = new System.Drawing.Size(159, 27);
             this.ftextBoxPassword.TabIndex = 5;
             this.ftextBoxPassword.Text = "password";
             // 
             // flabelPassword
             // 
             this.flabelPassword.AutoSize = true;
-            this.flabelPassword.Location = new System.Drawing.Point(281, 13);
+            this.flabelPassword.Location = new System.Drawing.Point(297, 13);
             this.flabelPassword.Name = "flabelPassword";
-            this.flabelPassword.Size = new System.Drawing.Size(70, 20);
+            this.flabelPassword.Size = new System.Drawing.Size(98, 20);
             this.flabelPassword.TabIndex = 3;
-            this.flabelPassword.Text = "Password";
+            this.flabelPassword.Text = "Mot de passe";
             // 
             // ftextBoxLoginName
             // 
-            this.ftextBoxLoginName.Location = new System.Drawing.Point(96, 10);
+            this.ftextBoxLoginName.Location = new System.Drawing.Point(144, 7);
             this.ftextBoxLoginName.Name = "ftextBoxLoginName";
-            this.ftextBoxLoginName.Size = new System.Drawing.Size(164, 27);
+            this.ftextBoxLoginName.Size = new System.Drawing.Size(141, 27);
             this.ftextBoxLoginName.TabIndex = 4;
             this.ftextBoxLoginName.Text = "Leo2";
             // 
@@ -1373,9 +1566,9 @@ namespace WinFormsAppActivite3
             this.flabelLoginName.AutoSize = true;
             this.flabelLoginName.Location = new System.Drawing.Point(3, 13);
             this.flabelLoginName.Name = "flabelLoginName";
-            this.flabelLoginName.Size = new System.Drawing.Size(87, 20);
+            this.flabelLoginName.Size = new System.Drawing.Size(135, 20);
             this.flabelLoginName.TabIndex = 2;
-            this.flabelLoginName.Text = "Login name";
+            this.flabelLoginName.Text = "Nom de connexion";
             // 
             // fbuttonLogin
             // 
@@ -1383,7 +1576,7 @@ namespace WinFormsAppActivite3
             this.fbuttonLogin.Name = "fbuttonLogin";
             this.fbuttonLogin.Size = new System.Drawing.Size(107, 33);
             this.fbuttonLogin.TabIndex = 0;
-            this.fbuttonLogin.Text = "Login";
+            this.fbuttonLogin.Text = "Se connecter";
             this.fbuttonLogin.UseVisualStyleBackColor = true;
             this.fbuttonLogin.Click += new System.EventHandler(this.fbuttonLogin_Click);
             // 
@@ -1392,11 +1585,11 @@ namespace WinFormsAppActivite3
             this.labelHeadingAMIO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelHeadingAMIO.AutoSize = true;
             this.labelHeadingAMIO.Font = new System.Drawing.Font("Segoe UI", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelHeadingAMIO.Location = new System.Drawing.Point(106, 0);
+            this.labelHeadingAMIO.Location = new System.Drawing.Point(121, 0);
             this.labelHeadingAMIO.Name = "labelHeadingAMIO";
-            this.labelHeadingAMIO.Size = new System.Drawing.Size(440, 45);
+            this.labelHeadingAMIO.Size = new System.Drawing.Size(409, 45);
             this.labelHeadingAMIO.TabIndex = 0;
-            this.labelHeadingAMIO.Text = "Forum AMIO Développement";
+            this.labelHeadingAMIO.Text = "Forum AMIO Développeurs";
             // 
             // tableLayoutPanelMain
             // 
@@ -1422,10 +1615,10 @@ namespace WinFormsAppActivite3
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37F));
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelInMainHeading.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanelInMainHeading.Controls.Add(this.labelHeadingAMIO, 1, 0);
             this.tableLayoutPanelInMainHeading.Controls.Add(this.panelLogin, 2, 0);
             this.tableLayoutPanelInMainHeading.Controls.Add(this.fbuttonLogout, 3, 0);
             this.tableLayoutPanelInMainHeading.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanelInMainHeading.Controls.Add(this.labelHeadingAMIO, 1, 0);
             this.tableLayoutPanelInMainHeading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelInMainHeading.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelInMainHeading.Name = "tableLayoutPanelInMainHeading";
@@ -1505,6 +1698,8 @@ namespace WinFormsAppActivite3
             this.utabPageUserDelete.ResumeLayout(false);
             this.utabPageUserRefresh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.udataGridViewUsers)).EndInit();
+            this.tabPageAccount.ResumeLayout(false);
+            this.tabPageAccount.PerformLayout();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             this.tableLayoutPanelMain.ResumeLayout(false);
@@ -1527,8 +1722,6 @@ namespace WinFormsAppActivite3
         private System.Windows.Forms.Button rbutton3Ques;
         private System.Windows.Forms.Button rbutton5Galerie;
         private System.Windows.Forms.Button rbutton4EspaceD;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button fbuttonLogout;
         private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.TextBox ftextBoxPassword;
@@ -1632,6 +1825,24 @@ namespace WinFormsAppActivite3
         private System.Windows.Forms.RichTextBox frichTextBox2UpdateTopicText;
         private System.Windows.Forms.TabPage ftabPage3DeleteTopic;
         private System.Windows.Forms.Button fbutton3TopicDelete;
+        private System.Windows.Forms.TabPage tabPageAccount;
+        private System.Windows.Forms.TextBox AccountTextBoxId;
+        private System.Windows.Forms.Label AccountLableId;
+        private System.Windows.Forms.TextBox AccountTextBoxPassword;
+        private System.Windows.Forms.TextBox AccountTextBoxEmail;
+        private System.Windows.Forms.TextBox AccountTextBoxPhoneNo;
+        private System.Windows.Forms.TextBox AccountTextBoxLoginName;
+        private System.Windows.Forms.TextBox AccountTextBoxFirstName;
+        private System.Windows.Forms.TextBox AccountTextBoxName;
+        private System.Windows.Forms.Label AccountLablePassword;
+        private System.Windows.Forms.Label AccountLableEmail;
+        private System.Windows.Forms.Label AccountLablePhoneNo;
+        private System.Windows.Forms.Label AccountLableLoginName;
+        private System.Windows.Forms.Label AccountLableFirstName;
+        private System.Windows.Forms.Label AccountLableName;
+        private System.Windows.Forms.Button AccountButtonUpdate;
+        private System.Windows.Forms.Button AccountButtonRefresh;
+        private System.Windows.Forms.Label label1ForumRoles;
     }
 }
 

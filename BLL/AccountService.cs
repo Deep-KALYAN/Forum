@@ -38,17 +38,14 @@ namespace BLL
         //+GetUserByIdAsync(Id : int) : Domain.Entites._User
         public async Task<_User> GetUserByIdAsync(int id)
         {
-
             _User user = await _dbContext.Users.GetByIdAsync(id);
             if (user == null) throw new NotFoundException();
             return user;
-
         }
 
 
         public async Task<_User> GetUserByloginNameAsync(string loginname)
         {
-           
                 _User user = await _dbContext.Users.GetUserBylogin_NameAsync(loginname);
 
             if (user == null) throw new NotFoundException();

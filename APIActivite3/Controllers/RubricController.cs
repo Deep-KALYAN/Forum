@@ -11,7 +11,7 @@ namespace APIActivite3.Controllers
 {
     [ApiController]
     [Route("api/rubric")]
-    public class RubricController : ControllerBase
+    public class RubricController : ControllerBase, IRubricController
     {
         private static IForumService _forumService;
 
@@ -66,18 +66,18 @@ namespace APIActivite3.Controllers
             if (rubrics == null) return NotFound();
 
             var rubricsResponse = rubrics.Select(rubric => new GetRubricsResponseDTO
-            {                
-               RubricId = rubric.Id,
-               RubricName = rubric.Name,
-               
+            {
+                RubricId = rubric.Id,
+                RubricName = rubric.Name,
+
             });
 
             return Ok(rubricsResponse);
         }
 
 
-        
-       //All rubrics details and relative topics details       
+
+        //All rubrics details and relative topics details       
 
         [HttpGet("details")]
         public async Task<IActionResult> GetAllRubricsTopics()
@@ -87,16 +87,16 @@ namespace APIActivite3.Controllers
 
             var rubricsDetailsResponse = rubricsDetails.Select(rubricDetail => new GetRubricsAndTopicsDetailResponseDTO
             {
-        RubricId                = rubricDetail.Id,
-        RubricName              = rubricDetail.Rubric_Name,
-        TopicId                 = rubricDetail.Topic_Id,
-        TopicText               = rubricDetail.Topic_Tex_Pub,
-        TopicPublishedDate      = rubricDetail.Topic_Pub_Date,
-        TopicTitle              = rubricDetail.Topic_Title,
-        TopicCreatorNickName    = rubricDetail.T_Creator_Nick_Name
+                RubricId = rubricDetail.Id,
+                RubricName = rubricDetail.Rubric_Name,
+                TopicId = rubricDetail.Topic_Id,
+                TopicText = rubricDetail.Topic_Tex_Pub,
+                TopicPublishedDate = rubricDetail.Topic_Pub_Date,
+                TopicTitle = rubricDetail.Topic_Title,
+                TopicCreatorNickName = rubricDetail.T_Creator_Nick_Name
 
             });
-            
+
 
 
             return Ok(rubricsDetailsResponse);
@@ -107,7 +107,7 @@ namespace APIActivite3.Controllers
 
         //rubric detail and relative topics details
 
-        //// Get The Topics By Reply Id         
+        //// Get The Topics By Rubric Id         
         //// Get The id and nick name of Creator of Topic
         //// Checked Deleted topic in bll,  change text and title as "Topic is deleted by admin"
 

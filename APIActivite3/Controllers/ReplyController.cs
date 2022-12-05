@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using APIActivite3.Utils;
+using BLL;
 using Domain.DTO.Requestes.Replies;
 using Domain.DTO.Responses.Replies;
 using Domain.Entites;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace APIActivite3.Controllers
@@ -15,7 +17,7 @@ namespace APIActivite3.Controllers
     [ApiController]
     [Route("api/reply")]
     [Authorize(Roles = "USER, ADMIN")]
-    public class ReplyController : ControllerBase
+    public class ReplyController : ControllerBase, IReplyController
     {
 
         private static IForumService _forumService;
@@ -38,14 +40,14 @@ namespace APIActivite3.Controllers
 
 
 
-       
+
         [HttpGet("{id}")]
         [AllowAnonymous]
         //To get reply by Id
         //If deleted is true in reply the text will change in BLL
         //Not found is handeled in bll
         public async Task<IActionResult> GetReplyById([FromRoute] int id)
-        {         
+        {
 
             var replies = await _forumService.GetReplyByIdAsync(id);
             //if (replies == null) return NotFound(); //checked in bll
@@ -53,18 +55,18 @@ namespace APIActivite3.Controllers
             //In dto doestn't have deleted field, text modified in bll if deleted
             ReplyResponseDTO replyResponseDTO = new ReplyResponseDTO()
             {
-                ReplyId       =  replies.Id,
+                ReplyId = replies.Id,
                 ReplyText = replies.Text,
                 ReplyDate = replies.Reply_Date,
                 ParentReplyId = replies.Id_Parent_Reply,
                 CreatorId = replies.Id_User,
-                TopicId = replies.Id_Topic,                
+                TopicId = replies.Id_Topic,
             };
             return Ok(replyResponseDTO);
         }
 
 
-       // [Authorize(Roles ="User,Admin")]
+        // [Authorize(Roles ="User,Admin")]
         [HttpPost()]
         public async Task<IActionResult> CreateReply([FromBody] CreateReplyRequestDTO newReply)
         {
@@ -82,8 +84,8 @@ namespace APIActivite3.Controllers
                 Id_Topic = newReply.ReplyTopicId,
                 Text = newReply.ReplyText,
                 Id_User = newReply.UserId, /***************************************must get from token ******************************/
-              //  Deleted = false,   //just to understand here we use false actually Delete is 0(false) in dal
-             //   Reply_Date = DateTime.Now
+                //  Deleted = false,   //just to understand here we use false actually Delete is 0(false) in dal
+                //   Reply_Date = DateTime.Now
             };
 
             var reply = await _forumService.CreateReplyAsync(createReply);
@@ -92,12 +94,12 @@ namespace APIActivite3.Controllers
             {
                 ReplyResponseDTO replyResponseDTO = new ReplyResponseDTO()
                 {
-                    ReplyId       = reply.Id,
-                    ReplyText     = reply.Text,
-                    ReplyDate     = reply.Reply_Date,
+                    ReplyId = reply.Id,
+                    ReplyText = reply.Text,
+                    ReplyDate = reply.Reply_Date,
                     ParentReplyId = reply.Id_Parent_Reply,
-                    CreatorId     = reply.Id_User,
-                    TopicId       = reply.Id_Topic,
+                    CreatorId = reply.Id_User,
+                    TopicId = reply.Id_Topic,
                 };
                 // Dto de retour reply
                 //return Ok(replyResponseDTO);
@@ -111,13 +113,13 @@ namespace APIActivite3.Controllers
         //No one will have right to use this Update
         [HttpPut("{id}")]
         [Authorize(Roles = "NOBODY")]
-        public async Task<IActionResult> UpdateReply([FromRoute] int id, [FromBody] UpdateReplyRequestDTO updateReply)
+        public async Task<IActionResult> UpdateReply([FromRoute] int id, [FromBody] UpdateReplyRequestDTO updateReply, [FromServices] ICurrentUserUtils currentUserUtils)
         {
 
 
-            //string idMemberToken = HttpContext.User.Claims.ElementAt(2).Value;
+            int idMemberToken = currentUserUtils.GetCurrentUserId().GetValueOrDefault();
 
-            //if (idMemberToken is null || int.Parse(idMemberToken) != updateReply.IdUser) throw new UnknownException();
+            if (idMemberToken != updateReply.IdUser) throw new UnknownException();
 
             if (id != updateReply.ReplyId) return BadRequest();
 
@@ -127,7 +129,7 @@ namespace APIActivite3.Controllers
                 Id = updateReply.ReplyId,
                 Text = updateReply.ReplyText,
                 Id_User = updateReply.IdUser
-                
+
             };
 
             //Logique métier
@@ -153,28 +155,28 @@ namespace APIActivite3.Controllers
             return NotFound();
         }
 
-       
-        
+
+
 
 
         //actually it is update (not delete) 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "ADMIN")] 
+        [Authorize(Roles = "ADMIN")]
         // User Only who have posted
-        public async Task<IActionResult> DeleteReply([FromRoute] int id)
+        public async Task<IActionResult> DeleteReply([FromRoute] int id, [FromServices] ICurrentUserUtils currentUserUtils)
         {
             //var reply = await _forumService.GetReplyByIdAsync(id);
             //   /*  //if (replies == null) return NotFound(); //checked in bll  */
 
             //string idMemberToken = HttpContext.User.Claims.ElementAt(2).Value;
-          
+
 
             //if (int.Parse(idMemberToken) == reply.Id_User || User.IsInRole("ADMIN") == true)
             //{
 
 
             var isDeleted = await _forumService.DeleteReplyAsync(id);
-                return (isDeleted) ? NoContent() : NotFound();
+            return (isDeleted) ? NoContent() : NotFound();
 
 
 
@@ -184,7 +186,7 @@ namespace APIActivite3.Controllers
             //    throw new ForbiddenAccessException();
             //}
 
-            
+
         }
     }
 }

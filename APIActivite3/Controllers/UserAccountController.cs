@@ -14,8 +14,8 @@ namespace APIActivite3.Controllers
 {
     [ApiController]
     [Route("api/user")]
-    [Authorize(Roles = "ADMIN")] //(Roles = "USER")
-    public class UserAccountController : ControllerBase
+    [Authorize(Roles = "USER, ADMIN")] //(Roles = "USER")
+    public class UserAccountController : ControllerBase, IUserAccountController
     {
         private static IAccountService _accountService;
 
@@ -58,22 +58,25 @@ namespace APIActivite3.Controllers
 
 
         [HttpGet("{id}")]
-        //    [Authorize(Roles = "ADMIN")]
+        //[Authorize(Roles = "USER")]
+
         public async Task<IActionResult> GetUserById([FromRoute] int id)
         {
             var user = await _accountService.GetUserByIdAsync(id);
             if (user == null) return NotFound();
 
 
-            GetUserByIdResponseDTO getUserByIdResponseDTO = new GetUserByIdResponseDTO()
+            GetUsersResponseDTO getUserByIdResponseDTO = new GetUsersResponseDTO()
             {
                 Id = user.Id,
                 Name = user.Name,
-                First_Name = user.First_Name,
-                Login_Name = user.Nick_Name,
-                Ph_No = user.Ph_No,
-                Photo = user.Photo,
-                E_Mail = user.E_Mail
+                FirstName = user.First_Name,
+                LoginName = user.Nick_Name,
+                PhNo = user.Ph_No,
+                //   Photo = user.Photo,
+                Password = user.Password,
+                ModeratorYN = user.Moderator_Y_N,
+                EMail = user.E_Mail
 
             };
 
@@ -83,7 +86,7 @@ namespace APIActivite3.Controllers
 
 
         [HttpPost()]
-       // [AllowAnonymous]
+        // [AllowAnonymous]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestDTO newUser)
         {
             // Recupérer le DTO de requête => Le transformé en un ou plusieur object métiers

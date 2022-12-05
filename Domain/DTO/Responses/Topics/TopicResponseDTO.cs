@@ -17,5 +17,17 @@ namespace Domain.DTO.Responses.Topics
         public int       TopicIdRubric      { get; set; }
 
         public int      TopicCountViews      { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is TopicResponseDTO dTO &&
+                   TopicId == dTO.TopicId &&
+                   TopicTitle == dTO.TopicTitle &&
+                   TopicText == dTO.TopicText &&
+                   TopicPublishedDate == dTO.TopicPublishedDate &&
+                   TopicCreatorId == dTO.TopicCreatorId &&
+                   TopicIdRubric == dTO.TopicIdRubric &&
+                   TopicCountViews == dTO.TopicCountViews;
+        }
     }
 }

@@ -14,7 +14,8 @@ namespace Domain.DTO.Responses.Users
         public string Ph_No { get; set; }
         public Byte[] Photo { get; set; }
         public string E_Mail { get; set; }
-        //public string Password { get; set; }
+        public string Password { get; set; }
+        public bool ModeratorYN { get; set; }
         public int Id { get; set; }
     }
 }
