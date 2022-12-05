@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BLL</name>
+    </assembly>
+    <members>
+        <member name="M:BLL.IAccountService.CreateUserAsync(Domain.Entites._User)">
+            <summary>
+            Create User 
+            </summary>
+            <param name="newUser"> _User(BO) </param>
+            <returns>_User(BO) or throw new InsertSQLFailureException</returns>
+        </member>
+        <member name="M:BLL.IAccountService.DeleteUserAsync(System.Int32)">
+            <summary>
+            Delete User Account by Id    
+            </summary>
+            <param name="id">id</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:BLL.IAccountService.GetUserByIdAsync(System.Int32)">
+            <summary>
+            Get User Account By Id 
+            </summary>
+            <param name="id">id</param>
+            <returns>IEnumerable _User(BO) or Throw New NotFoundException</returns>
+        </member>
+        <member name="M:BLL.IAccountService.GetUsersAsync">
+            <summary>
+            Get Users Accounts
+            </summary>
+            <returns>BO _User or Throw New NotFoundException</returns>
+        </member>
+        <member name="M:BLL.IAccountService.GetUserByloginNameAsync(System.String)">
+            <summary>
+            Get User Account by LoginName
+            </summary>
+            <param name="loginname">LoginName</param>
+            <returns>BO _User or Throw New NotFoundException</returns>
+        </member>
+        <member name="M:BLL.IAccountService.ModifyUserAsync(Domain.Entites._User)">
+            <summary>
+            Modify User Account
+            </summary>
+            <param name="modifiedUser">_User(BO)</param>
+            <returns>BO _User or Throw New NotFoundException</returns>
+        </member>
+        <member name="M:BLL.IForumService.CreateReplyAsync(Domain.Entites.Reply)">
+            <summary>
+            To Create Reply 
+            </summary>
+            <param name="reply"></param>
+            <returns> BO Reply or Null</returns>
+        </member>
+        <member name="M:BLL.IForumService.CreateRubricAsync(Domain.Entites.Rubric)">
+            <summary>
+            To Create Rubric 
+            </summary>
+            <param name="rubric"></param>
+            <returns>BO Rubric or Null</returns>
+        </member>
+        <member name="M:BLL.IForumService.CreateTopicAsync(Domain.Entites.Topic)">
+            <summary>
+            To Create Topic 
+            </summary>
+            <param name="topic"></param>
+            <returns>BO Topic or Null</returns>
+        </member>
+        <member name="M:BLL.IForumService.DeleteReplyAsync(System.Int32)">
+            <summary>
+            To Delete Reply by Reply Id
+            If Deleted, Text Change as "message have been deleted by admin"
+            </summary>
+            <param name="id">id</param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:BLL.IForumService.DeleteRubricAsync(System.Int32)">
+            <summary>
+            To Delete Rubric by Id
+            </summary>
+            <param name="id">id</param>
+            <returns>boolean</returns>
+            
+        </member>
+        <member name="M:BLL.IForumService.DeleteTopicAsync(System.Int32)">
+            <summary>
+            To Delete Topic  by Id,
+            All Concerning Replies will Delete also
+            </summary>
+            <param name="id"></param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetRepliesAsync">
+            <summary>
+            To Get All Replies 
+            </summary>
+            <returns>BO Reply IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetRepliesByTopicIdAsync(System.Int32)">
+            <summary>
+            To Get Replies of Concerning Topic by Topic Id 
+            </summary>
+            <param name="topicId">id</param>
+            <returns>BO Reply IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetReplyByIdAsync(System.Int32)">
+            <summary>
+            To Get Reply by Id  
+            </summary>
+            <param name="id">id</param>
+            <returns>BO Reply</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetRubricByIdAsync(System.Int32)">
+            <summary>
+            To Get Rubric by Id
+            </summary>
+            <returns>BO Rubric</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetRubricsAsync">
+            <summary>
+            To Get All Rubrics  
+            </summary>
+            <returns>BO Rubric IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetTopicByIdAsync(System.Int32)">
+            <summary>
+            To Get Topic by Id 
+            </summary>
+            <param name="id">id</param>
+            <returns>BO Topic</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetTopicsAsync">
+            <summary>
+            To Get All Topics
+            </summary>
+            <returns>BO Topic IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.GetTopicsByRubricIdAsync(System.Int32)">
+            <summary>
+            To Get Topics of Concerning Rubric by Rubric Id
+            </summary>
+            <param name="rubricId">id</param>
+            <returns>BO Topic IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.ModifyReplyAsync(Domain.Entites.Reply)">
+            <summary>
+            To Modify Reply
+            </summary>      
+            <param name="reply">BO Reply</param>
+            <returns>BO Reply or Null</returns>
+        </member>
+        <member name="M:BLL.IForumService.ModifyRubricAsync(System.Int32,Domain.Entites.Rubric)">
+            <summary>
+            To Modify Rubric 
+            </summary>
+            <param name="id">id</param>
+            <param name="rubric">BO Rubric</param>
+            <returns>BO Rubric or Null</returns>
+        </member>
+        <member name="M:BLL.IForumService.ModifyTopicAsync(System.Int32,Domain.Entites.Topic)">
+            <summary>
+            To Modify Topic 
+            </summary>
+            <param name="id">id</param>
+            <param name="topic">BO Topic</param>
+            <returns>BO Topic or Null</returns>
+        </member>
+        <member name="M:BLL.IForumService.DetailTopicsAsync">
+            <summary>
+            To Get All Replies with Detail (by View TOPIC_DETAIL )
+            </summary>
+            <returns>BO TopicDetail IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.DetailTopicByIdAsync(System.Int32)">
+            <summary>
+            To Get Replies with Detail by Topic Id (by View TOPIC_DETAIL )
+            </summary>
+            <param name="id">id</param>
+            <returns>BO TopicDetail IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.DetailRubricsAsync">
+            <summary>
+            To Get All Topics with Detail (by View RUBRICS_DETAIL )
+            </summary>
+            <returns>BO RubricDetail IEnumerable</returns>
+        </member>
+        <member name="M:BLL.IForumService.DetailRubricByIdAsync(System.Int32)">
+            <summary>
+            To Get Topics with Detail by Rubric Id (by View RUBRICS_DETAIL )
+            </summary>
+            <param name="id">id</param>
+            <returns>BO RubricDetail IEnumerable</returns>
+        </member>
+        <member name="M:BLL.ISecurityService.SigningAsync(System.String,System.String)">
+            <summary>
+            Generate the Token 
+            </summary>
+            <param name="username">nickname</param>
+            <param name="password">password</param>
+            <returns>JWT Token or Throw ForbiddenAccessException or Throw AuthentificationFailException</returns>
+        </member>
+    </members>
+</doc>

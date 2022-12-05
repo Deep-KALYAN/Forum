@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTest", "Integrat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppActivite3", "WinFormsAppActivite3\WinFormsAppActivite3.csproj", "{5A2DABEF-2F77-491C-9E2C-D78119099F56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocFx", "DocFx\DocFx.csproj", "{54F88F5F-CA2B-4B09-AC6D-BFA49D729A83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{5A2DABEF-2F77-491C-9E2C-D78119099F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A2DABEF-2F77-491C-9E2C-D78119099F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A2DABEF-2F77-491C-9E2C-D78119099F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F88F5F-CA2B-4B09-AC6D-BFA49D729A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F88F5F-CA2B-4B09-AC6D-BFA49D729A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F88F5F-CA2B-4B09-AC6D-BFA49D729A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F88F5F-CA2B-4B09-AC6D-BFA49D729A83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

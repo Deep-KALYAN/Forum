@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DAL</name>
+    </assembly>
+    <members>
+        <member name="M:DAL.UOW.Repositories.ReplyRepository.GetAllByTopicIdAsync(System.Int32)">
+            special *
+        </member>
+        <member name="M:DAL.UOW.Repositories.TopicRepository.GetAllByRubricIdAsync(System.Int32)">
+            special *
+        </member>
+    </members>
+</doc>

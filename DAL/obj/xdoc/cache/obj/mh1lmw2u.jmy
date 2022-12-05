@@ -1,0 +1,10 @@
+id: DAL
+language: CSharp
+name:
+  Default: DAL
+qualifiedName:
+  Default: DAL
+type: Assembly
+modifiers: {}
+items: []
+references: {}

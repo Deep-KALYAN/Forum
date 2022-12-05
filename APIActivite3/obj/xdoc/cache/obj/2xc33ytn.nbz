@@ -1,0 +1,10 @@
+id: APIActivite3
+language: CSharp
+name:
+  Default: APIActivite3
+qualifiedName:
+  Default: APIActivite3
+type: Assembly
+modifiers: {}
+items: []
+references: {}

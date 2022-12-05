@@ -1,0 +1,10 @@
+id: IntegrationTest
+language: CSharp
+name:
+  Default: IntegrationTest
+qualifiedName:
+  Default: IntegrationTest
+type: Assembly
+modifiers: {}
+items: []
+references: {}

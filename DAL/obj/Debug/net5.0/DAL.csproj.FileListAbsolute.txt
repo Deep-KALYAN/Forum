@@ -2,6 +2,10 @@ C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\DAL.deps.json
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\DAL.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\ref\DAL.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\DAL.pdb
+C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\DAL.xml
+C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\Domain.dll
+C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\Domain.pdb
+C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\Domain.xml
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\DAL.csproj.AssemblyReference.cache
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\DAL.AssemblyInfoInputs.cache
@@ -11,5 +15,3 @@ C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\DAL.csproj.Copy
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\DAL.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\ref\DAL.dll
 C:\Users\cda5kaly\source\repos\APIActivite3\DAL\obj\Debug\net5.0\DAL.pdb
-C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\Domain.dll
-C:\Users\cda5kaly\source\repos\APIActivite3\DAL\bin\Debug\net5.0\Domain.pdb

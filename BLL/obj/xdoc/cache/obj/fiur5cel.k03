@@ -1,0 +1,10 @@
+id: BLL
+language: CSharp
+name:
+  Default: BLL
+qualifiedName:
+  Default: BLL
+type: Assembly
+modifiers: {}
+items: []
+references: {}

@@ -14,6 +14,7 @@ using System.Reflection;
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("APIActivite3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\cda5kaly\\source\\repos\\APIActivite3\\APIActivite3", "APIActivite3.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("BLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\cda5kaly\\source\\repos\\APIActivite3\\BLL", "BLL.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\cda5kaly\\source\\repos\\APIActivite3\\DAL", "DAL.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("DocFx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\cda5kaly\\source\\repos\\APIActivite3\\DocFx", "DocFx.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\cda5kaly\\source\\repos\\APIActivite3\\Domain", "Domain.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntegrationTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]

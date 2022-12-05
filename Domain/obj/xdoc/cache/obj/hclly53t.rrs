@@ -1,0 +1,10 @@
+id: Domain
+language: CSharp
+name:
+  Default: Domain
+qualifiedName:
+  Default: Domain
+type: Assembly
+modifiers: {}
+items: []
+references: {}

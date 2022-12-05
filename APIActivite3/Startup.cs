@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DocFx;
 
 namespace APIActivite3
 {
@@ -93,6 +94,13 @@ namespace APIActivite3
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // For DocFx Documentation 
+
+            app.UseDocFxUI((settings) =>
+            {
+                settings.Path = "/doc";
+            });
 
             // Register the Swagger generator and the Swagger UI middlewares
 

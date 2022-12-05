@@ -1,0 +1,10 @@
+id: WinFormsAppActivite3
+language: CSharp
+name:
+  Default: WinFormsAppActivite3
+qualifiedName:
+  Default: WinFormsAppActivite3
+type: Assembly
+modifiers: {}
+items: []
+references: {}
